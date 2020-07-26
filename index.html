@@ -1371,6 +1371,7 @@
 
 	function receiveMessage(e) {
 		console.log('Called msg ', e)
+		console.log('login_flag ', login_flag)
 		if (e.data.message == 'login') {
 			login(e.data.id);
 			login_flag = true;
