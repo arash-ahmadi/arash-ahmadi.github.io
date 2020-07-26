@@ -13,11 +13,11 @@ $("#receiver").on("load",function(){
         receiver.postMessage(message, '*');
     })
     $(".three_d_viewer_btn").on("click",function(){
-        /*var sku = $('.measurments_btn').data('sku');
+        var sku = $('.measurments_btn').data('sku');
         const myiframe = document.getElementById('receiver')
         var message = {message: 'open-three-d-viewer-box' , productSku: sku}
         console.log('Open 3D  ---', message)
-        receiver.postMessage(message, '*');*/
+        receiver.postMessage(message, '*');
     })
     window.onmessage = function(event){
         if (event.data == 'virtual-dress-view-open') {
@@ -36,12 +36,12 @@ $("#receiver").on("load",function(){
             var receiver = document.getElementById('receiver').contentWindow;
             receiver.postMessage(itemId, 'https://widget.viubox.com');
         } else if (event.data.message === 'viubox-login'){
-            /*console.log('viubox-login called ' )
+            console.log('viubox-login called ' )
             var id = event.data.id;
             localStorage.setItem("id", id)
             var msg = { message: 'login', id : id };
             var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(msg, 'https://widget.viubox.com');*/
+            receiver.postMessage(msg, 'https://widget.viubox.com');
         } else if (event.data == 'loaded-threed-viewer') {
             var id = localStorage.getItem("id");
             console.log('loaded-threed-viewer called ..')
@@ -57,13 +57,13 @@ $("#receiver").on("load",function(){
                 receiver.postMessage(itemId, 'https://widget.viubox.com');
             }
         } else if (event.data == 'loaded-app') {
-            /*var id = localStorage.getItem("id");
+            var id = localStorage.getItem("id");
             console.log(' loaded-app login called  called ..')
             if (id) {
                 var msg = { message: 'login', id : id };
                 var receiver = document.getElementById('receiver').contentWindow;
                 receiver.postMessage(msg, 'https://widget.viubox.com');
-            }*/
+            }
 
         }else if (event.data == 'virtual-three-d-hide') {
             console.log('virtual-three-d-hide --> ', event.data )
