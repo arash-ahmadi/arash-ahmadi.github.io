@@ -748,7 +748,7 @@
 									<div class="avtar-threed-container">
 										<!--<iframe id="receiver-data" src="#" style="width:305px; height: calc(100% - 1px);"></iframe>-->
 										<div class="webgl-content">
-										<div id="unityContainer" style="width: 300px; height: 400px"></div>
+										<div id="unityContainer" style="width: 310px; height: 400px"></div>
 										<!-- <div class="footer">
                                         <div class="webgl-logo"></div>
                                         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
@@ -2833,14 +2833,15 @@
 					$("#login-error-box").find('li').remove();
 					$("#login-user-form").trigger("reset");
 				}
-			} else if (event.data.message && event.data.message == 'open-three-d-viewer-box') {
-				isLoaclStorageEnabled();
+			} else if (event.data.message && event.data.message == 'open-three-d-viewer-box') {isLoaclStorageEnabled();
+				console.log('in open-three-d-viewer-box')
 				var productSku = event.data.productSku;
 				$('.product_sku').val(productSku);
 				var id = localStorage.getItem("id");
 				var parentWidth = localStorage.getItem("parentWidth");
 				var TryTheeD = localStorage.getItem("TryTheeD");
-				if (id && TryTheeD === 'Yes' && parentWidth > 721) {
+				console.log('in open-three-d-viewer-box', id, TryTheeD, parentWidth)
+				if (id === null ) {
 					window.top.postMessage('virtual-dress-view-open', '*');
 					$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
 					if($('#virtual-dress-view').hasClass('pull-bs-canvas-right')) {
@@ -2857,10 +2858,22 @@
 					document.getElementById('reset-password').style.display = "none";
 				}
 				if (id) {
+					window.top.postMessage('virtual-dress-view-open', '*');
+					$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+					if($('#virtual-dress-view').hasClass('pull-bs-canvas-right')) {
+						$('.bs-canvas-right-1').addClass('mr-0');
+					}
+					else {
+						$('.bs-canvas-left').addClass('ml-0');
+					}
 					var passToParentData = {message: 'viubox-login' , id : id}
 					window.top.postMessage(passToParentData, '*');
 					document.getElementById('mesurment-deatils').style.display = "block";
-					document.getElementById('login').style.display = "none";
+					document.getElementById('mesurment').style.display = "none";
+					document.getElementById('register').style.display = "none";
+					document.getElementById('edit-user-mesurment').style.display = "none";
+					document.getElementById('forgot-password').style.display = "none";
+					document.getElementById('reset-password').style.display = "none";
 					getUserMeasurmentData(true);
 					var data = new FormData();
 					data.append('productSku', productSku);
