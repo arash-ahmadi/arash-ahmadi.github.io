@@ -2816,7 +2816,7 @@
 				isLoaclStorageEnabled();
 				var productSku = event.data.productSku;
 				$('.product_sku').val(productSku);
-				/*window.top.postMessage('virtual-dress-view-open', '*');*/
+				window.top.postMessage('virtual-dress-view-open', '*');
 				$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
 				if($('#virtual-dress-view').hasClass('pull-bs-canvas-right')) {
 					$('.bs-canvas-right-1').addClass('mr-0');
