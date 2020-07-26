@@ -45,8 +45,8 @@ $("#receiver").on("load",function(){
         } else if (event.data == 'loaded-threed-viewer') {
             var id = localStorage.getItem("id");
             console.log('loaded-threed-viewer called ..')
-            var msg = { message: 'login', id : id };
-            var receiver = document.getElementById('receiver').contentWindow;
+            /*var msg = { message: 'login', id : id };
+            var receiver = document.getElementById('receiver').contentWindow;*/
             receiver.postMessage(msg, 'https://widget.viubox.com');
         }else if (event.data == 'loaded-avatar') {
             var itemId = localStorage.getItem("itemId");
