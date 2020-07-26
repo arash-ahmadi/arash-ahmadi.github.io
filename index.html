@@ -1376,7 +1376,7 @@
 			login(e.data.id);
 			login_flag = true;
 		} else if (login_flag && e.data.item) {
-			console.log('In load item')
+			console.log('In load item', e.data.item)
 			downloadBundle(e.data);
 		}
 	}
