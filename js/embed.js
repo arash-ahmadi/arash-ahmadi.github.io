@@ -37,10 +37,10 @@ $("#receiver").on("load",function(){
             receiver.postMessage(itemId, 'https://widget.viubox.com');
         } else if (event.data.message === 'viubox-login'){
             console.log('viubox-login called ' )
-            var id = event.data.id;
+            /*var id = event.data.id;
             localStorage.setItem("id", id)
             var msg = { message: 'login', id : id };
-            var receiver = document.getElementById('receiver').contentWindow;
+            var receiver = document.getElementById('receiver').contentWindow;*/
             receiver.postMessage(msg, 'https://widget.viubox.com');
         } else if (event.data == 'loaded-threed-viewer') {
             var id = localStorage.getItem("id");
