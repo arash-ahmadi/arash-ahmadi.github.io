@@ -1355,6 +1355,7 @@
 <script src="Build/UnityLoader.js"></script>
 <script>
 	window.addEventListener('message', receiveMessage);
+	var login_flag = false;
 
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/ViewBox.json", {
 		onProgress: UnityProgress
@@ -1370,10 +1371,12 @@
 
 	function receiveMessage(e) {
 		console.log('Called msg ', e)
-		/*if (e.data.message == 'login')
+		if (e.data.message == 'login') {
 			login(e.data.id);
-		else
-			downloadBundle(e.data);*/
+			login_flag = true;
+		} else if (login_flag) {
+			downloadBundle(e.data);
+		}
 	}
 	jQuery(document).ready(function($){
 		$(document).on('click', '.view-side-sample-img', function(event){
