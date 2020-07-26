@@ -9,15 +9,15 @@ $("#receiver").on("load",function(){
         $(".measurments_btn").css('background-color', '#6f928a');
         var sku = $(this).data('sku');
         const myiframe = document.getElementById('receiver')
-        var message = {message: 'open-measurement-box' , productSku: sku}
-        receiver.postMessage(message, '*');
+        /*var message = {message: 'open-measurement-box' , productSku: sku}
+        receiver.postMessage(message, '*');*/
     })
     $(".three_d_viewer_btn").on("click",function(){
-        /*var sku = $('.measurments_btn').data('sku');
+        var sku = $('.measurments_btn').data('sku');
         const myiframe = document.getElementById('receiver')
         var message = {message: 'open-three-d-viewer-box' , productSku: sku}
         console.log('Open 3D  ---', message)
-        receiver.postMessage(message, '*');*/
+        receiver.postMessage(message, '*');
     })
     window.onmessage = function(event){
         if (event.data == 'virtual-dress-view-open') {
