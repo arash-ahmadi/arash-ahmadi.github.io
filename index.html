@@ -1369,6 +1369,7 @@
 	}
 
 	function receiveMessage(e) {
+		console.log('Called msg ', e)
 		if (e.data.message == 'login')
 			login(e.data.id);
 		else
@@ -2789,10 +2790,10 @@
 				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
 				$('#collapseTwo').addClass('show');
-				if ($('#receiver-data').attr('src') === '#') {
+				/*if ($('#receiver-data').attr('src') === '#') {
 					$('#receiver-data').attr('src',"https://viubox.github.io/");
 				}
-			}
+			}*/
 
 			var id = localStorage.getItem("id");
 			var TryTheeD = localStorage.getItem("TryTheeD");
