@@ -5,12 +5,12 @@ $("#receiver").on("load",function(){
     var receiver = document.getElementById('receiver').contentWindow;
    // localStorage.setItem('receiver', receiver)
     $(".measurments_btn").on("click",function(){
-        /*$(".measurments_btn").text('Viubox check measurments ');
+        $(".measurments_btn").text('Viubox check measurments ');
         $(".measurments_btn").css('background-color', '#6f928a');
         var sku = $(this).data('sku');
         const myiframe = document.getElementById('receiver')
         var message = {message: 'open-measurement-box' , productSku: sku}
-        receiver.postMessage(message, '*');*/
+        receiver.postMessage(message, '*');
     })
     $(".three_d_viewer_btn").on("click",function(){
         /*var sku = $('.measurments_btn').data('sku');
