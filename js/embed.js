@@ -13,9 +13,9 @@ $("#receiver").on("load",function(){
         receiver.postMessage(message, '*');
     })
     $(".three_d_viewer_btn").on("click",function(){
-        var sku = $('.measurments_btn').data('sku');
+        /*var sku = $('.measurments_btn').data('sku');*/
         const myiframe = document.getElementById('receiver')
-        var message = {message: 'open-three-d-viewer-box' , productSku: sku}
+        var message = {message: 'open-three-d-viewer-box' , productSku: '54c23d'}
         console.log('Open 3D  ---', message)
         receiver.postMessage(message, '*');
     })
@@ -45,8 +45,8 @@ $("#receiver").on("load",function(){
         } else if (event.data == 'loaded-threed-viewer') {
             var id = localStorage.getItem("id");
             console.log('loaded-threed-viewer called ..')
-            /*var msg = { message: 'login', id : id };
-            var receiver = document.getElementById('receiver').contentWindow;*/
+            var msg = { message: 'login', id : id };
+            var receiver = document.getElementById('receiver').contentWindow;
             receiver.postMessage(msg, 'https://widget.viubox.com');
         }else if (event.data == 'loaded-avatar') {
             var itemId = localStorage.getItem("itemId");
