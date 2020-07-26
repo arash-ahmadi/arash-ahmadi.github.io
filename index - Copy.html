@@ -1,0 +1,2747 @@
+
+<html>
+	<head>
+	<title>Viubox</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/taggd.css" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-confirm.css"/>
+	<link rel="stylesheet" type="text/css" href="css/color-picker.css"/>
+	<style>
+	
+		.bs-canvas-overlay {
+			background-color: green;
+			top: 0;
+			opacity: 0;
+			z-index: 1100;
+		}
+		
+		.bs-canvas {
+			background-color: transparent;
+			display: block;
+			top: 0;
+			z-index: 1110;
+			overflow-x: hidden;
+			overflow-y: auto;
+			width: 350px;
+			transition: margin .4s ease-out;
+			-webkit-transition: margin .4s ease-out;
+			-moz-transition: margin .4s ease-out;
+			-ms-transition: margin .4s ease-out;
+		}
+		
+		.bs-canvas-left {
+			left: 0;
+			margin-left: -350px;
+		}
+		
+		/* Right Canvas (Frame) */
+		.bs-canvas-right-1, .bs-canvas-right-2 {
+			top: 0;			
+			right: 0;
+			margin-right: -350px;
+		}
+		.bs-button-right {
+			top: 250;
+			right: 10;			
+		}
+		/* Only for demo */
+		body {
+			top: 0;
+			background-color: transparent;
+			min-height: 100vh;
+		}	
+
+		#virtual-dress-view, #measure-view{
+			
+			vertical-align:top;
+			color: white;
+			width: 180px;
+			margin-bottom: 180px;
+			cursor: pointer;
+		}	
+		
+		#virtual-dress-view input, #measure-view input {
+			background-color: purple; 
+			color: #fff;
+			width: 180px;
+		}
+
+		.button-container {
+			top: 100;
+			right: 10;
+			
+			justify-items: center;
+			width: 40px;	
+			padding: 20px 0;
+			margin: 0 auto;
+		}
+	
+		.nav-item {
+			color: #fff;
+			background: transparent;
+		}
+	
+		.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+			border-color: transparent;
+		}
+	
+		.nav-tabs .nav-link {
+			border: none;
+		}
+	
+		.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+			background-color: transparent;
+			color: #697194;
+		}
+	
+		.btn-file {
+			position: relative;
+			overflow: hidden;
+		}
+		.btn-file input[type=file] {
+			position: absolute;
+			top: 0;
+			right: 0;
+			min-width: 100%;
+			min-height: 100%;
+			font-size: 100px;
+			text-align: right;
+			filter: alpha(opacity=0);
+			opacity: 0;
+			outline: none;
+			background: white;
+			cursor: inherit;
+			display: block;
+		}		
+	
+		#label_height {
+			text-align: center;
+			width: 100%;
+			font-size: 12px;
+		}
+
+		/*.form-group {
+			text-align:center;
+		}
+*/
+		.btn-info input[type=file] {
+			position: absolute;
+			top: 0;
+			right: 0;			
+			text-align: right;
+			filter: alpha(opacity=0);
+			opacity: 0;
+			outline: none;
+			background: white;
+			cursor: inherit;
+			display: block;
+		}
+		
+		
+		input[type=range]::-webkit-slider-thumb {		  
+		  background: #A278AA;		 
+		}
+		
+		input[type=range]::-moz-range-thumb {		 
+		  background: #A278AA;		 
+		}
+			
+		input[type=range]::-ms-thumb {		 
+		  background: #A278AA;
+		}
+
+		.logo-img {
+			width:100px;
+			height: 12px;
+		}
+		.brand-name {
+			color:#000000;
+			margin-left: 20%;
+			margin-top: 20px;
+			font-size: 20px;
+			font-family: Gotham thin;
+		}
+		.footer-content {
+			background: rgb(33, 117, 243);
+			margin: 0px !important;
+			padding: 5px 0px 5px 0px !important;
+		}
+		.footer-header {
+			text-align: center;
+			color: #ffffff;
+			padding: 0 !important;
+			margin: 0 !important;
+			font-size: 12px;
+		}
+		.footer-logo {
+			text-align: center;
+			margin: 0;
+			padding: 0 ;
+		}
+		.footer-logo-img {
+			width:100px;
+			height: 10px;
+		}
+		.login-content {
+			width:100%;
+			height: 82%;
+		}
+		.measurment-detail-content {
+			width:100%;
+		}
+		.main-container {
+		}
+		.header-line {
+			height: 5px;
+			width: 100%;
+			background: rgb(33, 117, 243);
+		}
+		.login-box {
+			/*height: 54% !important;*/
+			background: #dedbdb;
+		}
+		.login-box-data {
+			padding: 20px;
+		}
+		.link-box {
+			text-decoration: underline !important;
+			cursor: pointer;
+		}
+		.login-form {
+			display: inline-flex;
+			width: 100%;
+			margin-top: 20px;
+		}
+		.login-form-first {
+			width: 65%;
+		}
+		.login-form-second {
+			width: 35%;
+		}
+		.login-form {
+			display: inline-flex;
+			width: 100%;
+			margin-top: 20px;
+		}
+		.login-label {
+			font-size: 13px;
+		}
+		.login-qr-label {
+			font-size: 10px;
+		}
+		.qr-code-img {
+			width: 100%;
+			/*height: 58%;*/
+		}
+		.input-box {
+			padding: 4px 2px;
+			margin: 0px 0;
+			display: inline-block;
+			border: 1px solid #948888;
+			border-radius: 4px;
+			box-sizing: border-box;
+			background: inherit;
+		}
+		.submit-btn {
+			color: #5d5555;
+			margin: 8px 0;
+			border-radius: 4px;
+			cursor: pointer;
+			border: 1px solid rgb(33, 117, 243);
+		}
+		.submit-btn:hover {
+			opacity: 0.8;
+		}
+		.login-btn {
+			margin-left: 65%;
+		}
+		.login-box-second-part {
+			height: 30% !important;
+		}
+		.signup-btn {
+			padding: 0px 9px;
+			margin: 0px 0;
+			border: 1px solid rgb(33, 117, 243);
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 12px;
+		}
+		.login-second-box-text {
+			font-size: 13px;
+		}
+		.label {
+			width: 30%;
+		}
+		.height-box {
+			width: 90%;
+			margin-left: 4%;
+			display: inline-flex;
+		}
+		.register-data {
+			padding: 20px 20px 0px 20px;
+		}
+		.height-left-btn{
+			background-color:rgb(33, 117, 243);
+			width:34px;
+			height: 38px;
+			border-radius: 50%;
+			position: absolute;
+			left: -13px;
+		}
+		.height-input-btn {
+			background-color:rgb(33, 117, 243);
+			z-index: 10;
+		}
+		.height-minus-btn {
+			font-size:20px;
+			color:#fff;
+			line-height: 20px;
+			background-color:rgb(33, 117, 243)
+		}
+		.height-text-input {
+			border-color: rgb(33, 117, 243);
+			border-width: 2px;
+		}
+		.height-right-btn {
+			background-color:rgb(33, 117, 243);
+			z-index: 10;
+		}
+		.height-plus-btn {
+			font-size:20px;
+			color:#fff;
+			line-height: 20px;
+		}
+		.height-input-right {
+			background-color: rgb(33, 117, 243);
+			width:34px;
+			height: 38px;
+			border-radius:50%;
+			position:absolute;
+			right:-13px;
+		}
+		.register-process-btn {
+			text-align: center;
+			margin: 3px;
+		}
+		.hide{
+			display: none;
+		}
+		.mesument-height-div {
+			text-align: center;
+		}
+		.mesurment-process-btn {
+			margin-top: 15%;
+		}
+		.detail-box-form {
+			height: 15%;
+		}
+		.detail-image-container {
+			background-color: #dedbdb;
+			min-height: 63%;
+		}
+		.img-avtar {
+			width: 280px;
+			height: 375px;
+		}
+		.avtar-img-container {
+			text-align: center;
+		}
+		.form {
+			margin: 0px;
+		}
+		.error-box {
+			color: #ef0f12;
+			font-size: 14px;
+		}
+		.register-box {
+			/*height: 44% !important;*/
+			background: #dedbdb;
+		}
+		.register-content {
+			width:100%;
+			min-height: 80%;
+		}
+		.register-box-second-part {
+			/*height: 30% !important;*/
+		}
+		.measurement-result-box {
+			padding-top: 10px;
+			padding-left: 25px;
+		}
+		/*Loader CSS start from here*/
+		.loader,
+		.loader:after {
+			border-radius: 50%;
+			width: 10em;
+			height: 10em;
+		}
+		.loader {
+			margin: 80% auto;
+			font-size: 4px;
+			position: relative;
+			text-indent: -9999em;
+			border-top: 0.1em solid rgba(255, 255, 255, 0.2);
+			border-right: 1.1em solid rgba(8, 8, 1, 0.2);
+			border-bottom: 0.1em solid rgba(255, 255, 255, 0.2);
+			border-left: 1.1em solid rgb(33, 117, 243);
+			-webkit-transform: translateZ(0);
+			-ms-transform: translateZ(0);
+			transform: translateZ(0);
+			-webkit-animation: load8 1.1s infinite linear;
+			animation: load8 1.1s infinite linear;
+		}
+		@-webkit-keyframes load8 {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+			100% {
+				-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
+		@keyframes load8 {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+			100% {
+				-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
+		@font-face {
+			font-family: 'Gotham';
+			src: url('fonts/Gotham-Thin.eot'); /* IE9 Compat Modes */
+			src: url('fonts/Gotham-Thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('fonts/Gotham-Thin.woff') format('woff'), /* Modern Browsers */
+			url('fonts/Gotham-Thin.ttf')  format('truetype'), /* Safari, Android, iOS */
+			url('fonts/Gotham-Thin.svg#svgFontName') format('svg'); /* Legacy iOS */
+			font-weight: 300;
+			font-style: normal;
+		}
+		#loadingDiv {
+			position:absolute;;
+			top:0;
+			left:0;
+			width:100%;
+			height:104%;
+			background-color:#8e8f9038;
+		}
+		.left-padding-10 {
+			padding-left: 10px;
+		}
+		.right-padding-10 {
+			padding-right: 10px;
+		}
+		.card-header .btn-link:after {
+			content: "\f105";
+			float: right;
+			color: grey;
+			display: inline-block;
+			font: normal normal normal 14px/1 FontAwesome;
+			font-size: inherit;
+			text-rendering: auto;
+			margin-top: 5px;
+		}
+		.card-header .btn-link.collapsed:after {
+			content: "\f107";
+		}
+		.collapse-box {
+			padding: 5px;
+			width: 100%;
+		}
+		.collapse-box-heading {
+			padding: 0px;
+			background: #ffffff;
+		}
+		.margin-bottom5 {
+			margin-bottom: 5px;
+		}
+		.collapse-botton {
+			width: 100%;
+		}
+		.avtar-threed-container {
+			height: 422px;
+		}
+		.logout-btn {
+			text-align: right;
+			cursor: pointer;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.rating-box {
+			text-align: center;
+			border: 1px solid;
+			border-radius: 24px;
+			height: 29px;
+			width: 30px;
+		}
+		.rating-comment {
+			width: 80%;
+		}
+		.avtar-container {
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		.edit-measurment {
+			padding-right: 10px;
+		}
+		.main-drawer-box {
+			background:#fff;
+			border-left:1px solid #f5f5f5;
+		}
+		.main-drawer-close-btn {
+			position: absolute;
+			top: 0px;
+			right: 5px;
+		}
+		.full-width {
+			width: 100%;
+		}
+		.start-front-img {
+			width:230px;
+			margin-left:10px;
+		}
+		.start-side-img {
+			width:230px;
+			margin-top:30px;
+			margin-left:10px;
+		}
+
+		.start-side-input {
+			opacity: 0;
+			position: absolute;
+			left: 30px;
+			top: 30px;
+			height: 100px;
+			width: 310px;
+		}
+
+		.start-front-input {
+			opacity: 0;
+			position: absolute;
+			left: 30px;
+			top: 30px;
+			height: 100px;
+			width: 310px;
+		}
+
+		.start-side-icon {
+			font-size: 22px;
+			color: green;
+			display: none;
+		}
+
+		.start-front-icon {
+			font-size: 22px;
+			color: green;
+			display: none;
+		}
+		.edit-front-img {
+			width:230px;
+			margin-left:10px;
+		}
+		.edit-side-img {
+			width:230px;
+			margin-top:30px;
+			margin-left:10px;
+		}
+		.edit-front-icon {
+			font-size: 22px;
+			color: green;
+			display: none;
+		}
+		.edit-side-icon {
+			font-size: 22px;
+			color: green;
+			display: none;
+		}
+		.edit-front-input {
+			opacity: 0;
+			position: absolute;
+			left: 30px;
+			top: 30px;
+			height: 100px;
+			width: 310px;
+		}
+		.edit-side-input {
+			opacity: 0;
+			position: absolute;
+			left: 30px;
+			top: 30px;
+			height: 100px;
+			width: 310px;
+		}
+
+		.register-front-img {
+			width:190px;
+			margin-left:10px;
+		}
+		.register-side-img {
+			width:190px;
+			margin-top:3px;
+			margin-left:10px;
+		}
+		.register-front-icon {
+			font-size: 22px;
+			color: green;
+			display: none;
+		}
+		.register-side-icon {
+			font-size: 22px;
+			color: green;
+			display: none;
+		}
+		.register-front-input {
+			opacity: 0;
+			position: absolute;
+			left: 30px;
+			top: 10px;
+			height: 60px;
+			width: 310px;
+		}
+		.register-side-input {
+			opacity: 0;
+			position: absolute;
+			left: 30px;
+			top: 3px;
+			height: 75px;
+			width: 310px;
+		}
+		.plugin_back_btn {
+			height: 200px;
+		}
+		.from-bg {
+			background: #dedbdb;
+		}
+		.success-box {
+			color: green;
+			font-size: 14px;
+		}
+		.register-input-form {
+			margin-top: 20px;
+		}
+		.text-center {
+			text-align: center;
+		}
+
+		.height-box-start {
+			width: 60%;
+			margin-left: 4%;
+			display: inline-flex;
+		}
+		select {
+			background-color: rgb(33, 117, 243) ;
+			color: #ffff !important;
+			border: 1px solid rgb(33, 117, 243) ;
+		}
+		select option {
+			color: #ffff !important;
+		}
+		select :hover{
+			background-color: rgb(33, 117, 243) ;
+			border: 1px solid rgb(33, 117, 243) ;
+		}
+		.detail-comment-box {
+			padding-top: 10px;
+		}
+		.view-side-sample-img {
+			font-size: 10px;
+		}
+		.modal {
+			z-index: 1300 !important;
+		}
+	</style>
+	</head>
+	<body>
+		<div class="d-flex bs-button-right position-fixed ">
+			<div class="button-container">
+				<a class="virtual-dress d-block text-primary text-decoration-none pull-bs-canvas-right" href="#" id="virtual-dress-view">
+					<img src="img/plugin_back.png" class="plugin_back_btn"/>
+				</a>				
+			</div>
+		</div>
+		<div class="bs-canvas bs-canvas-right-1 position-fixed h-100 main-drawer-box"  id="virtual_dress_content">
+			<!--Measurment detail page div start from here -->
+			<div id="mesurment-deatils" class="main-container hide">
+				<header class="bs-canvas-header p-3 overflow-auto">
+					<img src="img/viubox-logo.png" class="logo-img" />
+					<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
+				</header>
+				<div class="measurment-detail-content">
+					<div class="header-line"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<div class="logout-btn" ><i title="Edit measurment" id="edit-measurment-btn" class="fa fa-pencil-square-o edit-measurment" aria-hidden="true"></i><i  id="logout-btn" title="Logout " class="fa fa-sign-out" aria-hidden="true"></i></div>
+							</div>
+						</div>
+						<div class="row measument-select-box">
+							<div class="col-12">
+								<div class="form-group row">
+									<label for="mesurment-brand" class="col-5 col-form-label">Select Brand </label>
+									<div class="col-7 with-option-background">
+										<select id="mesurment-brand" class="form-control form-control-sm">
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="itemType" class="col-5 col-form-label">Item Type </label>
+									<div class="col-7 with-option-background">
+										<select class="form-control form-control-sm" id="itemType">
+											<option value="">Select One</option>
+											<option value="Top">Top</option>
+											<option value="Bottom">Bottom</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="container detail-image-container">
+						<div class="row detail-comment-box">
+							<div class="col-10">
+								<p class="rating-comment" id="measurement-result-box"> </p>
+							</div>
+							<div class="col-2">
+								<p class="rating-box" id="measurement-rating-box"></p>
+							</div>
+						</div>
+						<div class="row">
+								<div id="accordion" class="collapse-box">
+									<div class="card margin-bottom5 measurment-deatil-box">
+										<div class="card-header collapse-box-heading" id="headingOne">
+											<h5 class="mb-0">
+												<button class="btn btn-link collapsed collapse-botton" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													Check body measurements.
+												</button>
+											</h5>
+										</div>
+
+										<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+											<div class="card-body">
+												<div class="avtar-img-container">
+													<img src="img/avatar_new.png" class="taggd img-avtar" >
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card three-d-view-box">
+										<div class="card-header collapse-box-heading" id="headingTwo">
+											<h5 class="mb-0">
+												<button class="btn btn-link collapse-botton" id="virtual-3d-try-btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+													Try it online 3D.
+												</button>
+											</h5>
+										</div>
+										<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+											<div class="card-body avtar-container">
+												<div class="avtar-threed-container">
+													<iframe id="receiver-data" src="#" style="width:305px; height: calc(100% - 1px);"></iframe>
+												</div>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer class="bs-canvas-header p-3 overflow-auto footer-content">
+					<p class="footer-header">Version 1.0 | Powered By :</p>
+					<div class="footer-logo">
+						<img src="img/viubox_online.png" class="footer-logo-img" />
+						<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+					</div>
+				</footer>
+			</div>
+			<!--Get start div start from here -->
+			<div id="mesurment" class="main-container hide">
+				<header class="bs-canvas-header p-3 overflow-auto">
+					<img src="img/viubox-logo.png" class="logo-img" />
+					<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
+				</header>
+					<div class="login-content">
+						<div class="header-line"></div>
+						<form name="get_measurment" class="form" id="get-measurment-form" method="POST" enctype="multipart/form-data">
+							<input type="hidden" class="product_sku" name="productSku">
+							<div class="container">
+								<div class="row">
+									<div class="col-12">
+										<p class="login-second-box-text">Let's get your body measurements. </p>
+										<input type="hidden" value="pk_MiSN1YpPvmoklFyagpzdYbou9lg8mq9vfg" name="api_key" />
+									</div>
+									<div class="col-12">
+										<div id="get-measurment-error-box" class="error-box hide"></div>
+									</div>
+									<div class="col-12 text-center">
+										<img src="img/side.png" class="start-side-img">
+										<input type="file" id="side_img" name="side_img" class="btn btn-info side_img start-side-input">
+										<i class="fa fa-check-square-o side_img_icon start-side-icon" aria-hidden="true"></i>
+										</img>
+									</div>
+									<div class="col-12 text-center">
+										<img src="img/front.png" class="start-front-img">
+										<input type="file" id="front_img"  name="front_img" class="btn btn-info front_img start-front-input">
+										<i class="fa fa-check-square-o front_img_icon start-front-icon" aria-hidden="true"></i>
+										</img>
+									</div>
+									<div class="col-12 text-center">
+										<p >Height</p>
+										<div class="input-group number-spinner height-box-start" >
+											<span class="input-group-btn height-left-btn" ></span>
+											<span class="input-group-btn height-input-btn">
+												<button class="btn btn-default" data-dir="dwn">
+													<span class="minus height-minus-btn">-</span>
+												</button>
+											</span>
+											<input type="text" name="height" class="form-control text-center height-text-input" value="175">
+											<span class="input-group-btn height-right-btn">
+												<button class="btn btn-default" data-dir="up">
+													<span class="minus height-plus-btn">+</span>
+												</button>
+											</span>
+											<span class="input-group-btn height-input-right" ></span>
+										</div>
+									</div>
+									<div class="col-12 text-center">
+										<button class="submit-btn" href="javascript:void(0)" id="get-measurement-submit-btn">Process</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				<footer class="bs-canvas-header p-3 overflow-auto footer-content">
+					<p class="footer-header">Version 1.0 | Powered By :</p>
+					<div class="footer-logo">
+						<img src="img/viubox_online.png" class="footer-logo-img " />
+						<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+					</div>
+				</footer>
+			</div>
+			<!--Edit user measurment div start from here -->
+			<div id="edit-user-mesurment" class="main-container hide">
+				<header class="bs-canvas-header p-3 overflow-auto">
+					<img src="img/viubox-logo.png" class="logo-img" />
+					<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
+				</header>
+				<div class="login-content">
+					<div class="header-line"></div>
+						<div class="container">
+							<div class="row">
+								<div class="col-12">
+									<ul class="nav nav-tabs" id="myTab" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" id="measurement-tab-menu" data-toggle="tab" href="#measurement-tab" role="tab" aria-controls="measurement-tab" aria-selected="true">Body Measurements</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="skin-hair-tab-menu" data-toggle="tab" href="#skin-hair-tab" role="tab" aria-controls="skin-hair-tab" aria-selected="false">Skin & Hair</a>
+										</li>
+									</ul>
+									<div class="tab-content" id="myTabContent">
+										<div class="tab-pane fade show active" id="measurement-tab" role="tabpanel" aria-labelledby="home-tab">
+											<form name="get_measurment" class="form" id="edit-measurment-form" method="POST" enctype="multipart/form-data">
+												<div class="row">
+													<div class="col-12">
+														<div id="edit-measurment-error-box" class="error-box hide"></div>
+														<input type="hidden" name="id" id="user-id">
+													</div>
+													<div class="col-12 text-center">
+														<img src="img/side.png" class="edit-side-img">
+														<input type="file" id="edit_side_img" name="side_img" class="btn btn-info side_img edit-side-input">
+														<i class="fa fa-check-square-o side_img_icon edit-side-icon" aria-hidden="true"></i>
+														</img>
+													</div>
+													<div class="col-12 text-center">
+														<a class="view-side-sample-img" href="#" data-title="Side Sample Image">View Sample Image</a>
+													</div>
+													<div class="col-12 text-center">
+														<img src="img/front.png" class="edit-front-img">
+														<input type="file" id="edit_front_img"  name="front_img" class="btn btn-info front_img edit-front-input">
+														<i class="fa fa-check-square-o front_img_icon edit-front-icon" aria-hidden="true"></i>
+														</img>
+													</div>
+													<div class="col-12 text-center">
+														<a class="view-side-sample-img" data-title="Front Sample Image" href="#">View Sample Image</a>
+													</div>
+													<div class="col-12 text-center">
+														<p >Height</p>
+														<div class="input-group number-spinner height-box-start" >
+															<span class="input-group-btn height-left-btn" ></span>
+															<span class="input-group-btn height-input-btn">
+																<button class="btn btn-default" data-dir="dwn">
+																	<span class="minus height-minus-btn">-</span>
+																</button>
+															</span>
+															<input type="text" name="height" class="form-control text-center height-text-input" value="175">
+															<span class="input-group-btn height-right-btn">
+																<button class="btn btn-default" data-dir="up">
+																	<span class="minus height-plus-btn">+</span>
+																</button>
+															</span>
+															<span class="input-group-btn height-input-right" ></span>
+														</div>
+													</div>
+													<div class="col-12 text-center">
+														<p >Weight</p>
+														<div class="input-group number-spinner height-box-start">
+															<input type="text" name="weight" class="form-control input-box" id="reg-edit-weight" placeholder="Enter Weight">
+														</div>
+													</div>
+													<div class="col-12 text-center">
+														<p class="register-process-btn mesurment-process-btn"><button class="submit-btn" id="edit-measurement-submit-btn">Submit</button></p>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="tab-pane fade" id="skin-hair-tab" role="tabpanel" aria-labelledby="profile-tab">
+											<form name="body_data" class="form-horizontal" id="body-data-form" method="POST" enctype="multipart/form-data">
+												<div id="body-data-error-box" class="row col-12 error-box hide"></div>
+												<input type="hidden" name="id" id="body-data-user-id">
+												<div class="row">
+													<div class="col-12 text-center">
+														<p> Skin Colors</p>
+														<input class="color-picker cp-lg cp-show" name="Color"  value="#FAE7D0">
+													</div>
+													<div class="col-12 text-center">
+														<p> Hair Cuts</p>
+														<input class="haircut-picker cp-lg cp-show" name="Haircut"  value="">
+													</div>
+													<div class="col-12 text-center">
+														<button class="submit-btn" href="javascript:void(0)" id="body-data-submit-btn">Submit</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+				<footer class="bs-canvas-header p-3 overflow-auto footer-content">
+					<p class="footer-header">Version 1.0 | Powered By :</p>
+					<div class="footer-logo">
+						<img src="img/viubox_online.png" class="footer-logo-img " />
+						<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+					</div>
+				</footer>
+			</div>
+			<!--Register div start from here -->
+			<div id="register" class="main-container hide">
+				<header class="bs-canvas-header p-3 overflow-auto">
+					<img src="img/viubox-logo.png" class="logo-img" />
+					<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
+				</header>
+				<form name="register_user" class="form-horizontal" id="register-user-form" method="POST" enctype="multipart/form-data">
+					<div class="register-content">
+						<div class="header-line"></div>
+						<input type="hidden" class="product_sku" name="productSku">
+						<div class="container from-bg">
+							<p>Let's Get Started</p>
+							<a class="link-box row col-12" id="already-account-btn">Already a ViuBox User?</a>
+							<div id="register-error-box" class="row col-12 error-box hide"></div>
+							<div class="row register-input-form">
+								<div class="col-12">
+									<div class="form-group row">
+										<label for="reg-email" class="col-3 col-form-label">Email </label>
+										<div class="col-9">
+											<input type="email" name="email" class="form-control input-box" id="reg-email" placeholder="Enter email">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="reg-name" class="col-3 col-form-label">Name </label>
+										<div class="col-9">
+											<input type="text" name="name" class="form-control input-box" id="reg-name" placeholder="Enter Name">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="reg-name" class="col-3 col-form-label">Gender </label>
+										<div class="col-9">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" checked type="radio" name="gender" id="inlineRadio1" value="1">
+												<label class="form-check-label" for="inlineRadio1">Male</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="0">
+												<label class="form-check-label" for="inlineRadio2">Female</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="reg-password" class="col-3 col-form-label">Password </label>
+										<div class="col-9">
+											<input type="password" name="password" class="form-control input-box" id="reg-password" placeholder="Enter password">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="height_val" class="col-3 col-form-label">Height </label>
+										<div class="col-9">
+											<div class="input-group number-spinner height-box" >
+												<span class="input-group-btn height-left-btn" ></span>
+												<span class="input-group-btn height-input-btn">
+													<button class="btn btn-default" data-dir="dwn">
+														<span class="minus height-minus-btn">-</span>
+													</button>
+												</span>
+												<input type="text" class="form-control text-center height-text-input" name="height" value="175" id="height_val">
+												<span class="input-group-btn height-right-btn">
+													<button class="btn btn-default" data-dir="up">
+														<span class="minus height-plus-btn">+</span>
+													</button>
+												</span>
+												<span class="input-group-btn height-input-right" ></span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="reg-name" class="col-3 col-form-label">Weight </label>
+										<div class="col-9">
+											<input type="text" name="weight" class="form-control input-box" id="reg-weight" placeholder="Enter Weight">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="container">
+							<div class="row">
+								<div class="col-12">
+									<p class="login-second-box-text">Let's get your body measurements. </p>
+								</div>
+								<div class="col-12 text-center">
+									<img src="img/side.png" class="register-side-img">
+									<input type="file" id="side_register_img" name="side_img" class="btn btn-info side_img register-side-input">
+									<i class="fa fa-check-square-o side_img_icon register-side-icon" aria-hidden="true"></i>
+									</img>
+								</div>
+								<div class="col-12 text-center">
+									<a class="view-side-sample-img" href="#" data-title="Side Sample Image">View Sample Image</a>
+								</div>
+								<div class="col-12 text-center">
+									<img src="img/front.png" class="register-front-img">
+									<input type="file" id="front_register_img" name="front_img" class="btn btn-info front_img register-front-input" >
+									<i class="fa fa-check-square-o front_img_icon register-front-icon" aria-hidden="true"></i>
+									</img>
+								</div>
+								<div class="col-12 text-center">
+									<a class="view-side-sample-img" data-title="Front Sample Image" href="#">View Sample Image</a>
+								</div>
+								<div class="col-12 text-center">
+									<button class="submit-btn" href="javascript:void(0)" id="register-user-submit-btn">Next</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<footer class="bs-canvas-header p-3 overflow-auto footer-content">
+					<p class="footer-header">Version 1.0 | Powered By :</p>
+					<div class="footer-logo">
+						<img src="img/viubox_online.png" class="footer-logo-img " />
+						<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+					</div>
+				</footer>
+			</div>
+			<!--Body data div start from here -->
+			<div id="body_data" class="main-container hide">
+				<header class="bs-canvas-header p-3 overflow-auto">
+					<img src="img/viubox-logo.png" class="logo-img" />
+					<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
+				</header>
+				<form name="body_data" class="form-horizontal" id="body-signup-data-form" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="id" id="body-signup-data-user-id">
+					<div class="register-content">
+						<div class="header-line"></div>
+						<div id="body-signup-data-error-box" class="row col-12 error-box hide"></div>
+						<div class="container">
+							<div class="row">
+								<div class="col-12">
+									<p class="login-second-box-text">Add Body Data. </p>
+								</div>
+								<div class="col-12 text-center">
+									<p> Skin Colors</p>
+									<input class="color-picker cp-lg cp-show" name="Color"  value="#FAE7D0">
+								</div>
+								<div class="col-12 text-center">
+									<p> Hair Cuts</p>
+									<input class="haircut-picker cp-lg cp-show" name="Haircut"  value="">
+								</div>
+								<div class="col-12 text-center">
+									<button class="submit-btn" href="javascript:void(0)" id="body-signup-data-submit-btn">Submit</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<footer class="bs-canvas-header p-3 overflow-auto footer-content">
+					<p class="footer-header">Version 1.0 | Powered By :</p>
+					<div class="footer-logo">
+						<img src="img/viubox_online.png" class="footer-logo-img " />
+						<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+					</div>
+				</footer>
+			</div>
+			<!--Login div start from here -->
+			<div id="login" class="main-container hide">
+				<header class="bs-canvas-header p-3 overflow-auto">
+					<img src="img/viubox-logo.png" class="logo-img" />
+					<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
+				</header>
+				<form name="login_user" class="form" id="login-user-form" method="POST" enctype="multipart/form-data">
+					<div class="login-content">
+						<div class="header-line"></div>
+						<input type="hidden" class="product_sku" name="productSku">
+						<div class="container from-bg">
+							<p>Let's Get Started</p>
+							<div id="login-error-box" class="row col-12 error-box hide"></div>
+							<div class="row">
+								<div class="col-8">
+									<p class="login-label">Login Using Email and Password</p>
+									<div class="form-group">
+										<label for="loginemail">Email </label>
+										<input type="email" name="email" class="form-control input-box" id="loginemail" placeholder="Enter email">
+									</div>
+									<div class="form-group">
+										<label for="loginpassword">Password </label>
+										<input type="password" name="password" class="form-control input-box" id="loginpassword" placeholder="Enter password">
+									</div>
+									<button class="submit-btn pull-right" id="login-submit-btn" href="javascript:void(0)">Login</button>
+									<a class="link-box" id="forgot-password-btn">Forgot password?</a>
+								</div>
+								<div class="col-4">
+									<p class="login-qr-label">Or scan below QR code using ViuBox app</p>
+									<img class="qr-code-img" src="img/qr_code.JPG">
+								</div>
+							</div>
+						</div>
+
+						<div class="login-box-second-part">
+							<div class="login-box-data">
+								<p class="login-second-box-text">First time user? <button href="javascript:void(0)" id="signup-btn" class="signup-btn">Sign Up</button></p>
+								<p class="login-second-box-text">Benifits of sign with ViuBox</p>
+								<p class="login-second-box-text">Perfer to processed without sign up? <button href="javascript:void(0)" class="signup-btn" id="get-started-btn">Get Started</button></p>
+							</div>
+						</div>
+					</div>
+				</form>
+				<footer class="bs-canvas-header p-3 overflow-auto footer-content">
+					<p class="footer-header">Version 1.0 | Powered By :</p>
+					<div class="footer-logo">
+						<img src="img/viubox_online.png" class="footer-logo-img " />
+						<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+					</div>
+				</footer>
+			</div>
+			<!--forgot password div start from here -->
+			<div id="forgot-password" class="main-container hide">
+				<header class="bs-canvas-header p-3 overflow-auto">
+					<img src="img/viubox-logo.png" class="logo-img" />
+					<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
+				</header>
+				<!--<form >-->
+					<div class="login-content">
+						<div class="header-line"></div>
+						<div class="card from-bg">
+							<div class="card-body">
+								<p>Let's Reset Password</p>
+								<div id="forgot-password-error-box" class="error-box hide"></div>
+								<div id="forgot-password-success-box" class="success-box hide"></div>
+								<form name="forgot_password" id="forgot-password-form" method="POST" enctype="multipart/form-data">
+									<div class="form-group">
+										<label for="email">Email address</label>
+										<input type="email" name="email" class="form-control input-box" id="email" placeholder="Enter email">
+									</div>
+									<button type="button" id="forgot-password-submit-btn" class="submit-btn pull-right">Submit</button>
+								</form>
+							</div>
+						</div>
+
+						<div class="login-box-second-part">
+							<div class="login-box-data">
+								<p class="login-second-box-text">Back to login ? <button href="javascript:void(0)" id="back-to-login-btn" class="signup-btn">Login</button></p>
+								<p class="login-second-box-text">Perfer to processed without sign up? <button href="javascript:void(0)" class="signup-btn" id="get-started-btn">Get Started</button></p>
+							</div>
+						</div>
+					</div>
+				<!--</form>-->
+				<footer class="bs-canvas-header p-3 overflow-auto footer-content">
+					<p class="footer-header">Version 1.0 | Powered By :</p>
+					<div class="footer-logo">
+						<img src="img/viubox_online.png" class="footer-logo-img " />
+					<!--	<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+					</div>
+				</footer>
+			</div>
+			<!-- reset password div start from here -->
+			<div id="reset-password" class="main-container hide">
+				<header class="bs-canvas-header p-3 overflow-auto">
+					<img src="img/viubox-logo.png" class="logo-img" />
+					<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
+				</header>
+				<!--<form >-->
+				<div class="login-content">
+					<div class="header-line"></div>
+					<div class="card from-bg">
+						<div class="card-body">
+							<p>Let's Reset Password</p>
+							<div id="reset-password-error-box" class="error-box hide"></div>
+							<div id="reset-password-success-box" class="success-box hide"></div>
+							<form name="reset_password" id="reset-password-form" method="POST" enctype="multipart/form-data">
+								<input type="hidden" id="token" name="token">
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input type="password" name="password" class="form-control input-box" id="password" placeholder="Password">
+								</div>
+								<div class="form-group">
+									<label for="confirmpassword">Confirm Password</label>
+									<input type="password" name="confirmPassword" class="form-control input-box" id="confirmpassword" placeholder="Confirm Password">
+								</div>
+								<button type="button" id="reset-password-submit-btn" class="submit-btn pull-right">Submit</button>
+							</form>
+						</div>
+					</div>
+
+					<div class="login-box-second-part">
+						<div class="login-box-data">
+							<p class="login-second-box-text">Back to login ? <button href="javascript:void(0)" id="back-to-login-btn" class="signup-btn">Login</button></p>
+							<p class="login-second-box-text">Perfer to processed without sign up? <button href="javascript:void(0)" class="signup-btn" id="get-started-btn">Get Started</button></p>
+						</div>
+					</div>
+				</div>
+				<!--</form>-->
+				<footer class="bs-canvas-header p-3 overflow-auto footer-content">
+					<p class="footer-header">Version 1.0 | Powered By :</p>
+					<div class="footer-logo">
+						<img src="img/viubox_online.png" class="footer-logo-img " />
+						<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+					</div>
+				</footer>
+			</div>
+		</div>
+		<!--smaple image model start from here -->
+		<div id="sample-img-model" class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 id="sample-img-title" class="modal-title">Sample image</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-12">
+								<img width="300" height="450" class="hide side_image_model" src="img/sample_side.jpg">
+								<img width="300" height="450" class="hide front_image_model" src="img/sample_front.jpg">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+	<script  src="js/index.js"></script>
+	<script>
+		var receiver = document.getElementById('receiver-data').contentWindow;
+		function receiveMessage(e) { receiver.postMessage(e.data, 'https://app.viubox.com:8043/vdm/index.html') };
+		window.addEventListener('message', receiveMessage);
+	</script>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script src="js/jquery.taggd.js?v=1.0.0"></script>
+	<script type="text/javascript" src="js/jquery-confirm.js"></script>
+	<script type="text/javascript" src="js/color-picker.js"></script>
+	<script>
+	jQuery(document).ready(function($){
+		$(document).on('click', '.view-side-sample-img', function(){
+			if ($(this).data('title') === 'Side Sample Image') {
+				$('#sample-img-model').find('#sample-img-title').text($(this).data('title'));
+				$('#sample-img-model').find('.front_image_model').hide();
+				$('#sample-img-model').find('.side_image_model').show();
+			} else {
+				$('#sample-img-model').find('#sample-img-title').text($(this).data('title'));
+				$('#sample-img-model').find('.side_image_model').hide();
+				$('#sample-img-model').find('.front_image_model').show();
+			}
+			$('#sample-img-model').modal('show');
+		});
+		$(document).on('click', '#virtual-dress-view', function(){
+			isLoaclStorageEnabled();
+			$('.product_sku').val('');
+			window.top.postMessage('virtual-dress-view-open', '*');
+			window.top.postMessage('virtual-dress-view-clear-box', '*');
+			$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+			if($(this).hasClass('pull-bs-canvas-right')) {
+				$('.bs-canvas-right-1').addClass('mr-0');
+			}
+			else {
+				$('.bs-canvas-left').addClass('ml-0');
+			}
+			document.getElementById('login').style.display = "block";
+			document.getElementById('body_data').style.display = "none";
+			document.getElementById('mesurment').style.display = "none";
+			document.getElementById('register').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "none";
+			document.getElementById('forgot-password').style.display = "none";
+			document.getElementById('reset-password').style.display = "none";
+			var id = localStorage.getItem("id");
+			if (id) {
+				document.getElementById('mesurment-deatils').style.display = "block";
+				document.getElementById('login').style.display = "none";
+				getUserMeasurmentData();
+			} else {
+				document.getElementById('mesurment-deatils').style.display = "none";
+				document.getElementById('login').style.display = "block";
+				$("#login-error-box").hide();
+				$("#login-error-box").find('li').remove();
+				$("#login-user-form").trigger("reset");
+			}
+			return false;
+		});
+		$(document).on('click', '#logout-btn', function() {
+			event.preventDefault();
+			localStorage.clear();
+			document.getElementById('register').style.display = "none";
+			document.getElementById('login').style.display = "block";
+			document.getElementById('mesurment').style.display = "none";
+			document.getElementById('mesurment-deatils').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "none";
+			document.getElementById('forgot-password').style.display = "none";
+			document.getElementById('reset-password').style.display = "none";
+			document.getElementById('body_data').style.display = "none";
+			$("#login-error-box").hide();
+			$("#login-error-box").find('li').remove();
+			$("#login-user-form").trigger("reset");
+		});
+		$(document).on('click', '#signup-btn', function() {
+			event.preventDefault();
+			document.getElementById('register').style.display = "block";
+			document.getElementById('login').style.display = "none";
+			document.getElementById('mesurment').style.display = "none";
+			document.getElementById('mesurment-deatils').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "none";
+			document.getElementById('forgot-password').style.display = "none";
+			document.getElementById('reset-password').style.display = "none";
+			document.getElementById('body_data').style.display = "none";
+			$('.side_img_icon').hide();
+			$('.front_img_icon').hide();
+			$("#register-error-box").hide();
+			$("#register-error-box").find('li').remove()
+			$("#register-user-form").trigger("reset");
+		});
+		$(document).on('click', '#already-account-btn', function() {
+			event.preventDefault();
+			document.getElementById('register').style.display = "none";
+			document.getElementById('login').style.display = "block";
+			document.getElementById('mesurment').style.display = "none";
+			document.getElementById('mesurment-deatils').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "none";
+			document.getElementById('forgot-password').style.display = "none";
+			document.getElementById('reset-password').style.display = "none";
+			document.getElementById('body_data').style.display = "none";
+			$("#login-error-box").hide();
+			$("#login-error-box").find('li').remove();
+			$("#login-user-form").trigger("reset");
+		});
+		$(document).on('click', '#get-started-btn', function() {
+			event.preventDefault();
+			$("#get-measurment-error-box").hide();
+			$("#get-measurment-error-box").find('li').remove();
+			document.getElementById('register').style.display = "none";
+			document.getElementById('login').style.display = "none";
+			document.getElementById('mesurment').style.display = "block";
+			document.getElementById('mesurment-deatils').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "none";
+			document.getElementById('forgot-password').style.display = "none";
+			document.getElementById('reset-password').style.display = "none";
+			document.getElementById('body_data').style.display = "none";
+			$('.side_img_icon').hide();
+			$('.front_img_icon').hide();
+			$("#get-measurment-form").trigger("reset");
+		});
+		$(document).on('click', '#edit-measurment-btn', function() {
+			event.preventDefault();
+			$("#edit-measurment-error-box").hide();
+			$("#edit-measurment-error-box").find('li').remove();
+			document.getElementById('register').style.display = "none";
+			document.getElementById('login').style.display = "none";
+			document.getElementById('mesurment').style.display = "none";
+			document.getElementById('mesurment-deatils').style.display = "none";
+			document.getElementById('forgot-password').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "block";
+			document.getElementById('reset-password').style.display = "none";
+			document.getElementById('body_data').style.display = "none";
+			$('.side_img_icon').hide();
+			$('.front_img_icon').hide();
+			$("#edit-measurment-form").trigger("reset");
+			$('#user-id').val(localStorage.getItem('id'));
+			getHaircuts('body-data-error-box','edit-user-mesurment');
+			$("#body-data-error-box").hide();
+			$("#body-data-error-box").find('li').remove();
+			$("#body-data-form").trigger("reset");
+			$('#body-data-user-id').val(localStorage.getItem('id'));
+		});
+		$(document).on('click', '#forgot-password-btn', function() {
+			event.preventDefault();
+			$("#forgot-password-error-box").hide();
+			$("#forgot-password-error-box").find('li').remove();
+			$("#forgot-password-success-box").hide();
+			$("#forgot-password-success-box").find('li').remove();
+			document.getElementById('register').style.display = "none";
+			document.getElementById('login').style.display = "none";
+			document.getElementById('mesurment').style.display = "none";
+			document.getElementById('mesurment-deatils').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "none";
+			document.getElementById('forgot-password').style.display = "block";
+			document.getElementById('reset-password').style.display = "none";
+			document.getElementById('body_data').style.display = "none";
+			$('.side_img_icon').hide();
+			$('.front_img_icon').hide();
+			$("#forgot-password-form").trigger("reset");
+		});
+		$(document).on('click', '#back-to-login-btn', function() {
+			event.preventDefault();
+			document.getElementById('register').style.display = "none";
+			document.getElementById('login').style.display = "block";
+			document.getElementById('mesurment').style.display = "none";
+			document.getElementById('mesurment-deatils').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "none";
+			document.getElementById('forgot-password').style.display = "none";
+			document.getElementById('reset-password').style.display = "none";
+			document.getElementById('body_data').style.display = "none";
+			$("#login-error-box").hide();
+			$("#login-error-box").find('li').remove();
+			$("#login-user-form").trigger("reset");
+		});
+		$('#collapseTwo').on('shown.bs.collapse', function() {
+			$('#receiver-data').attr('src',"https://app.viubox.com:8043/vdm/")
+		});
+		$('#collapseOne').on('shown.bs.collapse', function() {
+			$('#receiver-data').attr('src',"#");
+		});
+		$(document).on('click', '.bs-canvas-overlay, .bs-canvas-close', function(event){
+			var elm = $(this).hasClass('bs-canvas-close') ? $(this).closest('.bs-canvas') : $('.bs-canvas');
+			elm.removeClass('mr-0 ml-0');
+			$('.bs-canvas-overlay').remove();
+			$('#receiver-data').attr('src',"#");
+			event.stopPropagation();
+			window.top.postMessage('virtual-dress-view-close', '*');
+			return false;
+		});
+		$(document).on('click', '.bs-canvas-back', function(){
+			document.getElementById('main').style.display = "block";
+			return false;
+		});
+		$(document).on('click','.bs-canvas-measurment-back', function(){
+			return false;
+		});
+		function addLoader(divId) {
+			$("#"+divId).append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+		}
+		function removeLoader(){
+			$( "#loadingDiv" ).fadeOut(500, function() {
+				$( "#loadingDiv" ).remove(); //makes page more lightweight
+			});
+		}
+		function readURL(input, first) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				
+				reader.onload = function (e) {
+					if (first) {
+						$('#img-upload-f').attr('src', e.target.result);
+						document.getElementById('img-upload-f').style.height = "150px"
+					}
+					else {
+						$('#img-upload-s').attr('src', e.target.result);
+						document.getElementById('img-upload-s').style.height = "150px"
+					}
+										
+					if ( typeof $('#img-upload-f').attr('src') != "undefined" && $('#img-upload-f').attr('src') != "" && typeof $('#img-upload-s').attr('src') != "undefined" && $('#img-upload-s').attr('src') != "")
+						$("#measure").prop('disabled',false);
+					else
+						$("#measure").prop('disabled',true);
+				}
+				
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		/*$("#side_img").change(function(){
+			readURL(this,true);
+		}); 	
+	
+		$("#front_img").change(function(){
+			readURL(this,false);
+		});
+*/
+		$(".side_img").change(function(){
+			$('.side_img_icon').show();
+		});
+		$(".front_img").change(function(){
+			$('.front_img_icon').show();
+		});
+		$(document).on('change', '#height', function () {
+			$(".number-spinner button").closest('.number-spinner').find('input').val($("#height").val());
+		});
+		$(document).on('click', '.number-spinner button', function () {
+			event.preventDefault();
+			var btn = $(this),
+				oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+				newVal = 0;
+			
+			if (btn.attr('data-dir') == 'up') {
+				newVal = parseInt(oldValue) + 1;
+			} else {
+				if (oldValue > 1) {
+					newVal = parseInt(oldValue) - 1;
+				} else {
+					newVal = 1;
+				}
+			}
+			btn.closest('.number-spinner').find('input').val(newVal);
+			$("#height").val(newVal)
+		});
+		$(document).on('change', '#height_val', function () {
+			$(".number-spinner button").closest('.number-spinner').find('input').val($("#height_val").val());
+			$("#height").val($("#height_val").val())
+		});
+		$(document).on('click', '#reset-password-submit-btn', function() {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#reset-password-error-box").hide();
+			$("#reset-password-error-box").find('li').remove()
+			var form = $('#reset-password-form')[0];
+
+			var data = new FormData(form);
+			$("#reset-password-submit-btn").prop('disabled',true);
+			addLoader('reset-password')
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/userresetpassword",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					var dataMeasurement = JSON.stringify(data);
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#reset-password-error-box").append($("<li />").text(result.message));
+						});
+						$("#reset-password-error-box").show();
+					} else {
+						 window.history.pushState({}, document.title,"" );
+						// window.location.href =  window.location.href.split("?")[0];
+						document.getElementById('register').style.display = "none";
+						document.getElementById('login').style.display = "block";
+						document.getElementById('mesurment').style.display = "none";
+						document.getElementById('mesurment-deatils').style.display = "none";
+						document.getElementById('edit-user-mesurment').style.display = "none";
+						document.getElementById('forgot-password').style.display = "none";
+						document.getElementById('reset-password').style.display = "none";
+						$("#login-error-box").hide();
+						$("#login-error-box").find('li').remove();
+						$("#login-user-form").trigger("reset");
+					}
+					console.log("SUCCESS : ", data);
+					$("#reset-password-submit-btn").prop('disabled',false);
+					removeLoader();
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#reset-password-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#reset-password-error-box").show();
+							$("#reset-password-submit-btn").prop('disabled', false);
+							removeLoader();
+						}else {
+							$("#reset-password-error-box").append($("<li />").text("Internal server error."));
+							$("#reset-password-error-box").show();
+							$("#reset-password-submit-btn").prop('disabled', false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#reset-password-error-box").append($("<li />").text('Unknown Error'));
+						$("#reset-password-error-box").show();
+						$("#reset-password-submit-btn").prop('disabled', false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		$(document).on('click', '#forgot-password-submit-btn', function() {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#forgot-password-error-box").hide();
+			$("#forgot-password-error-box").find('li').remove()
+			var form = $('#forgot-password-form')[0];
+
+			var data = new FormData(form);
+			$("#forgot-password-submit-btn").prop('disabled',true);
+			addLoader('forgot-password')
+
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/userforgotpassword",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					var dataMeasurement = JSON.stringify(data);
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#forgot-password-error-box").append($("<li />").text(result.message));
+						});
+						$("#forgot-password-error-box").show();
+					} else {
+						$("#forgot-password-success-box").append($("<li />").text(data.message));
+						$("#forgot-password-success-box").show();
+					}
+					console.log("SUCCESS : ", data);
+					$("#forgot-password-submit-btn").prop('disabled',false);
+					removeLoader();
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#forgot-password-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#forgot-password-error-box").show();
+							$("#forgot-password-submit-btn").prop('disabled', false);
+							removeLoader();
+						}else {
+							$("#forgot-password-error-box").append($("<li />").text("Internal server error."));
+							$("#forgot-password-error-box").show();
+							$("#forgot-password-submit-btn").prop('disabled', false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#forgot-password-error-box").append($("<li />").text('Unknown Error'));
+						$("#forgot-password-error-box").show();
+						$("#forgot-password-submit-btn").prop('disabled', false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		function getHaircuts(error_container, container) {
+			event.preventDefault();
+			$("#"+ error_container).hide();
+			$("#"+error_container).find('li').remove();
+			$.ajax({
+				type: "GET",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/getallhaircuts",
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#" + error_container).append($("<li />").text(result.message));
+						});
+						$("#" + error_container).show();
+					} else {
+						initializeHaircuts(data);
+					}
+					removeLoader();
+					console.log("SUCCESS : ", data);
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#"+error_container).append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#" + error_container).show();
+							removeLoader();
+						}else {
+							$("#"+error_container).append($("<li />").text("Internal server error."));
+							$("#"+error_container).show();
+							removeLoader();
+						}
+					} catch(err) {
+						$("#" + error_container).append($("<li />").text('Unknown Error'));
+						$("#" + error_container).show();
+						removeLoader();
+					}
+				}
+			});
+		}
+		function initializeHaircuts (haircuts) {
+			$('.haircut-picker-wrap').find('ul').remove();
+			$(".haircut-picker-wrap input[type='color']").remove();
+			$('div.haircut-picker-wrap .haircut-picker').unwrap();
+			$('.haircut-picker').wrap('<div class="haircut-picker-wrap"></div>');
+			$('.haircut-picker-wrap').each(function(){
+				var self = $(this);
+				if(self.children('.haircut-picker').hasClass('cp-sm')){
+					self.addClass('cp-sm');
+				}else if(self.children('.haircut-picker').hasClass('cp-lg')){
+					self.addClass('cp-lg');
+				}
+				self.append('<ul></ul><input type="color" style="display:none;" />');
+				var $foundactive = false;
+				for(var i = 0; i <  haircuts.length; i++){
+					var $active = '';
+					if(self.children(".haircut-picker").val()==haircuts[i].Id){
+						$active = 'class="active"';
+						$foundactive = true;
+					}
+					self.children('ul').append('<li '+ $active+' style="background-color:#f6f1f1" ><img class="haircut-img" src="img/haircuts/'+haircuts[i].Image+'" data-id="'+haircuts[i].Id+'" ></li>');
+				}
+				if(!$foundactive && self.children(".haircut-picker").val()!='' ){
+					self.children('ul').append('<li class="active" style="background-color:#f6f1f1"><img class="haircut-img" src="img/haircuts/'+haircuts[i].Image+'" data-id="'+haircuts[i].Id+'" ></li>');
+				}
+			});
+
+			$('.haircut-picker-wrap ul').on('click','li', function() {
+				var self = $(this);
+				if (!self.hasClass('active')) {
+					self.siblings().removeClass('active');
+					var color =self.find("img").data('id');
+					self.parents('.haircut-picker-wrap').children(".haircut-picker").val(color);
+					self.addClass('active');
+				}
+			});
+
+			$(".haircut-picker-wrap input[type='color']").on("change",function(){
+				var self = $(this);
+				self.parents('.haircut-picker-wrap').children('ul').children('li').removeClass('active');
+				self.parents('.haircut-picker-wrap').children('ul').append('<li class="active" title="Custom Color '+self.val()+'" style="background-color:'+self.val()+'"></li>');
+				self.parents('.haircut-picker-wrap').children(".haircut-picker").val(self.val());
+			});
+		}
+		$(document).on('click', '#register-user-submit-btn', function() {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#register-error-box").hide();
+			$("#register-error-box").find('li').remove()
+			var form = $('#register-user-form')[0];
+
+			var data = new FormData(form);
+			$("#register-user-submit-btn").prop('disabled',true);
+			addLoader('register')
+
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/registeruser",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					var dataMeasurement = JSON.stringify(data);
+					if(data.errors){
+						console.log('in error');
+						data.errors.forEach(function(result, i){
+							$("#register-error-box").append($("<li />").text(result.message));
+						});
+						$("#register-error-box").show();
+					} else {
+						removeLoader();
+						localStorage.setItem('id', data.id);
+						getHaircuts('body-data-error-box','body_data');
+						$("#body-data-error-box").hide();
+						$("#body-data-error-box").find('li').remove();
+						document.getElementById('register').style.display = "none";
+						document.getElementById('login').style.display = "none";
+						document.getElementById('mesurment').style.display = "none";
+						document.getElementById('mesurment-deatils').style.display = "none";
+						document.getElementById('forgot-password').style.display = "none";
+						document.getElementById('edit-user-mesurment').style.display = "none";
+						document.getElementById('reset-password').style.display = "none";
+						document.getElementById('body_data').style.display = "block";
+						$("#body-data-form").trigger("reset");
+						$('#body-signup-data-user-id').val(localStorage.getItem('id'));
+					}
+					console.log("SUCCESS : ", data);
+					$("#register-user-submit-btn").prop('disabled',false);
+					removeLoader();
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#register-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#register-error-box").show();
+							$("#register-user-submit-btn").prop('disabled', false);
+							removeLoader();
+						}else {
+							$("#register-error-box").append($("<li />").text("Internal server error."));
+							$("#register-error-box").show();
+							$("#register-user-submit-btn").prop('disabled', false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#register-error-box").append($("<li />").text('Unknown Error'));
+						$("#register-error-box").show();
+						$("#register-user-submit-btn").prop('disabled', false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		$(document).on('click', '#login-submit-btn', function() {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#login-error-box").hide();
+			$("#login-error-box").find('li').remove()
+			var form = $('#login-user-form')[0];
+
+			var data = new FormData(form);
+			$("#login-submit-btn").prop('disabled',true);
+			addLoader('login');
+
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/userlogin",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#login-error-box").append($("<li />").text(result.message));
+						});
+						$("#login-error-box").show();
+						removeLoader()
+					} else {
+						localStorage.setItem('name', data.name);
+						localStorage.setItem('email', data.email);
+						localStorage.setItem('id', data.id);
+						showMeasurementDeatilPage(data, true);
+						removeLoader();
+					}
+					console.log("SUCCESS : ", data);
+					removeLoader();
+					$("#login-submit-btn").prop('disabled',false);
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#login-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#login-error-box").show();
+							$("#login-submit-btn").prop('disabled',false);
+							removeLoader();
+						}else {
+							$("#login-error-box").append($("<li />").text("Internal server error."));
+							$("#login-error-box").show();
+							$("#login-submit-btn").prop('disabled', false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#login-error-box").append($("<li />").text('Unknown Error'));
+						$("#login-error-box").show();
+						$("#login-submit-btn").prop('disabled',false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		$(document).on('click', '#get-measurement-submit-btn', function() {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#get-measurment-error-box").hide();
+			$("#get-measurment-error-box").find('li').remove()
+			var form = $('#get-measurment-form')[0];
+			var data = new FormData(form);
+			$("#get-measurement-submit-btn").prop('disabled',true);
+			addLoader('mesurment')
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/getmeasurement",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#get-measurment-error-box").append($("<li />").text(result.message));
+						});
+						$("#get-measurment-error-box").show();
+					} else {
+						showMeasurementDeatilPage(data, false);
+					}
+					console.log("SUCCESS : ", data);
+					$("#get-measurement-submit-btn").prop('disabled',false);
+					removeLoader();
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#get-measurment-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#get-measurment-error-box").show();
+							$("#get-measurement-submit-btn").prop('disabled',false);
+							removeLoader();
+						}else {
+							$("#get-measurment-error-box").append($("<li />").text("Internal server error."));
+							$("#get-measurment-error-box").show();
+							$("#get-measurement-submit-btn").prop('disabled',false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#get-measurment-error-box").append($("<li />").text('Unknown Error'));
+						$("#get-measurment-error-box").show();
+						$("#get-measurement-submit-btn").prop('disabled',false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		$(document).on('click', '#edit-measurement-submit-btn', function() {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#edit-measurment-error-box").hide();
+			$("#edit-measurment-error-box").find('li').remove()
+			var form = $('#edit-measurment-form')[0];
+			var data = new FormData(form);
+			$("#edit-measurement-submit-btn").prop('disabled',true);
+			addLoader('edit-user-mesurment')
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/updateusermeasurement",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#edit-measurment-error-box").append($("<li />").text(result.message));
+						});
+						$("#edit-measurment-error-box").show();
+					} else {
+						showMeasurementDeatilPage(data, false);
+						removeLoader();
+					}
+					console.log("SUCCESS : ", data);
+					$("#edit-measurement-submit-btn").prop('disabled',false);
+					removeLoader();
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#edit-measurment-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#edit-measurment-error-box").show();
+							$("#edit-measurement-submit-btn").prop('disabled',false);
+							removeLoader();
+						}else {
+							$("#edit-measurment-error-box").append($("<li />").text("Internal server error."));
+							$("#edit-measurment-error-box").show();
+							$("#edit-measurement-submit-btn").prop('disabled',false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#edit-measurment-error-box").append($("<li />").text('Unknown Error'));
+						$("#edit-measurment-error-box").show();
+						$("#edit-measurement-submit-btn").prop('disabled',false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		$(document).on('click', '#body-data-submit-btn', function() {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#body-data-error-box").hide();
+			$("#body-data-error-box").find('li').remove()
+			var form = $('#body-data-form')[0];
+
+			var data = new FormData(form);
+			$("#body-data-submit-btn").prop('disabled',true);
+			addLoader('body_data');
+
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/updateuserbodydata",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#body-data-error-box").append($("<li />").text(result.message));
+						});
+						$("#body-data-error-box").show();
+						removeLoader()
+					} else {
+						var id = localStorage.getItem("id");
+						if (id) {
+							document.getElementById('mesurment-deatils').style.display = "block";
+							document.getElementById('body_data').style.display = "none";
+							getUserMeasurmentData();
+						} else {
+							document.getElementById('body_data').style.display = "none";
+							document.getElementById('login').style.display = "block";
+							$("#login-error-box").hide();
+							$("#login-error-box").find('li').remove();
+							$("#login-user-form").trigger("reset");
+						}
+						removeLoader();
+					}
+					console.log("SUCCESS : ", data);
+					removeLoader();
+					$("#body-data-submit-btn").prop('disabled',false);
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#body-data-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#body-data-error-box").show();
+							$("#body-data-submit-btn").prop('disabled',false);
+							removeLoader();
+						}else {
+							$("#body-data-error-box").append($("<li />").text("Internal server error."));
+							$("#body-data-error-box").show();
+							$("#body-data-submit-btn").prop('disabled', false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#body-data-error-box").append($("<li />").text('Unknown Error'));
+						$("#body-data-error-box").show();
+						$("#body-data-submit-btn").prop('disabled',false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		$(document).on('click', '#body-signup-data-submit-btn', function() {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#body-signup-data-error-box").hide();
+			$("#body-signup-data-error-box").find('li').remove()
+			var form = $('#body-signup-data-form')[0];
+
+			var data = new FormData(form);
+			$("#body-signup-data-submit-btn").prop('disabled',true);
+			addLoader('body_data');
+
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/updateuserbodydata",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#body-signup-data-error-box").append($("<li />").text(result.message));
+						});
+						$("#body-signup-data-error-box").show();
+						removeLoader()
+					} else {
+						var id = localStorage.getItem("id");
+						if (id) {
+							document.getElementById('mesurment-deatils').style.display = "block";
+							document.getElementById('body_data').style.display = "none";
+							getUserMeasurmentData();
+						} else {
+							document.getElementById('body_data').style.display = "none";
+							document.getElementById('login').style.display = "block";
+							$("#login-error-box").hide();
+							$("#login-error-box").find('li').remove();
+							$("#login-user-form").trigger("reset");
+						}
+						removeLoader();
+					}
+					console.log("SUCCESS : ", data);
+					removeLoader();
+					$("#body-signup-data-submit-btn").prop('disabled',false);
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#body-signup-data-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#body-signup-data-error-box").show();
+							$("#body-signup-data-submit-btn").prop('disabled',false);
+							removeLoader();
+						}else {
+							$("#body-signup-data-error-box").append($("<li />").text("Internal server error."));
+							$("#body-signup-data-error-box").show();
+							$("#body-signup-data-submit-btn").prop('disabled', false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#body-signup-data-error-box").append($("<li />").text('Unknown Error'));
+						$("#body-signup-data-error-box").show();
+						$("#body-signup-data-submit-btn").prop('disabled',false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		function getUserMeasurmentData(isThreedView) {
+		$("#get-detils-error-box").hide();
+		$("#get-detils-error-box").find('li').remove()
+		var id = localStorage.getItem('id')
+		var productSku = $('.product_sku').val();
+		var data = new FormData();
+		data.append('id', id);
+		data.append('productSku', productSku);
+		addLoader('mesurment-deatils');
+
+		$.ajax({
+			type: "POST",
+			enctype: 'multipart/form-data',
+			url: "https://portal.viubox.com/getusermeasurementdetails",
+			data: data,
+			processData: false,
+			contentType: false,
+			cache: false,
+			timeout: 600000,
+			success: function (data) {
+				if(data.errors){
+					data.errors.forEach(function(result, i){
+						$("#get-detils-error-box").append($("<li />").text(result.message));
+					});
+					$("#get-detils-error-box").show();
+					removeLoader()
+				} else {
+					showMeasurementDeatilPage(data, true, isThreedView);
+					removeLoader();
+				}
+				console.log("SUCCESS : ", data);
+				removeLoader();
+			},
+			error: function (e) {
+				try {
+					if (typeof e.responseText != "undefined") {
+						$("#get-detils-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+						$("#get-detils-error-box").show();
+						removeLoader();
+					}else {
+						$("#get-detils-error-box").append($("<li />").text("Internal server error."));
+						$("#get-detils-error-box").show();
+						removeLoader();
+					}
+				} catch(err) {
+					$("#get-detils-error-box").append($("<li />").text('Unknown Error'));
+					$("#get-detils-error-box").show();
+					removeLoader();
+				}
+			}
+		});
+	}
+		function showMeasurementDeatilPage(measure_data, fromLogin, isThreedView){
+			var measure
+			if (fromLogin) {
+				measure = JSON.parse(measure_data.measurement)
+			} else {
+				measure = measure_data.measurement;
+			}
+			var options = {
+				edit: false,
+				align: {
+					y: 'top'
+				},
+				offset: {
+					top: 15
+				},
+				handlers: {
+				}
+			};
+			measurement_data = []
+			if (measure) {
+				measurement_data.push({
+					'text': "Ankle_Circumference",
+					'value': Math.round(measure['measurements']['Ankle_Circumference']),
+					'x': 0.425,
+					'y': 0.9276000162760417
+				})
+				measurement_data.push({
+					'text': "Bust_Circumference",
+					'value': Math.round(measure['measurements']['Bust_Circumference']),
+					'x': 0.46785714285714286,
+					'y': 0.27960001627604164
+				})
+				measurement_data.push({
+					'text': "Calf_Circumference",
+					'value': Math.round(measure['measurements']['Calf_Circumference']),
+					'x': 0.6821428571428572,
+					'y': 0.7996000162760417
+				})
+				measurement_data.push({
+					'text': "Collar_Circumference",
+					'value': Math.round(measure['measurements']['Collar_Circumference']),
+					'x': 0.625,
+					'y': 0.16226668294270832
+				})
+				measurement_data.push({
+					'text': "Collar_To_Bust_Length",
+					'value': Math.round(measure['measurements']['Collar_To_Bust_Length']),
+					'x': 0.5107142857142857,
+					'y': 0.22626668294270832
+				})
+                measurement_data.push({
+					'text': "Collar_To_Waist_Length",
+					'value': Math.round(measure['measurements']['Collar_To_Waist_Length']),
+					'x': 0.5428571428571428,
+					'y': 0.364933349609375
+				})
+				measurement_data.push({
+					'text': "Height",
+					'value': Math.round(measure['measurements']['Height']),
+					'x': 0.19642857142857142,
+					'y': 0.45026668294270833
+				})
+				measurement_data.push({
+					'text': "Hip_Circumference",
+					'value': Math.round(measure['measurements']['Hip_Circumference']),
+					'x': 0.6214285714285714,
+					'y': 0.5036000162760417
+				})
+				measurement_data.push({
+					'text': "Knee_Circumference",
+					'value': Math.round(measure['measurements']['Knee_Circumference']),
+					'x': 0.37142857142857144,
+					'y': 0.716933349609375
+				})
+				measurement_data.push({
+					'text': "MidThigh_Circumference",
+					'value': Math.round(measure['measurements']['MidThigh_Circumference']),
+					'x': 0.5964285714285714,
+					'y': 0.580933349609375
+				})
+				measurement_data.push({
+					'text': "Neck_Circumference",
+					'value': Math.round(measure['measurements']['Neck_Circumference']),
+					'x': 0.5821428571428572,
+					'y': 0.132933349609375
+				})
+				measurement_data.push({
+					'text': "Shoulder_To_Elbow_Length",
+					'value': Math.round(measure['measurements']['Shoulder_To_Elbow_Length']),
+					'x': 0.375,
+					'y': 0.300933349609375
+				})
+				measurement_data.push({
+					'text': "Shoulder_To_Shoulder_Length",
+					'value': Math.round(measure['measurements']['Shoulder_To_Shoulder_Length']),
+					'x': 0.45357142857142857,
+					'y': 0.19426668294270832
+				})
+				measurement_data.push({
+					'text': "Shoulder_To_Wrist_Length",
+					'value': Math.round(measure['measurements']['Shoulder_To_Wrist_Length']),
+					'x': 0.30714285714285716,
+					'y': 0.40760001627604164
+				})
+				measurement_data.push({
+					'text': "UnderBust_Circumference",
+					'value': Math.round(measure['measurements']['UnderBust_Circumference']),
+					'x': 0.48214285714285715,
+					'y': 0.3222666829427083
+				})
+				measurement_data.push({
+					'text': "UpperArm_Circumference",
+					'value': Math.round(measure['measurements']['UpperArm_Circumference']),
+					'x': 0.6428571428571429,
+					'y': 0.300933349609375
+				})
+				measurement_data.push({
+					'text': "Waist_Circumference",
+					'value': Math.round(measure['measurements']['Waist_Circumference']),
+					'x': 0.5821428571428572,
+					'y': 0.45026668294270833
+				})
+
+				measurement_data.push({
+					'text': "Bust",
+					'value': Math.round(measure['seg_dst_f']['Bust']),
+					'x': 0.5892857142857143,
+					'y': 0.27960001627604164
+				})
+				measurement_data.push({
+					'text': "Calf",
+					'value': Math.round(measure['seg_dst_f']['Calf']),
+					'x': 0.5928571428571429,
+					'y': 0.7996000162760417
+				})
+				measurement_data.push({
+					'text': "Crotch",
+					'value': Math.round(measure['seg_dst_f']['Crotch']),
+					'x': 0.5214285714285715,
+					'y': 0.532933349609375
+				})
+				measurement_data.push({
+					'text': "Elbow",
+					'value': Math.round(measure['seg_dst_f']['Elbow']),
+					'x': 0.6607142857142857,
+					'y': 0.35960001627604166
+				})
+				measurement_data.push({
+					'text': "Knee",
+					'value': Math.round(measure['seg_dst_f']['Knee']),
+					'x': 0.45565749235474007,
+					'y': 0.7167500027743253
+				})
+				measurement_data.push({
+					'text': "Neck",
+					'value': Math.round(measure['seg_dst_f']['Neck']),
+					'x': 0.4857142857142857,
+					'y': 0.14360001627604166
+				})
+				measurement_data.push({
+					'text': "Waist",
+					'value': Math.round(measure['seg_dst_f']['Waist']),
+					'x': 0.4709480122324159,
+					'y': 0.449477275501598
+				})
+				measurement_data.push({
+					'text': "Wrist",
+					'value': Math.round(measure['seg_dst_f']['Wrist']),
+					'x': 0.31785714285714284,
+					'y': 0.5036000162760417
+				})
+				measurement_data.push({
+					'text': "Armscye",
+					'value': Math.round(measure['seg_dst_f']['Armscye']),
+					'x': 0.6285714285714286,
+					'y': 0.22626668294270832
+				})
+			}
+
+			$('.taggd-wrapper').find('span').remove();
+			$("#measurement-result-box").text('');
+			$("#measurement-rating-box").hide();
+			taggd = $('.taggd').taggd( options ,eval(measurement_data));
+			taggd.on('change', function() {
+				console.log(taggd.data);
+			});
+			$("#mesurment-brand").find('option').remove()
+			$("#mesurment-brand").append($("<option />").val('').text('Select One').attr('data-rating', ''));
+			measure_data['recommended_sizes'].forEach(function(result, i){
+				var value = result.brandName + ' ('+ result.size +')';
+				$("#mesurment-brand").append($("<option />").val(result.note).text(value).attr('data-rating', result.rating).attr('data-sizenumber', result.sizeNumber));
+			});
+
+			$("#login").hide();
+			$("#register").hide();
+			$("#mesurment").hide();
+			$("#edit-user-mesurment").hide();
+			$("#forgot-password").hide();
+			$("#reset-password").hide();
+			$("#mesurment-deatils").show();
+			taggd.updateDOM();
+			$("#measurement-rating-box").hide();
+			if (localStorage.getItem("id")) {
+				$(".logout-btn").show();
+			} else {
+				$(".logout-btn").hide();
+			}
+
+			$(document).on('change', '#itemType', function(){
+				var comment = $('#mesurment-brand').val();
+				var rating = $('#mesurment-brand').find(':selected').attr('data-rating')
+				if ($(this).val() && comment) {
+					if (rating == 10) {
+						if($('.product_sku').val()) {
+							var passToParentData = {message: 'viubox-recommended-size' , size : $('#mesurment-brand').find(':selected').attr('data-sizenumber'), comment : comment}
+							window.top.postMessage(passToParentData, '*');
+						}
+						$("#measurement-result-box").css('color','green');
+						$("#measurement-result-box").text(comment);
+						$("#measurement-rating-box").text(rating);
+						$("#measurement-rating-box").css('color','green');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else if (rating == 8) {
+						$("#measurement-result-box").css('color','#42cf42');
+						$("#measurement-result-box").text(comment);
+						$("#measurement-rating-box").text(rating);
+						$("#measurement-rating-box").css('color','#42cf42');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else if (rating == 6) {
+						$("#measurement-result-box").css('color','#b7dd43');
+						$("#measurement-result-box").text(comment);
+						$("#measurement-rating-box").text(rating);
+						$("#measurement-rating-box").css('color','#b7dd43');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else if (rating == 5) {
+						$("#measurement-result-box").css('color','#dd7543');
+						$("#measurement-result-box").text(comment);
+						$("#measurement-rating-box").text(rating);
+						$("#measurement-rating-box").css('color','#dd7543');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else if (rating == 4) {
+						$("#measurement-result-box").css('color','#932216');
+						$("#measurement-result-box").text(comment);
+						$("#measurement-rating-box").text(rating);
+						$("#measurement-rating-box").css('color','#932216');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else {
+						$("#measurement-result-box").css('color','red');
+						$("#measurement-result-box").text(comment);
+						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
+						$("#measurement-rating-box").css('color','red');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					}
+				} else {
+					$("#measurement-result-box").hide();
+					$("#measurement-rating-box").hide();
+				}
+			});
+
+			$(document).on('change', '#mesurment-brand', function(){
+				var itemType = $('#itemType').val();
+				if (itemType && $(this).val()){
+					var rating = $(this).find(':selected').attr('data-rating')
+					if (rating == 10) {
+						if($('.product_sku').val()) {
+							var passToParentData = {message: 'viubox-recommended-size' , size : $('#mesurment-brand').find(':selected').attr('data-sizenumber'), comment : $(this).val()}
+							window.top.postMessage(passToParentData, '*');
+						}
+						$("#measurement-result-box").css('color','green');
+						$("#measurement-result-box").text($(this).val());
+						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
+						$("#measurement-rating-box").css('color','green');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else if (rating == 8) {
+						$("#measurement-result-box").css('color','#42cf42');
+						$("#measurement-result-box").text($(this).val());
+						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
+						$("#measurement-rating-box").css('color','#42cf42');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else if (rating == 6) {
+						$("#measurement-result-box").css('color','#b7dd43');
+						$("#measurement-result-box").text($(this).val());
+						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
+						$("#measurement-rating-box").css('color','#b7dd43');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else if (rating == 5) {
+						$("#measurement-result-box").css('color','#dd7543');
+						$("#measurement-result-box").text($(this).val());
+						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
+						$("#measurement-rating-box").css('color','#dd7543');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else if (rating == 4) {
+						$("#measurement-result-box").css('color','#932216');
+						$("#measurement-result-box").text($(this).val());
+						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
+						$("#measurement-rating-box").css('color','#932216');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					} else {
+						$("#measurement-result-box").css('color','red');
+						$("#measurement-result-box").text($(this).val());
+						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
+						$("#measurement-rating-box").css('color','red');
+						$("#measurement-rating-box").show();
+						$("#measurement-result-box").show();
+					}
+				} else {
+					$("#measurement-result-box").hide();
+					$("#measurement-rating-box").hide();
+				}
+
+			});
+
+			if($('.product_sku').val()) {
+				$("#mesurment-brand").val($("#mesurment-brand option:eq(1)").val());
+				$("#itemType").val($("#itemType option:eq(1)").val());
+				$( "#mesurment-brand" ).trigger( "change" );
+			}
+
+			if(isThreedView) {
+				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
+				$('#collapseOne').removeClass('show');
+				$('#collapseTwo').addClass('show');
+				if ($('#receiver-data').attr('src') === '#') {
+					$('#receiver-data').attr('src',"https://app.viubox.com:8043/vdm/");
+				}
+			}
+
+			var id = localStorage.getItem("id");
+			if (id) {
+				$('.three-d-view-box').css({"display": 'block'});
+			} else {
+				$('.three-d-view-box').css({"display": 'none'});
+			}
+		}
+
+		window.onmessage = function(event){
+			if (event.data.message && event.data.message == 'open-measurement-box') {
+				isLoaclStorageEnabled();
+				var productSku = event.data.productSku;
+				$('.product_sku').val(productSku);
+				window.top.postMessage('virtual-dress-view-open', '*');
+				$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+				if($('#virtual-dress-view').hasClass('pull-bs-canvas-right')) {
+					$('.bs-canvas-right-1').addClass('mr-0');
+				}
+				else {
+					$('.bs-canvas-left').addClass('ml-0');
+				}
+				document.getElementById('login').style.display = "block";
+				document.getElementById('mesurment').style.display = "none";
+				document.getElementById('register').style.display = "none";
+				document.getElementById('edit-user-mesurment').style.display = "none";
+				document.getElementById('forgot-password').style.display = "none";
+				document.getElementById('reset-password').style.display = "none";
+				var id = localStorage.getItem("id");
+				if (id) {
+					document.getElementById('mesurment-deatils').style.display = "block";
+					document.getElementById('login').style.display = "none";
+					getUserMeasurmentData();
+				} else {
+					document.getElementById('mesurment-deatils').style.display = "none";
+					document.getElementById('login').style.display = "block";
+					$("#login-error-box").hide();
+					$("#login-error-box").find('li').remove();
+					$("#login-user-form").trigger("reset");
+				}
+			} else if (event.data.message && event.data.message == 'open-three-d-viewer-box') {
+				isLoaclStorageEnabled();
+				var productSku = event.data.productSku;
+				$('.product_sku').val(productSku);
+				window.top.postMessage('virtual-dress-view-open', '*');
+				$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+				if($('#virtual-dress-view').hasClass('pull-bs-canvas-right')) {
+					$('.bs-canvas-right-1').addClass('mr-0');
+				}
+				else {
+					$('.bs-canvas-left').addClass('ml-0');
+				}
+				document.getElementById('login').style.display = "block";
+				document.getElementById('mesurment').style.display = "none";
+				document.getElementById('register').style.display = "none";
+				document.getElementById('edit-user-mesurment').style.display = "none";
+				document.getElementById('forgot-password').style.display = "none";
+				document.getElementById('reset-password').style.display = "none";
+				var id = localStorage.getItem("id");
+				if (id) {
+					 var passToParentData = {message: 'viubox-login' , id : id}
+					 window.top.postMessage(passToParentData, '*');
+					 document.getElementById('mesurment-deatils').style.display = "block";
+					 document.getElementById('login').style.display = "none";
+					 getUserMeasurmentData(true);
+					var data = new FormData();
+					data.append('productSku', productSku);
+					$.ajax({
+						type: "POST",
+						enctype: 'multipart/form-data',
+						url: "https://portal.viubox.com/getitemidbysku",
+						data: data,
+						processData: false,
+						contentType: false,
+						cache: false,
+						timeout: 600000,
+						success: function (data) {
+							if(data.errors){
+								data.errors.forEach(function(result, i){
+									$("#get-detils-error-box").append($("<li />").text(result.message));
+								});
+								$("#get-detils-error-box").show();
+							} else {
+								console.log('succ ', data.ItemId)
+								var itemId = data.ItemId;
+								var passToParentData = {message: 'viubox-three-d-viewer-item' , itemId : itemId}
+								window.top.postMessage(passToParentData, '*');
+							}
+							console.log("SUCCESS : ", data);
+						},
+						error: function (e) {
+							try {
+								if (typeof e.responseText != "undefined") {
+									$("#get-detils-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+									$("#get-detils-error-box").show();
+								}else {
+									$("#get-detils-error-box").append($("<li />").text("Internal server error."));
+									$("#get-detils-error-box").show();
+								}
+							} catch(err) {
+								$("#get-detils-error-box").append($("<li />").text('Unknown Error'));
+								$("#get-detils-error-box").show();
+							}
+						}
+					});
+				} else {
+					document.getElementById('mesurment-deatils').style.display = "none";
+					document.getElementById('login').style.display = "block";
+					$("#login-error-box").hide();
+					$("#login-error-box").find('li').remove();
+					$("#login-user-form").trigger("reset");
+				}
+			} else if(event.data.message && event.data.message == 'load-plugin-theme'){
+				var url = event.data.url;
+				if (url) {
+					var data = new FormData();
+					data.append('url', url);
+					$.ajax({
+						type: "POST",
+						enctype: 'multipart/form-data',
+						url: "https://portal.viubox.com/getwidgetsetting",
+						data: data,
+						processData: false,
+						contentType: false,
+						cache: false,
+						timeout: 600000,
+						success: function (data) {
+							if(data.errors){
+								$('.with-option-background select option').css({"background-color": 'rgb(33, 117, 243)' });
+								$('.with-option-background select option').css({"border-color": 'rgb(33, 117, 243)'});
+							} else {
+								if(data.ThemeColor) {
+									localStorage.setItem("ThemeColor",data.ThemeColor);
+									$('.footer-content').css({"background": data.ThemeColor});
+									$('.header-line').css({"background": data.ThemeColor});
+									$('.height-input-right').css({"background": data.ThemeColor});
+									$('.height-left-btn').css({"background": data.ThemeColor});
+									$('.height-right-btn').css({"background": data.ThemeColor});
+									$('.height-input-btn').css({"background": data.ThemeColor});
+									$('.height-minus-btn').css({"background": data.ThemeColor});
+									$('.height-text-input').css({"border-color": data.ThemeColor});
+
+									$('select').css({"background-color": data.ThemeColor});
+									$('select').css({"border-color": data.ThemeColor });
+									$('.with-option-background select option').css({"background-color": data.ThemeColor });
+									$('.with-option-background select option').css({"border-color": data.ThemeColor});
+									$('.with-option-backgroundselect :hover').css({"background-color": data.ThemeColor });
+									$('.with-option-background select :hover').css({"border-color": data.ThemeColor});
+								} else {
+									$('.with-option-background select option').css({"background-color": 'rgb(33, 117, 243)' });
+									$('. with-option-background select option').css({"border-color": 'rgb(33, 117, 243)'});
+								}
+								if(data.BodyMeasurment === 'No') {
+									localStorage.setItem("BodyMeasurment",data.BodyMeasurment);
+									$('.detail-comment-box').css({"display": 'none'});
+									$('.measument-select-box').css({"display": 'none'});
+									$('.measurment-deatil-box').css({"display": 'none'});
+								}
+
+								if(data.TryTheeD === 'No') {
+									localStorage.setItem("TryTheeD",data.TryTheeD);
+									$('.three-d-view-box').css({"display": 'none'});
+								}
+							}
+						},
+						error: function (e) {
+							$('.with-option-background select option').css({"background-color": 'rgb(33, 117, 243)' });
+							$('.with-option-background select option').css({"border-color": 'rgb(33, 117, 243)'});
+							try {
+							} catch(err) {
+							}
+						}
+					});
+				}
+			}
+		}
+		showResetPasswordBox();
+	});
+
+	function  showResetPasswordBox() {
+		var resetpasswordtoken = getUrlParameter('resetpassword');
+		if(resetpasswordtoken){
+			$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+			$('.bs-canvas-right-1').addClass('mr-0');
+			document.getElementById('register').style.display = "none";
+			document.getElementById('login').style.display = "none";
+			document.getElementById('mesurment').style.display = "none";
+			document.getElementById('mesurment-deatils').style.display = "none";
+			document.getElementById('edit-user-mesurment').style.display = "none";
+			document.getElementById('forgot-password').style.display = "none";
+			document.getElementById('reset-password').style.display = "block";
+			$("#reset-password-error-box").hide();
+			$("#reset-password-error-box").find('li').remove();
+			$("#reset-password-success-box").hide();
+			$("#reset-password-success-box").find('li').remove();
+			$("#reset-password-form").trigger("reset");
+			$("#token").val(resetpasswordtoken);
+		}
+		return false;
+	}
+	
+	$(function() {
+	  var chatWidget = (".chat-widget-container"),
+	  chatBox = $("#virtual_dress_content");
+	  $('#receiver').attr('src',"#")
+	  $(chatWidget).click(function(e){
+		
+		e.preventDefault();
+		
+		$(chatBox).toggleClass("show");
+		$(chatWidget).toggleClass("open");
+	  })
+	  
+	});
+	var getUrlParameter = function getUrlParameter(sParam) {
+		var sPageURL = window.location.search.substring(1),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+		for (i = 0; i < sURLVariables.length; i++) {
+			sParameterName = sURLVariables[i].split('=');
+
+			if (sParameterName[0] === sParam) {
+				return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+			}
+		}
+	};
+
+	function isLoaclStorageEnabled(){
+		var test = 'test';
+		try {
+			localStorage.setItem(test, test);
+			localStorage.removeItem(test);
+			return true;
+		} catch(e) {
+			$.alert({
+				title: 'Alert ...!',
+				content: 'Please enable thrid party third-party cookies of your browser.',
+				icon: 'fa fa-exclamation-triangle',
+				animation: 'scale',
+				closeAnimation: 'scale',
+				buttons: {
+					okay: {
+						text: 'Ok',
+						btnClass: 'btn-blue'
+					}
+				}
+			});
+		}
+	}
+
+	</script>
+	</body>
+	</html>

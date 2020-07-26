@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>Bootstrap 4 Off-canvas Sidebar - Basic Demo</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<style>
+
+	.bs-canvas-overlay {
+		background-color: green;
+		top: 0;
+   		opacity: 0;
+		z-index: 1100;
+	}
+	
+	.bs-canvas {
+		background-color: transparent;
+		display: block;
+		top: 0;
+		z-index: 1110;
+		overflow-x: hidden;
+		overflow-y: auto;
+		width: 330px;
+		transition: margin .4s ease-out;
+		-webkit-transition: margin .4s ease-out;
+		-moz-transition: margin .4s ease-out;
+		-ms-transition: margin .4s ease-out;
+	}
+	
+	.bs-canvas-left {
+		left: 0;
+		margin-left: -330px;
+	}
+	
+	/* Right Canvas (Frame) */
+	.bs-canvas-right {
+		top: 0;
+		
+		right: 0;
+		margin-right: -330px;
+	}
+	.bs-button-right {
+		top: 100;
+		
+		right: 10;
+		
+	}
+	/* Only for demo */
+	body {
+		top: 0;
+		background-color: transparent;
+    	min-height: 100vh;
+	}	
+	#rotate{
+		background-color: purple;
+  vertical-align:top;
+  color: white;
+  width: 180px;
+	transform:rotate(7deg);
+  -ms-transform:rotate(2700deg); /* IE 9 */
+  -moz-transform:rotate(270deg); /* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari and Chrome */
+  -o-transform:rotate(270deg); /* Opera */}
+    
+	.button-container {
+	top: 100;
+	right: 10;
+	
+	justify-items: center;
+	width: 100px;	
+	padding: 20px 0;
+	margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<div class="d-flex bs-button-right position-fixed ">
+
+	<div class="button-container">
+		
+		<a class="pull-bs-canvas-right d-block text-primary text-decoration-none" href="#">
+			<input type="button" value="Virtual Dressing Room" id="rotate" />
+		</a>		
+	</div>
+  
+</div>
+
+
+<div class="bs-canvas bs-canvas-right position-fixed bg-light h-100">
+	<header class="bs-canvas-header p-3 bg-primary overflow-auto">
+    	<button type="button" class="bs-canvas-close float-left close" aria-label="Close"><span aria-hidden="true" class="text-light">&times;</span></button>
+        <h6 class="d-inline-block text-light mb-0 float-right">Virtual Dressing Room</h6>
+    </header>
+	
+	
+	<div class="chat-box-content">
+		<iframe id="receiver" src="https://app.viubox.com:8043/vdm/" width="335" height="450"></iframe>
+		<div style="display: table-cell; vertical-align: middle; text-align: center;">
+		  
+		  <input type="button" value="Measure Your Body Remotely" onclick="window.location.href='http://api.syz.ai:5000'" class="btn btn-info" />
+		  
+		  </button>
+	  </div>
+	  </div>
+      
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script  src="js/index.js"></script>
+<script>
+    var receiver = document.getElementById('receiver').contentWindow;
+    function receiveMessage(e) { receiver.postMessage(e.data, 'https://app.viubox.com:8043/vdm/index.html') };
+    window.addEventListener('message', receiveMessage);
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+jQuery(document).ready(function($){
+	$(document).on('click', '.pull-bs-canvas-right, .pull-bs-canvas-left', function(){
+		$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+		if($(this).hasClass('pull-bs-canvas-right'))
+			$('.bs-canvas-right').addClass('mr-0');
+		else
+			$('.bs-canvas-left').addClass('ml-0');
+		return false;
+	});
+	
+	$(document).on('click', '.bs-canvas-close, .bs-canvas-overlay', function(){
+		var elm = $(this).hasClass('bs-canvas-close') ? $(this).closest('.bs-canvas') : $('.bs-canvas');
+		elm.removeClass('mr-0 ml-0');
+		$('.bs-canvas-overlay').remove();
+		return false;
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+      <title>Live chat widget</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+      <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto"rel="stylesheet'>
+      <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="chat-widget-wrapper">
+  <div class="chat-widget-container">
+    <div class="chat-widget-text">
+      <p class="heading">Virtual Dressing Room</p>
+      <p>Click here to try it on</p>
+    </div>
+    <div class="chat-widget-avatar">
+      <img src="https://image.flaticon.com/icons/svg/533/533564.svg" alt="" />
+    </div>
+  </div>
+  <div class="chat-box-container">
+    <div class="chat-box-content">
+      <iframe id="receiver" src="https://app.viubox.com:8043/vdm/index.html" width="300" height="420"></iframe>
+    </div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script  src="js/index.js"></script>
+  <script>
+    var receiver = document.getElementById('receiver').contentWindow;
+    function receiveMessage(e) { receiver.postMessage(e.data, 'https://app.viubox.com:8043') };
+    window.addEventListener('message', receiveMessage);
+  </script>
+</body>
+</html>
