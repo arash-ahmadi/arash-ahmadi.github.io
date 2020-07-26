@@ -1373,7 +1373,8 @@
 		if (e.data.message == 'login')
 			login(e.data.id);
 		else
-			downloadBundle(e.data);
+			console.log('In else ', e)
+			//downloadBundle(e.data);
 	}
 	jQuery(document).ready(function($){
 		$(document).on('click', '.view-side-sample-img', function(event){
