@@ -36,12 +36,12 @@ $("#receiver").on("load",function(){
             var receiver = document.getElementById('receiver').contentWindow;
             receiver.postMessage(itemId, 'https://widget.viubox.com');
         } else if (event.data.message === 'viubox-login'){
-            console.log('viubox-login called ' )
-            /*var id = event.data.id;
+            /*console.log('viubox-login called ' )
+            var id = event.data.id;
             localStorage.setItem("id", id)
             var msg = { message: 'login', id : id };
-            var receiver = document.getElementById('receiver').contentWindow;*/
-            receiver.postMessage(msg, 'https://widget.viubox.com');
+            var receiver = document.getElementById('receiver').contentWindow;
+            receiver.postMessage(msg, 'https://widget.viubox.com');*/
         } else if (event.data == 'loaded-threed-viewer') {
             var id = localStorage.getItem("id");
             console.log('loaded-threed-viewer called ..')
