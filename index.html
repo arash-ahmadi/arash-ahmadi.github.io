@@ -1372,9 +1372,9 @@
 		console.log('Called msg ', e)
 		if (e.data.message == 'login')
 			login(e.data.id);
-		else
+		else if(!e.data.message)
 			console.log('In else ', e)
-			//downloadBundle(e.data);
+			downloadBundle(e.data);
 	}
 	jQuery(document).ready(function($){
 		$(document).on('click', '.view-side-sample-img', function(event){
