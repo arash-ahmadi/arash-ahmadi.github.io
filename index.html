@@ -1377,7 +1377,7 @@
 			login_flag = true;
 		} else if (login_flag && e.data.item) {
 			console.log('In load item', e.data.item)
-			downloadBundle(e.data);
+			downloadBundle(e.data.item);
 		}
 	}
 	jQuery(document).ready(function($){
