@@ -658,6 +658,14 @@
 		.bs-canvas-close{
 			top: 46px;
 		}
+		.progress {
+			display: -ms-flexbox;
+			height: 1rem;
+			overflow: hidden;
+			font-size: .75rem;
+			background-color: #e9ecef;
+			border-radius: .25rem;
+		}
 	</style>
 </head>
 <body>
@@ -2833,7 +2841,8 @@
 					$("#login-error-box").find('li').remove();
 					$("#login-user-form").trigger("reset");
 				}
-			} else if (event.data.message && event.data.message == 'open-three-d-viewer-box') {isLoaclStorageEnabled();
+			} else if (event.data.message && event.data.message == 'open-three-d-viewer-box') {
+				isLoaclStorageEnabled();
 				console.log('in open-three-d-viewer-box')
 				var productSku = event.data.productSku;
 				$('.product_sku').val(productSku);
