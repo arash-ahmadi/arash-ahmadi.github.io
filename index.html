@@ -1574,11 +1574,11 @@
 			return false;
 		});
 		function addLoader(divId) {
-			$("#"+divId).append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+			$("#"+divId).append('<div class="loading_div" style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
 		}
 		function removeLoader(){
-			$( "#loadingDiv" ).fadeOut(500, function() {
-				$( "#loadingDiv" ).remove(); //makes page more lightweight
+			$( ".loading_div" ).fadeOut(500, function() {
+				$( ".loading_div" ).remove(); //makes page more lightweight
 			});
 		}
 		function readURL(input, first) {
