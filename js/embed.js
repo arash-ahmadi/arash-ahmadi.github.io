@@ -33,8 +33,9 @@ $("#receiver").on("load",function(){
         }else if (event.data.message === 'viubox-three-d-viewer-item'){
             var itemId = event.data.itemId;
             localStorage.setItem("itemId", itemId)
+            var msg = {'item': itemId}
             var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(itemId, 'https://widget.viubox.com');
+            receiver.postMessage(msg, 'https://widget.viubox.com');
         } else if (event.data.message === 'viubox-login'){
             console.log('viubox-login called ' )
             var id = event.data.id;
@@ -53,8 +54,9 @@ $("#receiver").on("load",function(){
             console.log('loaded avatar');
             if (itemId) {
                 console.log('Calling cloth change for item id -->', itemId);
+                var msg = {'item': itemId}
                 var receiver = document.getElementById('receiver').contentWindow;
-                receiver.postMessage(itemId, 'https://widget.viubox.com');
+                receiver.postMessage(msg, 'https://widget.viubox.com');
             }
         } else if (event.data == 'loaded-app') {
             var id = localStorage.getItem("id");

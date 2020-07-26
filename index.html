@@ -1375,7 +1375,7 @@
 		if (e.data.message == 'login') {
 			login(e.data.id);
 			login_flag = true;
-		} else if (login_flag) {
+		} else if (login_flag && e.data.item) {
 			downloadBundle(e.data);
 		}
 	}
