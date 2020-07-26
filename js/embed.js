@@ -57,13 +57,13 @@ $("#receiver").on("load",function(){
                 receiver.postMessage(itemId, 'https://widget.viubox.com');
             }
         } else if (event.data == 'loaded-app') {
-            /*var id = localStorage.getItem("id");
+            var id = localStorage.getItem("id");
             console.log(' loaded-app login called  called ..')
             if (id) {
                 var msg = { message: 'login', id : id };
                 var receiver = document.getElementById('receiver').contentWindow;
                 receiver.postMessage(msg, 'https://widget.viubox.com');
-            }*/
+            }
 
         }else if (event.data == 'virtual-three-d-hide') {
             console.log('virtual-three-d-hide --> ', event.data )
