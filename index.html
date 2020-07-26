@@ -2335,6 +2335,7 @@
 			var data = new FormData();
 			data.append('id', id);
 			data.append('productSku', productSku);
+			removeLoader();
 			addLoader('mesurment-deatils');
 
 			$.ajax({
