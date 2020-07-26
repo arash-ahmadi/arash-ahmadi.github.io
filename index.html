@@ -746,7 +746,15 @@
 							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 								<div class="card-body avtar-container">
 									<div class="avtar-threed-container">
-										<object id="receiver-data" src="#" style="width:305px; height: calc(100% - 1px);"></object>
+										<!--<iframe id="receiver-data" src="#" style="width:305px; height: calc(100% - 1px);"></iframe>-->
+										<div class="webgl-content">
+										<div id="unityContainer" style="width: 300px; height: 400px"></div>
+										<!-- <div class="footer">
+                                        <div class="webgl-logo"></div>
+                                        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+                                        <div class="title">ViuBox</div>
+                                      </div> -->
+									</div>
 									</div>
 								</div>
 							</div>
@@ -1333,7 +1341,31 @@
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/color-picker.js"></script>
 <script type="text/javascript" src="js/qrcode.js"></script>
+<link rel="shortcut icon" href="TemplateData/favicon.ico">
+<link rel="stylesheet" href="TemplateData/style.css">
+<script src="TemplateData/UnityProgress.js"></script>
+<script src="Build/UnityLoader.js"></script>
 <script>
+	window.addEventListener('message', receiveMessage);
+
+	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/ViewBox.json", {
+		onProgress: UnityProgress
+	});
+
+	function downloadBundle(name) {
+		unityInstance.SendMessage("WebAPI", "DownloadBundle", name);
+	}
+
+	function login(id) {
+		unityInstance.SendMessage("WebAPI", "Login", id);
+	}
+
+	function receiveMessage(e) {
+		if (e.data.message == 'login')
+			login(e.data.id);
+		else
+			downloadBundle(e.data);
+	}
 	jQuery(document).ready(function($){
 		$(document).on('click', '.view-side-sample-img', function(event){
 			if ($(this).data('title') === 'Side Sample Image') {
