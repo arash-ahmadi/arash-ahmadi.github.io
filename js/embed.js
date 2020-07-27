@@ -1,4 +1,4 @@
-let html = "<iframe id='receiver' class='chatbox' style='position: fixed; z-index: 1310; bottom: 0; right: 0; border: 0; height: 100vh; width: 350px; allowtransparency='true'; overflow-x: hidden; overflow-y: auto;' src='https://plugins.viubox.com:8020/index.html'></iframe>";
+let html = "<iframe id='receiver' class='chatbox' style='position: fixed; z-index: 1310; bottom: 0; right: 0; border: 0; height: 100vh; width: 350px; allowtransparency='true'; overflow-x: hidden; overflow-y: auto;' src='https://widget.viubox.com/index.html'></iframe>";
 document.body.innerHTML += html;
 $("#receiver").on("load",function(){
     $(this).width(65);
