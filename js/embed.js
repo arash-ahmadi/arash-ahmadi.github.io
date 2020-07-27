@@ -32,9 +32,13 @@ $("#receiver").on("load",function(){
             $(".measurments_btn").css('background-color', '#4CAF50');
         }else if (event.data.message === 'viubox-three-d-viewer-item'){
             var itemId = event.data.itemId;
-            localStorage.setItem("itemId", itemId)
-            var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(itemId, 'https://widget.viubox.com/index.html');
+            localStorage.setItem("itemId", itemId);
+            var loaded = localStorage.getItem("loaded");
+            if(loaded) {
+                var msg = {message: 'load-item', itemid : itemId};
+                var receiver = document.getElementById('receiver').contentWindow;
+                receiver.postMessage(msg, 'https://widget.viubox.com/index.html');
+            }
         } else if (event.data.message === 'viubox-login'){
             console.log('viubox-login called ' )
             var id = event.data.id;
@@ -50,11 +54,14 @@ $("#receiver").on("load",function(){
             receiver.postMessage(msg, 'https://widget.viubox.com/index.html');
         }else if (event.data == 'loaded-avatar') {
             var itemId = localStorage.getItem("itemId");
+            var loaded = localStorage.getItem("loaded");
+               localStorage.setItem("loaded", true);
             console.log('loaded avatar');
             if (itemId) {
                 console.log('Calling cloth change for item id -->', itemId);
+                var msg = {message: 'load-item', itemid : itemId};
                 var receiver = document.getElementById('receiver').contentWindow;
-                receiver.postMessage(itemId, 'https://widget.viubox.com/index.html');
+                receiver.postMessage(msg, 'https://widget.viubox.com/index.html');
             }
         } else if (event.data == 'loaded-app') {
             var id = localStorage.getItem("id");
