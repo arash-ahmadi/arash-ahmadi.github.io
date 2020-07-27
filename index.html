@@ -658,14 +658,6 @@
 		.bs-canvas-close{
 			top: 46px;
 		}
-		.progress {
-			display: inherit;
-			height: 1rem;
-			overflow: hidden;
-			font-size: .75rem;
-			background-color: #e9ecef;
-			border-radius: .25rem;
-		}
 	</style>
 </head>
 <body>
@@ -754,15 +746,7 @@
 							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 								<div class="card-body avtar-container">
 									<div class="avtar-threed-container">
-										<!--<iframe id="receiver-data" src="#" style="width:305px; height: calc(100% - 1px);"></iframe>-->
-										<div class="webgl-content">
-										<div id="unityContainer" style="width: 310px; height: 400px"></div>
-										<!-- <div class="footer">
-                                        <div class="webgl-logo"></div>
-                                        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-                                        <div class="title">ViuBox</div>
-                                      </div> -->
-									</div>
+										<object id="receiver-data" src="#" style="width:305px; height: calc(100% - 1px);"></object>
 									</div>
 								</div>
 							</div>
@@ -1338,9 +1322,9 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script  src="js/index.js"></script>
 <script>
-/*	var receiver = document.getElementById('receiver-data').contentWindow;
-	function receiveMessage(e) { receiver.postMessage(e.data, 'https://viubox.github.io/index.html') };
-	window.addEventListener('message', receiveMessage);*/
+	var receiver = document.getElementById('receiver-data');
+	function receiveMessage(e) { receiver.contentWindow.postMessage(e.data, '*') };
+	window.addEventListener('message', receiveMessage);
 </script>
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -1349,37 +1333,7 @@
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/color-picker.js"></script>
 <script type="text/javascript" src="js/qrcode.js"></script>
-<link rel="shortcut icon" href="TemplateData/favicon.ico">
-<link rel="stylesheet" href="TemplateData/style.css">
-<script src="TemplateData/UnityProgress.js"></script>
-<script src="Build/UnityLoader.js"></script>
 <script>
-	window.addEventListener('message', receiveMessage);
-	var login_flag = false;
-
-	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/ViewBox.json", {
-		onProgress: UnityProgress
-	});
-
-	function downloadBundle(name) {
-		unityInstance.SendMessage("WebAPI", "DownloadBundle", name);
-	}
-
-	function login(id) {
-		unityInstance.SendMessage("WebAPI", "Login", id);
-	}
-
-	function receiveMessage(e) {
-		console.log('Called msg ', e)
-		console.log('login_flag ', login_flag)
-		if (e.data.message == 'login') {
-			login(e.data.id);
-			login_flag = true;
-		} else if (login_flag && e.data.item) {
-			console.log('In load item', e.data.item)
-			downloadBundle(e.data.item);
-		}
-	}
 	jQuery(document).ready(function($){
 		$(document).on('click', '.view-side-sample-img', function(event){
 			if ($(this).data('title') === 'Side Sample Image') {
@@ -1552,7 +1506,7 @@
 			$("#login-user-form").trigger("reset");
 		});
 		$('#collapseTwo').on('shown.bs.collapse', function() {
-			$('#receiver-data').attr('src',"https://viubox.github.io/")
+			$('#receiver-data').attr('src',"https://widget.viubox.com/index-webgl.html")
 		});
 		$('#collapseOne').on('shown.bs.collapse', function() {
 			$('#receiver-data').attr('src',"#");
@@ -1574,11 +1528,11 @@
 			return false;
 		});
 		function addLoader(divId) {
-			$("#"+divId).append('<div class="loading_div" style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+			$("#"+divId).append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
 		}
 		function removeLoader(){
-			$( ".loading_div" ).fadeOut(500, function() {
-				$( ".loading_div" ).remove(); //makes page more lightweight
+			$( "#loadingDiv" ).fadeOut(500, function() {
+				$( "#loadingDiv" ).remove(); //makes page more lightweight
 			});
 		}
 		function readURL(input, first) {
@@ -1905,7 +1859,7 @@
 						});
 						var url = localStorage.getItem("current_url");
 						console.log('current_url is ---> ', url)
-						var final_url = "https://widget.viubox.com/index.html?register_user=" + data.id;
+						var final_url = "https://plugins.viubox.com:8020/index.html?register_user=" + data.id;
 						qrcode.makeCode(final_url);
 					}
 					console.log("SUCCESS : ", data);
@@ -2796,9 +2750,9 @@
 				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
 				$('#collapseTwo').addClass('show');
-				/*if ($('#receiver-data').attr('src') === '#') {
-					$('#receiver-data').attr('src',"https://viubox.github.io/");
-				} */
+				if ($('#receiver-data').attr('src') === '#') {
+					$('#receiver-data').attr('src',"https://widget.viubox.com/index-webgl.html");
+				}
 			}
 
 			var id = localStorage.getItem("id");
@@ -3134,7 +3088,7 @@
 				height : 100
 			});
 
-			var url = "https://widget.viubox.com/index.html";
+			var url = "https://plugins.viubox.com:8020/index.html";
 			var final_url = url + "?register_user=" + user_id;
 			qrcode.makeCode(final_url);
 		}

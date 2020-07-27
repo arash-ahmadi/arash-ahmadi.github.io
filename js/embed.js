@@ -1,9 +1,9 @@
-let html = "<iframe id='receiver' class='chatbox' style='position: fixed; z-index: 1310; bottom: 0; right: 0; border: 0; height: 100vh; width: 350px; allowtransparency='true'; overflow-x: hidden; overflow-y: auto;' src='https://widget.viubox.com/index.html'></iframe>";
+let html = "<iframe id='receiver' class='chatbox' style='position: fixed; z-index: 1310; bottom: 0; right: 0; border: 0; height: 100vh; width: 350px; allowtransparency='true'; overflow-x: hidden; overflow-y: auto;' src='https://plugins.viubox.com:8020/index.html'></iframe>";
 document.body.innerHTML += html;
 $("#receiver").on("load",function(){
     $(this).width(65);
     var receiver = document.getElementById('receiver').contentWindow;
-   // localStorage.setItem('receiver', receiver)
+    // localStorage.setItem('receiver', receiver)
     $(".measurments_btn").on("click",function(){
         $(".measurments_btn").text('Viubox check measurments ');
         $(".measurments_btn").css('background-color', '#6f928a');
@@ -33,30 +33,28 @@ $("#receiver").on("load",function(){
         }else if (event.data.message === 'viubox-three-d-viewer-item'){
             var itemId = event.data.itemId;
             localStorage.setItem("itemId", itemId)
-            var msg = {'item': itemId}
             var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(msg, 'https://widget.viubox.com');
+            receiver.postMessage(itemId, 'https://plugins.viubox.com:8020');
         } else if (event.data.message === 'viubox-login'){
             console.log('viubox-login called ' )
             var id = event.data.id;
             localStorage.setItem("id", id)
             var msg = { message: 'login', id : id };
             var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(msg, 'https://widget.viubox.com');
+            receiver.postMessage(msg, 'https://plugins.viubox.com:8020');
         } else if (event.data == 'loaded-threed-viewer') {
             var id = localStorage.getItem("id");
             console.log('loaded-threed-viewer called ..')
             var msg = { message: 'login', id : id };
             var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(msg, 'https://widget.viubox.com');
+            receiver.postMessage(msg, 'https://plugins.viubox.com:8020');
         }else if (event.data == 'loaded-avatar') {
             var itemId = localStorage.getItem("itemId");
             console.log('loaded avatar');
             if (itemId) {
                 console.log('Calling cloth change for item id -->', itemId);
-                var msg = {'item': itemId}
                 var receiver = document.getElementById('receiver').contentWindow;
-                receiver.postMessage(msg, 'https://widget.viubox.com');
+                receiver.postMessage(itemId, 'https://plugins.viubox.com:8020');
             }
         } else if (event.data == 'loaded-app') {
             var id = localStorage.getItem("id");
@@ -64,7 +62,7 @@ $("#receiver").on("load",function(){
             if (id) {
                 var msg = { message: 'login', id : id };
                 var receiver = document.getElementById('receiver').contentWindow;
-                receiver.postMessage(msg, 'https://widget.viubox.com');
+                receiver.postMessage(msg, 'https://plugins.viubox.com:8020');
             }
 
         }else if (event.data == 'virtual-three-d-hide') {
@@ -113,18 +111,18 @@ $("#receiver").on("load",function(){
         product = "54c23d";
     }
 
-   // var receiver = document.getElementById('receiver').contentWindow;
+    // var receiver = document.getElementById('receiver').contentWindow;
     // women dress : 54c23d
     // men dress : 4541db
     console.log('product---->', product)
-    receiver.postMessage(product, 'https://widget.viubox.com');
+    receiver.postMessage(product, 'https://plugins.viubox.com:8020');
 
-/*    var user_id = getUrlParameter('register_user');
-    if(user_id){
-        console.log('Urm from embaded js', url)
-        var message = {message: 'open-image-upload-box' , url: full_url, user_id: user_id}
-        receiver.postMessage(message, '*');
-    }*/
+    /*    var user_id = getUrlParameter('register_user');
+        if(user_id){
+            console.log('Urm from embaded js', url)
+            var message = {message: 'open-image-upload-box' , url: full_url, user_id: user_id}
+            receiver.postMessage(message, '*');
+        }*/
 
     var resetpasswordtoken = getUrlParameter('resetpassword');
     if(resetpasswordtoken){
