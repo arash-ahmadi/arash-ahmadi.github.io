@@ -1322,7 +1322,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script  src="js/index.js"></script>
 <script>
-	var receiver = document.getElementById('receiver-data');
+	var receiver = document.getElementById('receiver-data').contentWindow;
 	function receiveMessage(e) { receiver.contentWindow.postMessage(e.data, '*') };
 	window.addEventListener('message', receiveMessage);
 </script>
