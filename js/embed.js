@@ -34,27 +34,27 @@ $("#receiver").on("load",function(){
             var itemId = event.data.itemId;
             localStorage.setItem("itemId", itemId)
             var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(itemId, 'https://plugins.viubox.com:8020');
+            receiver.postMessage(itemId, 'https://widget.viubox.com/index.html');
         } else if (event.data.message === 'viubox-login'){
             console.log('viubox-login called ' )
             var id = event.data.id;
             localStorage.setItem("id", id)
             var msg = { message: 'login', id : id };
             var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(msg, 'https://plugins.viubox.com:8020');
+            receiver.postMessage(msg, 'https://widget.viubox.com/index.html');
         } else if (event.data == 'loaded-threed-viewer') {
             var id = localStorage.getItem("id");
             console.log('loaded-threed-viewer called ..')
             var msg = { message: 'login', id : id };
             var receiver = document.getElementById('receiver').contentWindow;
-            receiver.postMessage(msg, 'https://plugins.viubox.com:8020');
+            receiver.postMessage(msg, 'https://widget.viubox.com/index.html');
         }else if (event.data == 'loaded-avatar') {
             var itemId = localStorage.getItem("itemId");
             console.log('loaded avatar');
             if (itemId) {
                 console.log('Calling cloth change for item id -->', itemId);
                 var receiver = document.getElementById('receiver').contentWindow;
-                receiver.postMessage(itemId, 'https://plugins.viubox.com:8020');
+                receiver.postMessage(itemId, 'https://widget.viubox.com/index.html');
             }
         } else if (event.data == 'loaded-app') {
             var id = localStorage.getItem("id");
@@ -62,7 +62,7 @@ $("#receiver").on("load",function(){
             if (id) {
                 var msg = { message: 'login', id : id };
                 var receiver = document.getElementById('receiver').contentWindow;
-                receiver.postMessage(msg, 'https://plugins.viubox.com:8020');
+                receiver.postMessage(msg, 'https://widget.viubox.com/index.html');
             }
 
         }else if (event.data == 'virtual-three-d-hide') {
