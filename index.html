@@ -1535,11 +1535,11 @@
 			return false;
 		});
 		function addLoader(divId) {
-			$("#"+divId).append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+			$("#"+divId).append('<div class="loading_div" style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
 		}
 		function removeLoader(){
 			$( "#loadingDiv" ).fadeOut(500, function() {
-				$( "#loadingDiv" ).remove(); //makes page more lightweight
+				$( ".loading_div" ).remove(); //makes page more lightweight
 			});
 		}
 		function readURL(input, first) {
@@ -1613,7 +1613,8 @@
 
 			var data = new FormData(form);
 			$("#reset-password-submit-btn").prop('disabled',true);
-			addLoader('reset-password')
+			removeLoader();
+			addLoader('reset-password');
 			$.ajax({
 				type: "POST",
 				enctype: 'multipart/form-data',
@@ -1680,6 +1681,7 @@
 
 			var data = new FormData(form);
 			$("#forgot-password-submit-btn").prop('disabled',true);
+			removeLoader();
 			addLoader('forgot-password')
 
 			$.ajax({
@@ -1825,6 +1827,7 @@
 
 			var data = new FormData(form);
 			$("#register-user-submit-btn").prop('disabled',true);
+			removeLoader();
 			addLoader('register')
 			$.ajax({
 				type: "POST",
@@ -1905,6 +1908,7 @@
 
 			var data = new FormData(form);
 			$("#register-user-image-submit-btn").prop('disabled',true);
+			removeLoader();
 			addLoader('register-image-upload')
 
 			$.ajax({
@@ -1992,6 +1996,7 @@
 
 			var data = new FormData(form);
 			$("#login-submit-btn").prop('disabled',true);
+			removeLoader();
 			addLoader('login');
 
 			$.ajax({
@@ -2053,6 +2058,7 @@
 			var form = $('#get-measurment-form')[0];
 			var data = new FormData(form);
 			$("#get-measurement-submit-btn").prop('disabled',true);
+			removeLoader();
 			addLoader('mesurment')
 			$.ajax({
 				type: "POST",
@@ -2106,6 +2112,7 @@
 			var form = $('#edit-measurment-form')[0];
 			var data = new FormData(form);
 			$("#edit-measurement-submit-btn").prop('disabled',true);
+			removeLoader();
 			addLoader('edit-user-mesurment')
 			$.ajax({
 				type: "POST",
@@ -2161,6 +2168,7 @@
 
 			var data = new FormData(form);
 			$("#body-data-submit-btn").prop('disabled',true);
+			removeLoader();
 			addLoader('body_data');
 
 			$.ajax({
@@ -2229,6 +2237,7 @@
 
 			var data = new FormData(form);
 			$("#body-signup-data-submit-btn").prop('disabled',true);
+			removeLoader();
 			addLoader('body_data');
 
 			$.ajax({
