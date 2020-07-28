@@ -1,7 +1,7 @@
 
 <html>
 <head>
-	<title>Viubox</title>
+	<title>Viubox DEV Version</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding">
@@ -684,7 +684,7 @@
 						<div class="logout-btn" ><i title="Edit measurment" id="edit-measurment-btn" class="fa fa-pencil-square-o edit-measurment" aria-hidden="true"></i><i  id="logout-btn" title="Logout " class="fa fa-sign-out" aria-hidden="true"></i></div>
 					</div>
 				</div>
-				<div class="row measument-select-box">
+				<div class="row measument-select-box hide">
 					<div class="col-12">
 						<div class="form-group row">
 							<label for="mesurment-brand" class="col-5 col-form-label">Select Brand </label>
@@ -756,7 +756,7 @@
 			</div>
 		</div>
 		<footer class="bs-canvas-header p-3 overflow-auto footer-content">
-			<p class="footer-header">Version 1.0 | Powered By :</p>
+			<p class="footer-header">Version 1.0 DEV| Powered By :</p>
 			<div class="footer-logo">
 				<img src="img/viubox_online.png" class="footer-logo-img" />
 				<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
@@ -1009,12 +1009,17 @@
 									<input type="text" name="weight" class="form-control input-box" id="reg-weight" placeholder="Enter Weight">
 								</div>
 							</div>
+							<div class="form-group form-check">
+								<input type="checkbox" class="form-check-input" id="term-condition">
+								<label class="form-check-label" for="term-condition"><a target="_blank" href="https://viubox.com/terms-of-use/">I have read and accept Terms of use</a></label>
+							</div>
 						</div>
 					</div>
 				</div>
 
 				<div class="container">
 					<div class="row">
+
 						<!--<div class="col-12">
                             <p class="login-second-box-text">Let's get your body measurements. </p>
                         </div>
@@ -1037,7 +1042,7 @@
                             <a class="view-side-sample-img" data-title="Front Sample Image" href="#">View Sample Image</a>
                         </div>-->
 						<div class="col-12 text-center">
-							<button class="submit-btn" href="javascript:void(0)" id="register-user-submit-btn">Proceed</button>
+							<button disabled class="submit-btn" href="javascript:void(0)" id="register-user-submit-btn">Proceed</button>
 						</div>
 					</div>
 				</div>
@@ -1818,6 +1823,13 @@
 				self.parents('.haircut-picker-wrap').children(".haircut-picker").val(self.val());
 			});
 		}
+		$("#term-condition").click(function(){
+			if($(this).is(":checked")) {
+				$('#register-user-submit-btn').prop('disabled', false);
+			} else {
+				$('#register-user-submit-btn').prop('disabled', true);
+			}
+		});
 		$(document).on('click', '#register-user-submit-btn', function(event) {
 			isLoaclStorageEnabled();
 			event.preventDefault();
@@ -1869,7 +1881,7 @@
 						});
 						var url = localStorage.getItem("current_url");
 						console.log('current_url is ---> ', url)
-						var final_url = "https://plugins.viubox.com:8020/index.html?register_user=" + data.id;
+						var final_url = "https://arash-ahmadi.github.io/index.html?register_user=" + data.id;
 						qrcode.makeCode(final_url);
 					}
 					console.log("SUCCESS : ", data);
@@ -1928,12 +1940,14 @@
 							$("#register-image-error-box").append($("<li />").text(result.message));
 						});
 						$("#register-image-error-box").show();
+						$("#register-user-image-submit-btn").prop('disabled',false);
 					} else {
 						removeLoader();
 						var mobile_upload = localStorage.getItem("mobile_upload");
 						if (mobile_upload === "No") {
 							window.top.postMessage('clear-browser-query-params', '*');
 							localStorage.setItem('id', data.id);
+							localStorage.setItem('gender', data.gender);
 							getHaircuts('body-data-error-box','body_data', event);
 							$("#body-data-error-box").hide();
 							$("#body-data-error-box").find('li').remove();
@@ -2019,6 +2033,7 @@
 						localStorage.setItem('name', data.name);
 						localStorage.setItem('email', data.email);
 						localStorage.setItem('id', data.id);
+						localStorage.setItem('gender', data.gender);
 
 						showMeasurementDeatilPage(data, true);
 						removeLoader();
@@ -2399,9 +2414,12 @@
 								$('.measument-select-box').css({"display": 'none'});
 								$('.measurment-deatil-box').css({"display": 'none'});
 							} else {
-								$('.detail-comment-box').css({"display": 'block'});
+								/*$('.detail-comment-box').css({"display": 'block'});
 								$('.measument-select-box').css({"display": 'block'});
-								$('.measurment-deatil-box').css({"display": 'block'});
+								$('.measurment-deatil-box').css({"display": 'block'});*/
+								$('.detail-comment-box').css({"display": 'none'});
+								$('.measument-select-box').css({"display": 'none'});
+								$('.measurment-deatil-box').css({"display": 'none'});
 							}
 							localStorage.setItem("BodyMeasurment",data.BodyMeasurment);
 							localStorage.setItem("TryTheeDHideMobile",data.TryTheeDHideMobile);
@@ -2886,6 +2904,7 @@
 								var TryTheeDHideMobile = localStorage.getItem("TryTheeDHideMobile");
 								var parentWidth = localStorage.getItem("parentWidth");
 								var itemId = data.ItemId;
+								var gender = localStorage.getItem("gender");
 								if (id && TryTheeD === 'Yes' && parentWidth > 721) {
 									var passToParentData = {message: 'viubox-three-d-viewer-item' , itemId : itemId}
 									window.top.postMessage(passToParentData, '*');
@@ -2895,6 +2914,21 @@
 									var passToParentData = {message: 'open-three-d-app' , url : app_url}
 									window.top.postMessage(passToParentData, '*');
 
+								}
+								if (gender !== data.gender) {
+									$.alert({
+										title: 'Alert ...!',
+										content: 'This item is not for '+ gender,
+										icon: 'fa fa-exclamation-triangle',
+										animation: 'scale',
+										closeAnimation: 'scale',
+										buttons: {
+											okay: {
+												text: 'Ok',
+												btnClass: 'btn-blue'
+											}
+										}
+									});
 								}
 							}
 							console.log("SUCCESS : ", data);
@@ -2969,9 +3003,12 @@
 									$('.measument-select-box').css({"display": 'none'});
 									$('.measurment-deatil-box').css({"display": 'none'});
 								} else {
-									$('.detail-comment-box').css({"display": 'block'});
+									/*$('.detail-comment-box').css({"display": 'block'});
 									$('.measument-select-box').css({"display": 'block'});
-									$('.measurment-deatil-box').css({"display": 'block'});
+									$('.measurment-deatil-box').css({"display": 'block'});*/
+									$('.detail-comment-box').css({"display": 'none'});
+									$('.measument-select-box').css({"display": 'none'});
+									$('.measurment-deatil-box').css({"display": 'none'});
 								}
 								localStorage.setItem("BodyMeasurment",data.BodyMeasurment);
 								localStorage.setItem("TryTheeDHideMobile",data.TryTheeDHideMobile);
@@ -3104,9 +3141,11 @@
 				height : 100
 			});
 
-			var url = "https://plugins.viubox.com:8020/index.html";
+			var url = "https://arash-ahmadi.github.io/index.html";
 			var final_url = url + "?register_user=" + user_id;
 			qrcode.makeCode(final_url);
+		} else {
+			localStorage.setItem("mobile_upload",'No');
 		}
 		return false;
 	}
