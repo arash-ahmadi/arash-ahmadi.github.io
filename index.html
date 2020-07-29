@@ -684,7 +684,7 @@
 						<div class="logout-btn" ><i title="Edit measurment" id="edit-measurment-btn" class="fa fa-pencil-square-o edit-measurment" aria-hidden="true"></i><i  id="logout-btn" title="Logout " class="fa fa-sign-out" aria-hidden="true"></i></div>
 					</div>
 				</div>
-				<div class="row measument-select-box hide">
+				<!--<div class="row measument-select-box hide">
 					<div class="col-12">
 						<div class="form-group row">
 							<label for="mesurment-brand" class="col-5 col-form-label">Select Brand </label>
@@ -704,7 +704,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>-->
 			</div>
 
 			<div class="container detail-image-container">
@@ -2414,12 +2414,9 @@
 								$('.measument-select-box').css({"display": 'none'});
 								$('.measurment-deatil-box').css({"display": 'none'});
 							} else {
-								/*$('.detail-comment-box').css({"display": 'block'});
+								$('.detail-comment-box').css({"display": 'block'});
 								$('.measument-select-box').css({"display": 'block'});
-								$('.measurment-deatil-box').css({"display": 'block'});*/
-								$('.detail-comment-box').css({"display": 'none'});
-								$('.measument-select-box').css({"display": 'none'});
-								$('.measurment-deatil-box').css({"display": 'none'});
+								$('.measurment-deatil-box').css({"display": 'block'});
 							}
 							localStorage.setItem("BodyMeasurment",data.BodyMeasurment);
 							localStorage.setItem("TryTheeDHideMobile",data.TryTheeDHideMobile);
@@ -3003,12 +3000,9 @@
 									$('.measument-select-box').css({"display": 'none'});
 									$('.measurment-deatil-box').css({"display": 'none'});
 								} else {
-									/*$('.detail-comment-box').css({"display": 'block'});
+									$('.detail-comment-box').css({"display": 'block'});
 									$('.measument-select-box').css({"display": 'block'});
-									$('.measurment-deatil-box').css({"display": 'block'});*/
-									$('.detail-comment-box').css({"display": 'none'});
-									$('.measument-select-box').css({"display": 'none'});
-									$('.measurment-deatil-box').css({"display": 'none'});
+									$('.measurment-deatil-box').css({"display": 'block'});
 								}
 								localStorage.setItem("BodyMeasurment",data.BodyMeasurment);
 								localStorage.setItem("TryTheeDHideMobile",data.TryTheeDHideMobile);
