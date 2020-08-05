@@ -1199,6 +1199,7 @@
 					<div class="login-box-data">
 						<p class="login-second-box-text">First time user? <button href="javascript:void(0)" id="signup-btn" class="signup-btn">Sign Up</button></p>
 						<p class="login-second-box-text">Perfer to processed without sign up? <button href="javascript:void(0)" class="signup-btn" id="get-started-btn">Get Started</button></p>
+						<p class="login-second-box-text"><button class="signup-btn " id="login-demo-submit-btn" href="javascript:void(0)">Login as Demo Account</button></p>
 					</div>
 				</div>
 			</div>
@@ -1996,6 +1997,73 @@
 						$("#register-image-error-box").append($("<li />").text('Unknown Error'));
 						$("#register-image-error-box").show();
 						$("#register-user-image-submit-btn").prop('disabled', false);
+						removeLoader();
+					}
+				}
+			});
+		});
+		$(document).on('click', '#login-demo-submit-btn', function(event) {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#login-error-box").hide();
+			$("#login-error-box").find('li').remove()
+			var form = $('#login-user-form')[0];
+
+			var data = new FormData();
+			data.append('productSku', '');
+			data.append('email', 'demo@viubox.com');
+			data.append('password', 123);
+			$("#login-demo-submit-btn").prop('disabled',true);
+			removeLoader();
+			addLoader('login');
+
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/userlogin",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#login-error-box").append($("<li />").text(result.message));
+						});
+						$("#login-error-box").show();
+						removeLoader()
+					} else {
+						localStorage.setItem('name', data.name);
+						localStorage.setItem('email', data.email);
+						localStorage.setItem('id', data.id);
+						localStorage.setItem('gender', data.gender);
+
+						showMeasurementDeatilPage(data, true);
+						removeLoader();
+						loadWidgetTheme()
+					}
+					console.log("SUCCESS : ", data);
+					removeLoader();
+					$("#login-demo-submit-btn").prop('disabled',false);
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#login-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#login-error-box").show();
+							$("#login-demo-submit-btn").prop('disabled',false);
+							removeLoader();
+						}else {
+							$("#login-error-box").append($("<li />").text("Internal server error."));
+							$("#login-error-box").show();
+							$("#login-demo-submit-btn").prop('disabled', false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#login-error-box").append($("<li />").text('Unknown Error'));
+						$("#login-error-box").show();
+						$("#login-demo-submit-btn").prop('disabled',false);
 						removeLoader();
 					}
 				}
