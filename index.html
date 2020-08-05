@@ -15,7 +15,6 @@
 			background-color: green;
 			top: 0;
 			opacity: 0;
-			z-index: 1100;
 		}
 
 		.bs-canvas {
@@ -155,14 +154,17 @@
 
 		.logo-img {
 			width:100px;
-			height: 12px;
+			height: 15px;
 		}
 		.brand-name {
 			color:#000000;
-			margin-left: 20%;
-			margin-top: 20px;
+			margin-left: 25%;
+			margin-top: 25px;
 			font-size: 20px;
-			font-family: Gotham thin;
+			/*font-family: Verdana thin;*/
+			font-weight: 200;
+			font-style: thin;
+			
 		}
 		.footer-content {
 			background: rgb(33, 117, 243);
@@ -201,7 +203,7 @@
 		}
 		.login-box {
 			/*height: 54% !important;*/
-			background: #dedbdb;
+			background: #FAF1CF;
 		}
 		.login-box-data {
 			padding: 20px;
@@ -250,7 +252,7 @@
 			margin: 8px 0;
 			border-radius: 4px;
 			cursor: pointer;
-			border: 1px solid rgb(33, 117, 243);
+			border: 1px solid rgb(207, 149, 157);
 		}
 		.submit-btn:hover {
 			opacity: 0.8;
@@ -264,7 +266,7 @@
 		.signup-btn {
 			padding: 0px 9px;
 			margin: 0px 0;
-			border: 1px solid rgb(33, 117, 243);
+			border: 1px solid rgb(207, 149, 157);
 			border-radius: 4px;
 			cursor: pointer;
 			font-size: 12px;
@@ -284,7 +286,7 @@
 			padding: 20px 20px 0px 20px;
 		}
 		.height-left-btn{
-			background-color:rgb(33, 117, 243);
+			background-color:rgb(207, 149, 157);
 			width:34px;
 			height: 38px;
 			border-radius: 50%;
@@ -292,21 +294,21 @@
 			left: -13px;
 		}
 		.height-input-btn {
-			background-color:rgb(33, 117, 243);
+			background-color:rgb(207, 149, 157);
 			z-index: 10;
 		}
 		.height-minus-btn {
 			font-size:20px;
 			color:#fff;
 			line-height: 20px;
-			background-color:rgb(33, 117, 243)
+			background-color:rgb(207, 149, 157)
 		}
 		.height-text-input {
-			border-color: rgb(33, 117, 243);
+			border-color: rgb(207, 149, 157);
 			border-width: 2px;
 		}
 		.height-right-btn {
-			background-color:rgb(33, 117, 243);
+			background-color:rgb(207, 149, 157);
 			z-index: 10;
 		}
 		.height-plus-btn {
@@ -315,7 +317,7 @@
 			line-height: 20px;
 		}
 		.height-input-right {
-			background-color: rgb(33, 117, 243);
+			background-color: rgb(207, 149, 157);
 			width:34px;
 			height: 38px;
 			border-radius:50%;
@@ -339,7 +341,8 @@
 			height: 15%;
 		}
 		.detail-image-container {
-			background-color: #dedbdb;
+			/*inner page box background color*/
+			background-color: #FFFFFF;
 			min-height: 63%;
 		}
 		.img-avtar {
@@ -358,7 +361,7 @@
 		}
 		.register-box {
 			/*height: 44% !important;*/
-			background: #dedbdb;
+			background: #F8E5E5;
 		}
 		.register-content {
 			width:100%;
@@ -616,7 +619,8 @@
 			height: 200px;
 		}
 		.from-bg {
-			background: #dedbdb;
+			/* Main Page Box Background Color*/
+			background: #F9F0EC;
 		}
 		.success-box {
 			color: green;
@@ -722,7 +726,7 @@
 							<div class="card-header collapse-box-heading" id="headingOne">
 								<h5 class="mb-0">
 									<button class="btn btn-link collapsed collapse-botton" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										Check body measurements.
+										Body Measurements.
 									</button>
 								</h5>
 							</div>
@@ -739,7 +743,7 @@
 							<div class="card-header collapse-box-heading" id="headingTwo">
 								<h5 class="mb-0">
 									<button class="btn btn-link collapse-botton" id="virtual-3d-try-btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-										Try it online 3D.
+										3D Try on.
 									</button>
 								</h5>
 							</div>
@@ -756,7 +760,7 @@
 			</div>
 		</div>
 		<footer class="bs-canvas-header p-3 overflow-auto footer-content">
-			<p class="footer-header">Version 1.0 DEV| Powered By :</p>
+			<p class="footer-header">Version 2.07 | Powered By :</p>
 			<div class="footer-logo">
 				<img src="img/viubox_online.png" class="footer-logo-img" />
 				<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
@@ -1187,17 +1191,13 @@
 							<button class="submit-btn pull-right" id="login-submit-btn" href="javascript:void(0)">Login</button>
 							<a class="link-box" id="forgot-password-btn">Forgot password?</a>
 						</div>
-						<div class="col-4">
-							<p class="login-qr-label">Or scan below QR code using ViuBox app</p>
-							<img class="qr-code-img" src="img/qr_code.JPG">
-						</div>
+						
 					</div>
 				</div>
 
 				<div class="login-box-second-part">
 					<div class="login-box-data">
 						<p class="login-second-box-text">First time user? <button href="javascript:void(0)" id="signup-btn" class="signup-btn">Sign Up</button></p>
-						<p class="login-second-box-text">Benifits of sign with ViuBox</p>
 						<p class="login-second-box-text">Perfer to processed without sign up? <button href="javascript:void(0)" class="signup-btn" id="get-started-btn">Get Started</button></p>
 						<p class="login-second-box-text"><button class="signup-btn " id="login-demo-submit-btn" href="javascript:void(0)">Login as Demo Account</button></p>
 					</div>
