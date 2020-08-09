@@ -2791,7 +2791,7 @@
 							window.top.postMessage(passToParentData, '*');
 						}
 						$("#measurement-result-box").css('color','green');
-						$("#measurement-result-box").text($(this).val());
+						$("#measurement-result-box").text("Fitting Comments :" + $(this).val());
 						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
 						$("#measurement-rating-box").css('color','green');
 						$("#measurement-rating-box").show();
