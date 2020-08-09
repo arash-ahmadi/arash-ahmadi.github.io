@@ -5,7 +5,7 @@ $("#receiver").on("load",function(){
     var receiver = document.getElementById('receiver').contentWindow;
     // localStorage.setItem('receiver', receiver)
     $(".measurments_btn").on("click",function(){
-        $(".measurments_btn").text('Viubox check measurments ');
+       // $(".measurments_btn").text('Viubox check measurments ');
         $(".measurments_btn").css('background-color', '#6f928a');
         var sku = $(this).data('sku');
         const myiframe = document.getElementById('receiver')
@@ -25,7 +25,7 @@ $("#receiver").on("load",function(){
         } else if (event.data == 'virtual-dress-view-close') {
             $('#receiver').width(65);
         } else if (event.data == 'virtual-dress-view-clear-box') {
-            $(".measurments_btn").text('Viubox check measurments ');
+           // $(".measurments_btn").text('Viubox check measurments ');
             $(".measurments_btn").css('background-color', '#6f928a');
         } else if (event.data.message === 'viubox-recommended-size'){
             $(".measurments_btn").text('Viubox recommended size ' + event.data.size);
