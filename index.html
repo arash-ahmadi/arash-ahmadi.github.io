@@ -2735,7 +2735,7 @@
 						}
 						$("#measurement-result-box").css('color','green');
 						$("#measurement-result-box").html("Fitting Comments : " + "<br/>" + comment);
-						$("#measurement-rating-box").text(rating);
+						$("#measurement-rating-box").text("Fitting Score : " + rating);
 						$("#measurement-rating-box").css('color','green');
 						$("#measurement-rating-box").show();
 						$("#measurement-result-box").show();
@@ -2792,7 +2792,7 @@
 						}
 						$("#measurement-result-box").css('color','green');
 						$("#measurement-result-box").html("Fitting Comments : " + "<br/>"  +  $(this).val());
-						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
+						$("#measurement-rating-box").text("Fitting Score : " + $(this).find(':selected').attr('data-rating'));
 						$("#measurement-rating-box").css('color','green');
 						$("#measurement-rating-box").show();
 						$("#measurement-result-box").show();
