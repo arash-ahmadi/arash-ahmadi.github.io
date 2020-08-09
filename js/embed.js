@@ -28,7 +28,7 @@ $("#receiver").on("load",function(){
            // $(".measurments_btn").text('Viubox check measurments ');
             $(".measurments_btn").css('background-color', '#6f928a');
         } else if (event.data.message === 'viubox-recommended-size'){
-            $(".measurments_btn").text('Recommended Size ' + event.data.size);
+            $(".measurments_btn").text('Recommended Size : ' + event.data.size);
             $(".measurments_btn").css('background-color', '#4CAF50');
         }else if (event.data.message === 'viubox-three-d-viewer-item'){
             var itemId = event.data.itemId;
