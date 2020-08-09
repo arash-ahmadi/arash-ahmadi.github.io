@@ -481,7 +481,7 @@
 			border: 1px solid;
 			border-radius: 24px;
 			height: 29px;
-			width: 30px;
+			width: 50px;
 		}
 		.rating-comment {
 			width: 80%;
@@ -2734,8 +2734,7 @@
 							window.top.postMessage(passToParentData, '*');
 						}
 						$("#measurement-result-box").css('color','green');
-						$("#measurement-result-box").html("Fitting Comments : " + "<br/>" + comment);
-						$("#measurement-result-box").text("Fitting Score");
+						$("#measurement-result-box").html("Fitting Comments : " + comment);
 						$("#measurement-rating-box").text(rating);
 						$("#measurement-rating-box").css('color','green');
 						$("#measurement-rating-box").show();
@@ -2792,8 +2791,7 @@
 							window.top.postMessage(passToParentData, '*');
 						}
 						$("#measurement-result-box").css('color','green');
-						$("#measurement-result-box").html("Fitting Comments : " + "<br/>"  +  $(this).val());
-						$("#measurement-result-box").text("Fitting Score");
+						$("#measurement-result-box").html("Fitting Comments : "  +  $(this).val());
 						$("#measurement-rating-box").text($(this).find(':selected').attr('data-rating'));
 						$("#measurement-rating-box").css('color','green');
 						$("#measurement-rating-box").show();
