@@ -2948,23 +2948,6 @@
 					document.getElementById('reset-password').style.display = "none";
 				}
 				if (id) {
-					window.top.postMessage('virtual-dress-view-open', '*');
-					$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
-					if($('#virtual-dress-view').hasClass('pull-bs-canvas-right')) {
-						$('.bs-canvas-right-1').addClass('mr-0');
-					}
-					else {
-						$('.bs-canvas-left').addClass('ml-0');
-					}
-					var passToParentData = {message: 'viubox-login' , id : id}
-					window.top.postMessage(passToParentData, '*');
-					document.getElementById('mesurment-deatils').style.display = "block";
-					document.getElementById('mesurment').style.display = "none";
-					document.getElementById('register').style.display = "none";
-					document.getElementById('edit-user-mesurment').style.display = "none";
-					document.getElementById('forgot-password').style.display = "none";
-					document.getElementById('reset-password').style.display = "none";
-					getUserMeasurmentData(true);
 					var data = new FormData();
 					data.append('productSku', productSku);
 					$.ajax({
@@ -2992,6 +2975,23 @@
 								var itemId = data.ItemId;
 								var gender = localStorage.getItem("gender");
 								if (id && TryTheeD === 'Yes' && parentWidth > 721) {
+									window.top.postMessage('virtual-dress-view-open', '*');
+									$('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+									if($('#virtual-dress-view').hasClass('pull-bs-canvas-right')) {
+										$('.bs-canvas-right-1').addClass('mr-0');
+									}
+									else {
+										$('.bs-canvas-left').addClass('ml-0');
+									}
+									var passToParentData = {message: 'viubox-login' , id : id}
+									window.top.postMessage(passToParentData, '*');
+									document.getElementById('mesurment-deatils').style.display = "block";
+									document.getElementById('mesurment').style.display = "none";
+									document.getElementById('register').style.display = "none";
+									document.getElementById('edit-user-mesurment').style.display = "none";
+									document.getElementById('forgot-password').style.display = "none";
+									document.getElementById('reset-password').style.display = "none";
+									getUserMeasurmentData(true);
 									var passToParentData = {message: 'viubox-three-d-viewer-item' , itemId : itemId}
 									window.top.postMessage(passToParentData, '*');
 								}if (id && TryTheeD === 'Yes' && TryTheeDHideMobile === 'No' && parentWidth < 721) {
