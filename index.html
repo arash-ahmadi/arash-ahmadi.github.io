@@ -2995,7 +2995,7 @@
 									var passToParentData = {message: 'viubox-three-d-viewer-item' , itemId : itemId}
 									window.top.postMessage(passToParentData, '*');
 								}if (id && TryTheeD === 'Yes' && TryTheeDHideMobile === 'No' && parentWidth < 721) {
-									console.log('mobile app open');
+									console.log('mobile app open called from here ..');
 									var app_url = 'viubox://app.viubox.com?'+ id +':' + itemId;
 									var passToParentData = {message: 'open-three-d-app' , url : app_url}
 									window.top.postMessage(passToParentData, '*');
