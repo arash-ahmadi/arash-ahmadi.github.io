@@ -673,6 +673,41 @@
 		.bs-canvas-close{
 			top: 46px;
 		}
+		/*Loader CSS start from here*/
+		.loader_body_data,
+		.loader_body_data:after {
+			border-radius: 50%;
+			width: 10em;
+			height: 10em;
+		}
+		.loader_body_data {
+			/*background-color: #a0525200; */
+			margin: 2% auto;
+			font-size: 4px;
+			position: relative;
+			text-indent: -9999em;
+			border-top: 0.1em solid rgba(255, 255, 255, 0.2);
+			border-right: 1.1em solid rgba(8, 8, 1, 0.2);
+			border-bottom: 0.1em solid rgba(255, 255, 255, 0.2);
+			border-left: 1.1em solid rgb(33, 117, 243);
+			-webkit-transform: translateZ(0);
+			-ms-transform: translateZ(0);
+			transform: translateZ(0);
+			-webkit-animation: load8 1.1s infinite linear;
+			animation: load8 1.1s infinite linear;
+		}
+		.loader_bg {
+			margin-top: 179%;
+			margin-left: 7%;
+		}
+		#bodyDataLoadingDiv {
+			position:absolute;;
+			top:0;
+			left:0;
+			width:100%;
+			height:104%;
+			/*background-color:#8e8f9038;*/
+		}
 	</style>
 </head>
 <body>
@@ -1083,7 +1118,9 @@
 			<div class="header-line"></div>
 			<div class="success-box hide upload_image_success"></div>
 			<div class="container image_upload_container">
-				<div class="row">
+				<img class="body-data-loading-img-first" style="display: none" src="img/1.jpg">
+				<img class="body-data-loading-img-second" style="display: none" src="img/2.jpg">
+				<div class="row body-data-container">
 					<div class="col-12 ">
 						<div id="register-image-error-box" class="row col-12 error-box hide"></div>
 					</div>
@@ -1567,6 +1604,28 @@
 				$( ".loading_div" ).remove(); //makes page more lightweight
 			});
 		}
+
+		function addBodyDataLoader(divId) {
+			$('#register-image-upload').find('div.body-data-container').hide();
+			$('#register-image-upload').find('.body-data-loading-img-first').show();
+			$("#"+divId).append('<div class="loading_div" style="" id="bodyDataLoadingDiv"><p class="loader_bg" >Hangon ... we are processing your body measurments</p><div class="loader_body_data">Loading...</div></div>');
+
+			setTimeout(function(){
+				$('#register-image-upload').find('.body-data-loading-img-first').hide();
+				$('#register-image-upload').find('.body-data-loading-img-second').show();
+				$('#register-image-upload').find('.loader_bg').text('Deducted Your Skin Tone');
+			}, 30000);
+		}
+		function removeBodyDataLoader(){
+			$('#register-image-upload').find('div.body-data-container').show();
+			$('#register-image-upload').find('.body-data-loading-img-first').hide();
+			$('#register-image-upload').find('.body-data-loading-img-second').hide();
+			$( "#bodyDataLoadingDiv" ).fadeOut(500, function() {
+				$( ".loading_div" ).remove(); //makes page more lightweight
+			});
+		}
+
+
 		function readURL(input, first) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
@@ -1941,7 +2000,7 @@
 			var data = new FormData(form);
 			$("#register-user-image-submit-btn").prop('disabled',true);
 			removeLoader();
-			addLoader('register-image-upload')
+			addBodyDataLoader('register-image-upload')
 
 			$.ajax({
 				type: "POST",
@@ -1962,7 +2021,7 @@
 						$("#register-image-error-box").show();
 						$("#register-user-image-submit-btn").prop('disabled',false);
 					} else {
-						removeLoader();
+						removeBodyDataLoader();
 						var mobile_upload = localStorage.getItem("mobile_upload");
 						if (mobile_upload === "No") {
 							window.top.postMessage('clear-browser-query-params', '*');
@@ -1997,7 +2056,7 @@
 					}
 					console.log("SUCCESS : ", data);
 					$("#register-user-submit-btn").prop('disabled',false);
-					removeLoader();
+					removeBodyDataLoader();
 				},
 				error: function (e) {
 					try {
@@ -2005,18 +2064,18 @@
 							$("#register-image-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
 							$("#register-image-error-box").show();
 							$("#register-image-user-submit-btn").prop('disabled', false);
-							removeLoader();
+							removeBodyDataLoader();
 						}else {
 							$("#register-image-error-box").append($("<li />").text("Internal server error."));
 							$("#register-image-error-box").show();
 							$("#register-user-image-submit-btn").prop('disabled', false);
-							removeLoader();
+							removeBodyDataLoader();
 						}
 					} catch(err) {
 						$("#register-image-error-box").append($("<li />").text('Unknown Error'));
 						$("#register-image-error-box").show();
 						$("#register-user-image-submit-btn").prop('disabled', false);
-						removeLoader();
+						removeBodyDataLoader();
 					}
 				}
 			});
