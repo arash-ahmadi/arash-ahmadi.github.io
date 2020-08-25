@@ -901,6 +901,8 @@
 						<div class="tab-content" id="myTabContent">
 							<div class="tab-pane fade show active" id="measurement-tab" role="tabpanel" aria-labelledby="home-tab">
 								<form name="get_measurment" class="form" id="edit-measurment-form" method="POST" enctype="multipart/form-data">
+
+									<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
 									<div class="row">
 										<div class="col-12">
 											<div id="edit-measurment-error-box" class="error-box hide"></div>
@@ -1119,7 +1121,6 @@
 			<div class="success-box hide upload_image_success"></div>
 			<div class="container image_upload_container">
 				<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
-				<!--<img class="body-data-loading-img-second" style="display: none" src="img/2.jpg">-->
 				<div class="row body-data-container">
 					<div class="col-12 ">
 						<div id="register-image-error-box" class="row col-12 error-box hide"></div>
@@ -1608,10 +1609,10 @@
 		function addBodyDataLoader(divId) {
 			$('#register-image-upload').find('div.body-data-container').hide();
 			$('#register-image-upload').find('.body-data-loading-img').show();
-			$("#"+divId).append('<div class="loading_div" style="" id="bodyDataLoadingDiv"><p class="loader_bg" >Hangon ... we are processing your body measurments</p><div class="loader_body_data">Loading...</div></div>');
+			$("#"+divId).append('<div class="loading_div" style="" id="bodyDataLoadingDiv"><p class="loader_bg" >Hangon... we are processing your body measurements</p><div class="loader_body_data">Loading...</div></div>');
 
 			myVar = setTimeout(function(){
-				$('#register-image-upload').find('.loader_bg').text('Deducted Your Skin Tone');
+				$('#register-image-upload').find('.loader_bg').text('Detecting Your Skin Tone');
 			}, 40000);
 		}
 		function removeBodyDataLoader(){
