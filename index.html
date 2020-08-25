@@ -1118,8 +1118,8 @@
 			<div class="header-line"></div>
 			<div class="success-box hide upload_image_success"></div>
 			<div class="container image_upload_container">
-				<img class="body-data-loading-img-first" style="display: none" src="img/1.jpg">
-				<img class="body-data-loading-img-second" style="display: none" src="img/2.jpg">
+				<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
+				<!--<img class="body-data-loading-img-second" style="display: none" src="img/2.jpg">-->
 				<div class="row body-data-container">
 					<div class="col-12 ">
 						<div id="register-image-error-box" class="row col-12 error-box hide"></div>
@@ -1604,22 +1604,20 @@
 				$( ".loading_div" ).remove(); //makes page more lightweight
 			});
 		}
-
+		var myVar = ''
 		function addBodyDataLoader(divId) {
 			$('#register-image-upload').find('div.body-data-container').hide();
-			$('#register-image-upload').find('.body-data-loading-img-first').show();
+			$('#register-image-upload').find('.body-data-loading-img').show();
 			$("#"+divId).append('<div class="loading_div" style="" id="bodyDataLoadingDiv"><p class="loader_bg" >Hangon ... we are processing your body measurments</p><div class="loader_body_data">Loading...</div></div>');
 
-			setTimeout(function(){
-				$('#register-image-upload').find('.body-data-loading-img-first').hide();
-				$('#register-image-upload').find('.body-data-loading-img-second').show();
+			myVar = setTimeout(function(){
 				$('#register-image-upload').find('.loader_bg').text('Deducted Your Skin Tone');
-			}, 30000);
+			}, 40000);
 		}
 		function removeBodyDataLoader(){
 			$('#register-image-upload').find('div.body-data-container').show();
-			$('#register-image-upload').find('.body-data-loading-img-first').hide();
-			$('#register-image-upload').find('.body-data-loading-img-second').hide();
+			$('#register-image-upload').find('.body-data-loading-img').hide();
+			clearInterval(myVar);
 			$( "#bodyDataLoadingDiv" ).fadeOut(500, function() {
 				$( ".loading_div" ).remove(); //makes page more lightweight
 			});
