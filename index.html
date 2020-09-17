@@ -3836,11 +3836,10 @@
 				$(".hips_cir-box").text(Math.round(measure['measurements']['Hip_Circumference']));
 				$(".thigh_cir-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
 
-				var bust_per = (100 - Math.round(measure['measurements']['Bust_Circumference'])) / Math.round(measure['measurements']['Bust_Circumference']) * 100 ;
-				$(".Bust_cir-per-box").text(bust_per + '%');
-				$(".female_waist_cir-per-box").text(Math.round(measure['measurements']['Waist_Circumference']));
-				$(".hips_cir-per-box").text(Math.round(measure['measurements']['Hip_Circumference']));
-				$(".thigh_cir-per-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
+				$(".Bust_cir-per-box").text((100 - Math.round(measure['measurements']['Bust_Circumference'])) / 100 + '%');
+				$(".female_waist_cir-per-box").text((100 - Math.round(measure['measurements']['Waist_Circumference']))/100 + '%' );
+				$(".hips_cir-per-box").text((100 - Math.round(measure['measurements']['Hip_Circumference']))/100  + '%' );
+				$(".thigh_cir-per-box").text((100 -Math.round(measure['measurements']['MidThigh_Circumference'])) / 100  + '%' );
 
 				$(".InsideLeg-box").text(Math.round(measure['seg_dst_f']['InsideLeg']));
 			} else {
@@ -3852,11 +3851,10 @@
 				$(".hips_cir-box").text(Math.round(measure['measurements']['Hip_Circumference']));
 				$(".thigh_cir-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
 
-				var bust_per = 100 - Math.round(measure['measurements']['Bust_Circumference']) * 100 ;
-				$(".Bust_cir-per-box").text(bust_per + '%');
-				$(".female_waist_cir-per-box").text(Math.round(measure['measurements']['Female_Waist_Circumference']));
-				$(".hips_cir-per-box").text(Math.round(measure['measurements']['Hip_Circumference']));
-				$(".thigh_cir-per-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
+				$(".Bust_cir-per-box").text((100 - Math.round(measure['measurements']['Bust_Circumference'])) / 100 + '%');
+				$(".female_waist_cir-per-box").text((100 - Math.round(measure['measurements']['Waist_Circumference']))/100 + '%' );
+				$(".hips_cir-per-box").text((100 - Math.round(measure['measurements']['Hip_Circumference']))/100  + '%' );
+				$(".thigh_cir-per-box").text((100 -Math.round(measure['measurements']['MidThigh_Circumference'])) / 100  + '%' );
 
 				$(".InsideLeg-box").text(Math.round(measure['seg_dst_f']['InsideLeg']));
 
