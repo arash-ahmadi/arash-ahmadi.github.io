@@ -3668,15 +3668,15 @@
 				var waist_msg = $('#mesurment-brand').find(':selected').attr('data-waist_msg');
 				var hip_msg = $('#mesurment-brand').find(':selected').attr('data-hip_msg');
 				var bust_msg = $('#mesurment-brand').find(':selected').attr('data-bust_msg');
-				if (waist_msg != ''){
+				if (waist_msg !==''){
 					var color = waist_msg === 'loose' ? '#988f8e' : '#f3aea7';
 					$(".waist-line ").css('fill',color);
 				}
-				if (hip_msg != ''){
+				if (hip_msg !== ''){
 					var color = hip_msg === 'loose' ? '#988f8e' : '#f3aea7';
 					$(".hips-line").css('fill',color);
 				}
-				if (bust_msg != ''){
+				if (bust_msg !== ''){
 					var bust_color = bust_msg === 'loose' ? '#988f8e' : '#f3aea7';
 					$(".bust-line").css('fill',bust_color);
 				}
@@ -3742,15 +3742,15 @@
 					var hip_msg = $(this).find(':selected').attr('data-hip_msg');
 					var bust_msg = $(this).find(':selected').attr('data-bust_msg');
 
-					if (waist_msg != ''){
+					if (waist_msg !== ''){
 						var color = waist_msg === 'loose' ? '#988f8e' : '#f3aea7';
 						$(".waist-line ").css('fill',color);
 					}
-					if (hip_msg != ''){
+					if (hip_msg !== ''){
 						var color = hip_msg === 'loose' ? '#988f8e' : '#f3aea7';
 						$(".hips-line").css('fill',color);
 					}
-					if (bust_msg != ''){
+					if (bust_msg !== ''){
 						var bust_color = bust_msg === 'loose' ? '#988f8e' : '#f3aea7';
 						$(".bust-line").css('fill',bust_color);
 					}
