@@ -1322,7 +1322,7 @@
 														}
 
 														.cls-22 {
-															fill: #8fa7d7;
+															fill: #89d4a7;
 															/*filter: url(#filter-12);*/
 														}
 
@@ -3651,7 +3651,7 @@
 			$("#mesurment-brand").append($("<option />").val('').text('Select One').attr('data-rating', '').attr('data-waist_msg', '').attr('data-hip_msg', '').attr('data-bust_msg', ''));
 			measure_data['recommended_sizes'].forEach(function(result, i){
 				var value = result.brandName + ' ('+ result.size +')';
-				$("#mesurment-brand").append($("<option />").val(result.note).text(value).attr('data-rating', result.rating).attr('data-sizenumber', result.sizeNumber).attr('data-waist_msg', result.bust_msg).attr('data-hip_msg', result.bust_msg).attr('data-bust_msg', result.bust_msg));
+				$("#mesurment-brand").append($("<option />").val(result.note).text(value).attr('data-rating', result.rating).attr('data-sizenumber', result.sizeNumber).attr('data-waist_msg', result.waist_msg).attr('data-hip_msg', result.hip_msg).attr('data-bust_msg', result.bust_msg));
 			});
 
 			$("#login").hide();
