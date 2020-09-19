@@ -940,7 +940,7 @@
 														}
 
 														.cls-men-26 {
-															filter-men: url(#filter-men-15);
+															/*filter-men: url(#filter-men-15);*/
 														}
 
 														.cls-men-27 {
@@ -1340,7 +1340,7 @@
 														}
 
 														.cls-26 {
-															filter: url(#filter-16);
+															/*filter: url(#filter-16);*/
 														}
 
 														.cls-27 {
@@ -3641,10 +3641,10 @@
 				console.log(taggd.data);
 			});
 			$("#mesurment-brand").find('option').remove()
-			$("#mesurment-brand").append($("<option />").val('').text('Select One').attr('data-rating', ''));
+			$("#mesurment-brand").append($("<option />").val('').text('Select One').attr('data-rating', '').attr('data-msg', ''));
 			measure_data['recommended_sizes'].forEach(function(result, i){
 				var value = result.brandName + ' ('+ result.size +')';
-				$("#mesurment-brand").append($("<option />").val(result.note).text(value).attr('data-rating', result.rating).attr('data-sizenumber', result.sizeNumber));
+				$("#mesurment-brand").append($("<option />").val(result.note).text(value).attr('data-rating', result.rating).attr('data-sizenumber', result.sizeNumber).attr('data-msg', result.msg));
 			});
 
 			$("#login").hide();
@@ -3665,6 +3665,8 @@
 			$(document).on('change', '#itemType', function(){
 				var comment = $('#mesurment-brand').val();
 				var rating = $('#mesurment-brand').find(':selected').attr('data-rating')
+				var msg = $('#mesurment-brand').find(':selected').attr('data-msg')
+				var color = msg === 'loose' ? '#988f8e' : '#f3aea7';
 				if ($(this).val() && comment) {
 					if (rating == 10) {
 						if($('.product_sku').val()) {
@@ -3691,7 +3693,7 @@
 						$(".bust-line").css('fill','green');
 						$(".lag-line").css('fill','green');
 						$(".waist-line ").css('fill','green');
-						$(".hips-line").css('fill','#42cf42');
+						$(".hips-line").css('fill',msg);
 					} else if (rating == 6) {
 						$("#measurement-result-box").css('color','#b7dd43');
 						$("#measurement-result-box").text(comment);
@@ -3701,7 +3703,7 @@
 						$("#measurement-result-box").show();
 						$(".bust-line").css('fill','green');
 						$(".lag-line").css('fill','green');
-						$(".waist-line ").css('fill','#b7dd43');
+						$(".waist-line ").css('fill',msg);
 						$(".hips-line").css('fill','green');
 					} else if (rating == 5) {
 						$("#measurement-result-box").css('color','#dd7543');
@@ -3710,7 +3712,7 @@
 						$("#measurement-rating-box").css('color','#dd7543');
 						$("#measurement-rating-box").show();
 						$("#measurement-result-box").show();
-						$(".bust-line").css('fill','#dd7543');
+						$(".bust-line").css('fill',msg);
 						$(".lag-line").css('fill','green');
 						$(".waist-line ").css('fill','green');
 						$(".hips-line").css('fill','green');
@@ -3723,8 +3725,8 @@
 						$("#measurement-result-box").show();
 						$(".bust-line").css('fill','green');
 						$(".lag-line").css('fill','green');
-						$(".waist-line ").css('fill','#932216');
-						$(".hips-line").css('fill','#932216');
+						$(".waist-line ").css('fill',msg);
+						$(".hips-line").css('fill',msg);
 					} else {
 						$("#measurement-result-box").css('color','red');
 						$("#measurement-result-box").text(comment);
@@ -3732,10 +3734,10 @@
 						$("#measurement-rating-box").css('color','red');
 						$("#measurement-rating-box").show();
 						$("#measurement-result-box").show();
-						$(".bust-line").css('fill','red');
-						$(".waist-line ").css('fill','red');
-						$(".hips-line").css('fill','red');
-						$(".lag-line").css('fill','red');
+						$(".bust-line").css('fill',msg);
+						$(".waist-line ").css('fill',msg);
+						$(".hips-line").css('fill',msg);
+						$(".lag-line").css('fill',msg);
 					}
 				} else {
 					$("#measurement-result-box").hide();
@@ -3747,6 +3749,8 @@
 				var itemType = $('#itemType').val();
 				if (itemType && $(this).val()){
 					var rating = $(this).find(':selected').attr('data-rating')
+					var msg = $(this).find(':selected').attr('data-msg')
+					var color = msg === 'loose' ? '#988f8e' : '#f3aea7';
 					if (rating == 10) {
 						if($('.product_sku').val()) {
 							var passToParentData = {message: 'viubox-recommended-size' , size : $('#mesurment-brand').find(':selected').attr('data-sizenumber'), comment : $(this).val()}
@@ -3774,7 +3778,7 @@
 						$(".bust-line").css('fill','green');
 						$(".lag-line").css('fill','green');
 						$(".waist-line ").css('fill','green');
-						$(".hips-line").css('fill','#42cf42');
+						$(".hips-line").css('fill',msg);
 					} else if (rating == 6) {
 						$("#measurement-result-box").css('color','#b7dd43');
 						$("#measurement-result-box").html("Fitting Comments : "  +  $(this).val()+'<br />');
@@ -3784,7 +3788,7 @@
 						$("#measurement-result-box").show();
 						$(".bust-line").css('fill','green');
 						$(".lag-line").css('fill','green');
-						$(".waist-line ").css('fill','#b7dd43');
+						$(".waist-line ").css('fill',msg);
 						$(".hips-line").css('fill','green');
 					} else if (rating == 5) {
 						$("#measurement-result-box").css('color','#dd7543');
@@ -3793,7 +3797,7 @@
 						$("#measurement-rating-box").css('color','#dd7543');
 						$("#measurement-rating-box").show();
 						$("#measurement-result-box").show();
-						$(".bust-line").css('fill','#dd7543');
+						$(".bust-line").css('fill',msg);
 						$(".lag-line").css('fill','green');
 						$(".waist-line ").css('fill','green');
 						$(".hips-line").css('fill','green');
@@ -3806,8 +3810,8 @@
 						$("#measurement-result-box").show();
 						$(".bust-line").css('fill','green');
 						$(".lag-line").css('fill','green');
-						$(".waist-line ").css('fill','#932216');
-						$(".hips-line").css('fill','#932216');
+						$(".waist-line ").css('fill',msg);
+						$(".hips-line").css('fill',msg);
 					} else {
 						$("#measurement-result-box").css('color','red');
 						$("#measurement-result-box").html("Fitting Comments : "  +  $(this).val()+'<br />');
@@ -3815,10 +3819,10 @@
 						$("#measurement-rating-box").css('color','red');
 						$("#measurement-rating-box").show();
 						$("#measurement-result-box").show();
-						$(".bust-line").css('fill','red');
-						$(".waist-line ").css('fill','red');
-						$(".hips-line").css('fill','red');
-						$(".lag-line").css('fill','red');
+						$(".bust-line").css('fill',msg);
+						$(".waist-line ").css('fill',msg);
+						$(".hips-line").css('fill',msg);
+						$(".lag-line").css('fill',msg);
 					}
 				} else {
 					$("#measurement-result-box").hide();
