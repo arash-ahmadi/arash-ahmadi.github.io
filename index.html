@@ -3692,12 +3692,12 @@
 					$(".waist-line ").css('fill',color);
 					if (waist_msg === 'loose') {
 						var size = $('#mesurment-brand').find(':selected').attr('data-WaistMax');
-						var percentage = ((parseInt(Math.round(measure['measurements']['Waist_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
-						$(".female_waist_cir-per-box").text( percentage + '%');
+						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Waist_Circumference']))) / parseInt(size)) * 100;
+						$(".female_waist_cir-per-box").text( percentage.toFixed(2) + '%');
 					} else {
 						var size = $('#mesurment-brand').find(':selected').attr('data-WaistMin');
-						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Waist_Circumference']))) / parseInt(size)) * 100;
-						$(".female_waist_cir-per-box").text( percentage + '%');
+						var percentage = ((parseInt(Math.round(measure['measurements']['Waist_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+						$(".female_waist_cir-per-box").text( percentage.toFixed(2) + '%');
 					}
 				}
 				if (hip_msg){
@@ -3705,12 +3705,12 @@
 					$(".hips-line").css('fill',color);
 					if (hip_msg === 'loose') {
 						var size = $('#mesurment-brand').find(':selected').attr('data-HipsMax');
-						var percentage = ((parseInt(Math.round(measure['measurements']['Hip_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
-						$(".hips_cir-per-box").text( percentage + '%');
+						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Hip_Circumference']))) / parseInt(size)) * 100;
+						$(".hips_cir-per-box").text( percentage.toFixed(2) + '%');
 					} else {
 						var size = $('#mesurment-brand').find(':selected').attr('data-HipsMin');
-						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Hip_Circumference']))) / parseInt(size)) * 100;
-						$(".hips_cir-per-box").text( percentage + '%');
+						var percentage = ((parseInt(Math.round(measure['measurements']['Hip_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+						$(".hips_cir-per-box").text( percentage.toFixed(2) + '%');
 					}
 				}
 				if (bust_msg){
@@ -3718,13 +3718,13 @@
 					$(".bust-line").css('fill',bust_color);
 					if (bust_msg === 'loose') {
 						var size = $('#mesurment-brand').find(':selected').attr('data-BustMax');
-						var percentage = ((parseInt(Math.round(measure['measurements']['Bust_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
-						$(".Bust_cir-per-box").text( percentage + '%');
+						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Bust_Circumference']))) / parseInt(size)) * 100;
+						$(".Bust_cir-per-box").text( percentage.toFixed(2) + '%');
 
 					} else {
 						var size = $('#mesurment-brand').find(':selected').attr('data-BustMin');
-						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Bust_Circumference']))) / parseInt(size)) * 100;
-						$(".Bust_cir-per-box").text( percentage + '%');
+						var percentage = ((parseInt(Math.round(measure['measurements']['Bust_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+						$(".Bust_cir-per-box").text( percentage.toFixed(2) + '%');
 					}
 				}
 				if ($(this).val() && comment) {
@@ -3803,12 +3803,12 @@
 						$(".waist-line ").css('fill',color);
 						if (waist_msg === 'loose') {
 							var size = $(this).find(':selected').attr('data-WaistMax');
-							var percentage = ((parseInt(Math.round(measure['measurements']['Waist_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
-							$(".female_waist_cir-per-box").text( percentage + '%');
+							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Waist_Circumference']))) / parseInt(size)) * 100;
+							$(".female_waist_cir-per-box").text( percentage.toFixed(2) + '%');
 						} else {
 							var size = $(this).find(':selected').attr('data-WaistMin');
-							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Waist_Circumference']))) / parseInt(size)) * 100;
-							$(".female_waist_cir-per-box").text( percentage + '%');
+							var percentage = ((parseInt(Math.round(measure['measurements']['Waist_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+							$(".female_waist_cir-per-box").text( percentage.toFixed(2) + '%');
 						}
 					}
 					if (hip_msg){
@@ -3817,12 +3817,12 @@
 
 						if (hip_msg === 'loose') {
 							var size = $(this).find(':selected').attr('data-HipsMax');
-							var percentage = ((parseInt(Math.round(measure['measurements']['Hip_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
-							$(".hips_cir-per-box").text( percentage + '%');
+							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Hip_Circumference']))) / parseInt(size)) * 100;
+							$(".hips_cir-per-box").text( percentage.toFixed(2) + '%');
 						} else {
 							var size = $(this).find(':selected').attr('data-HipsMin');
-							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Hip_Circumference']))) / parseInt(size)) * 100;
-							$(".hips_cir-per-box").text( percentage + '%');
+							var percentage = ((parseInt(Math.round(measure['measurements']['Hip_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+							$(".hips_cir-per-box").text( percentage.toFixed(2) + '%');
 						}
 					}
 					if (bust_msg){
@@ -3831,13 +3831,13 @@
 
 						if (bust_msg === 'loose') {
 							var size = $(this).find(':selected').attr('data-BustMax');
-							var percentage = ((parseInt(Math.round(measure['measurements']['Bust_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
-							$(".Bust_cir-per-box").text( percentage + '%');
+							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Bust_Circumference']))) / parseInt(size)) * 100;
+							$(".Bust_cir-per-box").text( percentage.toFixed(2) + '%');
 
 						} else {
 							var size = $(this).find(':selected').attr('data-BustMin');
-							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Bust_Circumference']))) / parseInt(size)) * 100;
-							$(".Bust_cir-per-box").text( percentage + '%');
+							var percentage = ((parseInt(Math.round(measure['measurements']['Bust_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+							$(".Bust_cir-per-box").text( percentage.toFixed(2) + '%');
 						}
 					}
 
