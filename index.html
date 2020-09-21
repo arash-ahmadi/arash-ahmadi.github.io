@@ -3646,10 +3646,14 @@
 				console.log(taggd.data);
 			});
 			$("#mesurment-brand").find('option').remove()
-			$("#mesurment-brand").append($("<option />").val('').text('Select One').attr('data-rating', '').attr('data-waist_msg', '').attr('data-hip_msg', '').attr('data-bust_msg', ''));
+			$("#mesurment-brand").append($("<option />").val('').text('Select One').attr('data-rating', '').attr('data-waist_msg', '').attr('data-hip_msg', '').attr('data-bust_msg', '')
+					.attr('data-BustMin', '').attr('data-BustMax', '').attr('data-WaistMin', '').attr('data-WaistMax', '').attr('data-HipsMin', '').attr('data-HipsMax', '')
+					.attr('data-InseamMin', '').attr('data-InseamMax', ''));
 			measure_data['recommended_sizes'].forEach(function(result, i){
 				var value = result.brandName + ' ('+ result.size +')';
-				$("#mesurment-brand").append($("<option />").val(result.note).text(value).attr('data-rating', result.rating).attr('data-sizenumber', result.sizeNumber).attr('data-waist_msg', result.waist_msg).attr('data-hip_msg', result.hip_msg).attr('data-bust_msg', result.bust_msg));
+				$("#mesurment-brand").append($("<option />").val(result.note).text(value).attr('data-rating', result.rating).attr('data-sizenumber', result.sizeNumber).attr('data-waist_msg', result.waist_msg).attr('data-hip_msg', result.hip_msg).attr('data-bust_msg', result.bust_msg)
+				.attr('data-BustMin', result.BustMin).attr('data-BustMax', result.BustMax).attr('data-WaistMin', result.WaistMin).attr('data-WaistMax', result.WaistMax).attr('data-HipsMin', result.HipsMin).attr('data-HipsMax', result.HipsMax)
+				.attr('data-InseamMin', result.InseamMin).attr('data-InseamMax', result.InseamMax));
 			});
 
 			$("#login").hide();
@@ -3676,20 +3680,52 @@
 				console.log('waist_msg', waist_msg);
 				console.log('hip_msg', hip_msg);
 				console.log('bust_msg', bust_msg);
+				$(".Bust_cir-per-box").text('');
+				$(".female_waist_cir-per-box").text('');
+				$(".hips_cir-per-box").text('');
+				$(".thigh_cir-per-box").text('');
 				$(".waist-line ").css('fill','#89d4a7');
 				$(".hips-line ").css('fill','#89d4a7');
 				$(".bust-line ").css('fill','#89d4a7');
 				if (waist_msg){
 					var color = waist_msg === 'loose' ? '#619ec9' : '#f3aea7';
 					$(".waist-line ").css('fill',color);
+					if (waist_msg === 'loose') {
+						var size = $('#mesurment-brand').find(':selected').attr('data-WaistMax');
+						var percentage = ((parseInt(Math.round(measure['measurements']['Waist_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+						$(".female_waist_cir-per-box").text( percentage + '%');
+					} else {
+						var size = $('#mesurment-brand').find(':selected').attr('data-WaistMin');
+						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Waist_Circumference']))) / parseInt(size)) * 100;
+						$(".female_waist_cir-per-box").text( percentage + '%');
+					}
 				}
 				if (hip_msg){
 					var color = hip_msg === 'loose' ? '#619ec9' : '#f3aea7';
 					$(".hips-line").css('fill',color);
+					if (hip_msg === 'loose') {
+						var size = $('#mesurment-brand').find(':selected').attr('data-HipsMax');
+						var percentage = ((parseInt(Math.round(measure['measurements']['Hip_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+						$(".hips_cir-per-box").text( percentage + '%');
+					} else {
+						var size = $('#mesurment-brand').find(':selected').attr('data-HipsMin');
+						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Hip_Circumference']))) / parseInt(size)) * 100;
+						$(".hips_cir-per-box").text( percentage + '%');
+					}
 				}
 				if (bust_msg){
 					var bust_color = bust_msg === 'loose' ? '#619ec9' : '#f3aea7';
 					$(".bust-line").css('fill',bust_color);
+					if (bust_msg === 'loose') {
+						var size = $('#mesurment-brand').find(':selected').attr('data-BustMax');
+						var percentage = ((parseInt(Math.round(measure['measurements']['Bust_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+						$(".Bust_cir-per-box").text( percentage + '%');
+
+					} else {
+						var size = $('#mesurment-brand').find(':selected').attr('data-BustMin');
+						var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Bust_Circumference']))) / parseInt(size)) * 100;
+						$(".Bust_cir-per-box").text( percentage + '%');
+					}
 				}
 				if ($(this).val() && comment) {
 					if (rating == 10) {
@@ -3755,20 +3791,54 @@
 					console.log('waist_msg', waist_msg);
 					console.log('hip_msg', hip_msg);
 					console.log('bust_msg', bust_msg);
+					$(".Bust_cir-per-box").text('');
+					$(".female_waist_cir-per-box").text('');
+					$(".hips_cir-per-box").text('');
+					$(".thigh_cir-per-box").text('');
 					$(".waist-line ").css('fill','#89d4a7');
 					$(".hips-line ").css('fill','#89d4a7');
 					$(".bust-line ").css('fill','#89d4a7');
 					if (waist_msg){
 						var color = waist_msg === 'loose' ? '#619ec9' : '#f3aea7';
 						$(".waist-line ").css('fill',color);
+						if (waist_msg === 'loose') {
+							var size = $(this).find(':selected').attr('data-WaistMax');
+							var percentage = ((parseInt(Math.round(measure['measurements']['Waist_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+							$(".female_waist_cir-per-box").text( percentage + '%');
+						} else {
+							var size = $(this).find(':selected').attr('data-WaistMin');
+							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Waist_Circumference']))) / parseInt(size)) * 100;
+							$(".female_waist_cir-per-box").text( percentage + '%');
+						}
 					}
 					if (hip_msg){
 						var color = hip_msg === 'loose' ? '#619ec9' : '#f3aea7';
 						$(".hips-line").css('fill',color);
+
+						if (hip_msg === 'loose') {
+							var size = $(this).find(':selected').attr('data-HipsMax');
+							var percentage = ((parseInt(Math.round(measure['measurements']['Hip_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+							$(".hips_cir-per-box").text( percentage + '%');
+						} else {
+							var size = $(this).find(':selected').attr('data-HipsMin');
+							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Hip_Circumference']))) / parseInt(size)) * 100;
+							$(".hips_cir-per-box").text( percentage + '%');
+						}
 					}
 					if (bust_msg){
 						var bust_color = bust_msg === 'loose' ? '#619ec9' : '#f3aea7';
 						$(".bust-line").css('fill',bust_color);
+
+						if (bust_msg === 'loose') {
+							var size = $(this).find(':selected').attr('data-BustMax');
+							var percentage = ((parseInt(Math.round(measure['measurements']['Bust_Circumference'])) - parseInt(size)) / parseInt(size)) * 100;
+							$(".Bust_cir-per-box").text( percentage + '%');
+
+						} else {
+							var size = $(this).find(':selected').attr('data-BustMin');
+							var percentage = ((parseInt(size) - parseInt(Math.round(measure['measurements']['Bust_Circumference']))) / parseInt(size)) * 100;
+							$(".Bust_cir-per-box").text( percentage + '%');
+						}
 					}
 
 
@@ -3836,12 +3906,6 @@
 				$(".female_waist_cir-box").text(Math.round(measure['measurements']['Waist_Circumference']));
 				$(".hips_cir-box").text(Math.round(measure['measurements']['Hip_Circumference']));
 				$(".thigh_cir-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
-
-				$(".Bust_cir-per-box").text((100 - Math.round(measure['measurements']['Bust_Circumference'])) / 100 + '%');
-				$(".female_waist_cir-per-box").text((100 - Math.round(measure['measurements']['Waist_Circumference']))/100 + '%' );
-				$(".hips_cir-per-box").text((100 - Math.round(measure['measurements']['Hip_Circumference']))/100  + '%' );
-				$(".thigh_cir-per-box").text((100 -Math.round(measure['measurements']['MidThigh_Circumference'])) / 100  + '%' );
-
 				$(".InsideLeg-box").text(Math.round(measure['seg_dst_f']['InsideLeg']));
 			} else {
 				$('.women-avatar').css({"display": 'block'});
@@ -3851,12 +3915,6 @@
 				$(".female_waist_cir-box").text(Math.round(measure['measurements']['Female_Waist_Circumference']));
 				$(".hips_cir-box").text(Math.round(measure['measurements']['Hip_Circumference']));
 				$(".thigh_cir-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
-
-				$(".Bust_cir-per-box").text((100 - Math.round(measure['measurements']['Bust_Circumference'])) / 100 + '%');
-				$(".female_waist_cir-per-box").text((100 - Math.round(measure['measurements']['Waist_Circumference']))/100 + '%' );
-				$(".hips_cir-per-box").text((100 - Math.round(measure['measurements']['Hip_Circumference']))/100  + '%' );
-				$(".thigh_cir-per-box").text((100 -Math.round(measure['measurements']['MidThigh_Circumference'])) / 100  + '%' );
-
 				$(".InsideLeg-box").text(Math.round(measure['seg_dst_f']['InsideLeg']));
 
 			}
