@@ -745,7 +745,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<div class="logout-btn" ><i title="Edit measurment" id="edit-measurment-btn" class="fa fa-pencil-square-o edit-measurment" aria-hidden="true"></i><i  id="logout-btn" title="Logout " class="fa fa-sign-out" aria-hidden="true"></i></div>
+						<div class="logout-btn" ><i title="Edit measurment" id="edit-measurment-btn" class="fa fa-pencil-square-o edit-measurment hide" aria-hidden="true"></i><i  id="logout-btn" title="Logout " class="fa fa-sign-out" aria-hidden="true"></i></div>
 					</div>
 				</div>
 				<div class="row measument-select-box hide">
@@ -3667,8 +3667,14 @@
 			$("#measurement-rating-box").hide();
 			if (localStorage.getItem("id")) {
 				$(".logout-btn").show();
+				if (localStorage.getItem("id") != 6348) {
+					$("#edit-measurment-btn").show();
+				}else {
+					$("#edit-measurment-btn").hide();
+				}
 			} else {
 				$(".logout-btn").hide();
+				$("#edit-measurment-btn").hide();
 			}
 
 			$(document).on('change', '#itemType', function(){
