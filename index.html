@@ -2397,11 +2397,11 @@
 			$("#body-data-form").trigger("reset");
 			$('#body-data-user-id').val(localStorage.getItem('id'));
 			if (localStorage.getItem("id") != 6348) {
-				$("#edit-measurement-submit-btn").show();
-				$('#body-data-submit-btn').show();
+				$("#edit-measurement-submit-btn").prop('disabled', false);
+				$('#body-data-submit-btn').prop('disabled', false);
 			}else {
-				$("#edit-measurement-submit-btn").hide();
-				$('#body-data-submit-btn').hide();
+				$("#edit-measurement-submit-btn").prop('disabled', true);
+				$('#body-data-submit-btn').prop('disabled', true);
 			}
 		});
 		$(document).on('click', '#forgot-password-btn', function(event) {
