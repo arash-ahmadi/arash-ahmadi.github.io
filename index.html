@@ -1717,7 +1717,7 @@
 							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 								<div class="card-body avtar-container">
 									<div class="avtar-threed-container">
-										<iframe id="receiver-data" src="#" style="width:270px; height: calc(100% - 1px);"></iframe>
+										<iframe id="receiver-data" src="#" style="width:310px; height: calc(100% - 1px);"></iframe>
 									</div>
 								</div>
 							</div>
@@ -3261,6 +3261,7 @@
 									<input type="file" id="front_register_img" name="front_img" class="btn btn-info front_img register-front-input" >
 									<i class="fa fa-check-square-o front_img_icon register-front-icon" aria-hidden="true"></i>
 								</img>
+								<br>
 								<a class="viewFrontSide view-side-sample-img" href="#" data-title="Front Sample Image" >View front image sample</a>
 							</div>
 							<div class="flexOne mbthirtyTwo mlEight col-12">
@@ -3268,6 +3269,7 @@
 										<input type="file" id="side_register_img" name="side_img" class="btn btn-info side_img register-side-input">
 										<i class="fa fa-check-square-o side_img_icon register-side-icon" aria-hidden="true"></i>
 									</img>
+									<br>
 									<a class="view-side-sample-img viewFrontSide" data-title="Side Sample Image" href="#">View Side image sample</a>
 							</div>
 						</div>
@@ -3279,7 +3281,7 @@
 					<div class="oranceBor mbthirtyTwo">
 						<div class="orangeTitle">Watch</div>
 						<div class="videoGreyTitle">How to take picture</div>
-						<iframe width="100%" height="150" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+						<iframe width="100%" height="150" src="https://www.youtube.com/watch?v=LkID80bh0rI">
 						</iframe>
 					</div>
 					<div class="flex flexVCenter">
@@ -3853,16 +3855,6 @@
 			$("#register-error-box").hide();
 			$("#register-error-box").find('li').remove()
 			$("#register-user-form").trigger("reset");
-
-			$("#qrcode").html('');
-			var qrcode = new QRCode(document.getElementById("qrcode"), {
-				width : 100,
-				height : 100
-			});
-
-			var url = "https://arash-ahmadi.github.io/index.html";
-			var final_url = url + "?register_user=" + 0;
-			qrcode.makeCode(final_url);
 		});
 		$(document).on('click', '#already-account-btn', function(event) {
 			event.preventDefault();
@@ -5200,6 +5192,8 @@
 			$("#forgot-password").hide();
 			$("#reset-password").hide();
 			$("#mesurment-deatils").show();
+			$('#user-name').text(localStorage.getItem("name"));
+			$('#user-email').text(localStorage.getItem("email"));
 			// taggd.updateDOM();
 			$("#measurement-rating-box").hide();
 			if (localStorage.getItem("id")) {
@@ -5584,6 +5578,8 @@
 					document.getElementById('mesurment-deatils').style.display = "block";
 					document.getElementById('login').style.display = "none";
 					getUserMeasurmentData();
+					$('#user-name').text(localStorage.getItem("name"));
+					$('#user-email').text(localStorage.getItem("email"));
 				} else {
 					document.getElementById('mesurment-deatils').style.display = "none";
 					document.getElementById('login').style.display = "block";
@@ -5660,6 +5656,8 @@
 									document.getElementById('edit-user-mesurment').style.display = "none";
 									document.getElementById('forgot-password').style.display = "none";
 									document.getElementById('reset-password').style.display = "none";
+									$('#user-name').text(localStorage.getItem("name"));
+									$('#user-email').text(localStorage.getItem("email"));
 									getUserMeasurmentData(true);
 									var passToParentData = {message: 'viubox-three-d-viewer-item' , itemId : itemId}
 									window.top.postMessage(passToParentData, '*');
