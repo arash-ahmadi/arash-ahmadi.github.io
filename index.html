@@ -4347,6 +4347,10 @@
 						$("#register-error-box").show();
 					} else {
 						removeLoader();
+						localStorage.setItem('name', data.name);
+						localStorage.setItem('email', data.email);
+						localStorage.setItem('id', data.id);
+						localStorage.setItem('gender', data.gender);
 						$('.image_user_id').val(data.id);
 						$("#register-image-error-box").hide();
 						$("#register-image-error-box").find('li').remove();
