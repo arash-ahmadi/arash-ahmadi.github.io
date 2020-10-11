@@ -25,7 +25,7 @@
 			z-index: 1110;
 			overflow-x: hidden;
 			overflow-y: auto;
-			width: 392px;
+			width: 360px;
 			transition: margin .4s ease-out;
 			-webkit-transition: margin .4s ease-out;
 			-moz-transition: margin .4s ease-out;
@@ -41,7 +41,7 @@
 		.bs-canvas-right-1, .bs-canvas-right-2 {
 			top: 0;
 			right: 0;
-			margin-right: -392px;
+			margin-right: -360px;
 		}
 		.bs-button-right {
 			top: 250;
@@ -588,7 +588,7 @@
 			position: absolute;
 			left: 30px;
 			top: 30px;
-			height: 100px;
+			height: 80px;
 			width: 310px;
 		}
 		.edit-side-input {
@@ -596,7 +596,7 @@
 			position: absolute;
 			left: 30px;
 			top: 30px;
-			height: 100px;
+			height: 80px;
 			width: 310px;
 		}
 		.register-instruction-img {
@@ -753,7 +753,7 @@
 			margin-bottom: -1.5px;
 		}
 		.mainWrapper {
-			width: 392px
+			width: 360px
 		}
 	</style>
 </head>
@@ -866,8 +866,8 @@
 											<div class="switchlabel switchleft">Circumferences</div>
 											<div class="switchlabel switchright">Length</div>
 										</div>
-										<img src="img/avatar_new.png" class="taggd img-avtar" >
-										<button class="backBtn blueSmall cursor" id="back-to-login-btn">
+										<img src="img/avatar_new.png" class="taggd img-av.mainWrappertar" >
+										<button class="backBtn blueSmall cursor" id="back-to-main-btn">
 											<img src="img/arrowLeftBlue.png" /> Back to main page
 										</button>
 									</div>
@@ -2793,14 +2793,14 @@
 										<input type="file" id="edit_front_img"  name="front_img" class="btn btn-info front_img edit-front-input">
 										<i class="fa fa-check-square-o front_img_icon edit-front-icon" aria-hidden="true"></i>
 									</img>
-									<a class="viewFrontSide view-side-sample-img" href="#" data-title="Side Sample Image">View side image sample</a>
+									<a class="viewFrontSide view-side-sample-img" data-title="Front Sample Image" href="#">View front image sample</a>
 								</div>
 								<div class="flexOne mbthirtyTwo mlEight col-12">
 									<img src="img/sideimage.jpg" class="frontSideImg">
 									<input type="file" id="edit_side_img" name="side_img" class="btn btn-info side_img edit-side-input">
 									<i class="fa fa-check-square-o side_img_icon edit-side-icon" aria-hidden="true"></i>
 									</img>
-									<a class="viewFrontSide view-side-sample-img" data-title="Front Sample Image" href="#">View front image sample</a>
+									<a class="viewFrontSide view-side-sample-img" href="#" data-title="Side Sample Image">View side image sample</a>
 								</div>
 							</div>
 
@@ -2820,14 +2820,14 @@
 							</div>
 
 							<div class="flex mbthirtyTwo">
-								<div class="custLabel flexOne">width:</div>
+								<div class="custLabel flexOne">Weight:</div>
 								<div class="flex">
 									<div class="quantity-control number-spinner">
 										<button type="button" class="quantity-btn" href="javascript:void(0)" data-dir="dwn">
 											<img src="img/minus.svg">
 										</button>
-										<input type="number" class="quantity-input input-number-range" value="60" name="weight">
-										<button type="button" class="quantity-btn" href="javascript:void(0)" data-dir="up">
+										<input type="number" class="quantity-input input-weight-range" value="60" name="weight">
+										<button type="button" class="quantity-btn weight" href="javascript:void(0)" data-dir="up">
 											<img src="img/plus.svg">
 										</button>
 									</div>
@@ -2860,8 +2860,8 @@
 					<div class="flex flexVCenter">
 						<div class="dottedBorder flexOne"></div>
 					</div>
-					<button class="backBtn mbthirtyTwo cursor" id="back-to-login-btn" >
-						<img src="img/leftArrow.svg"> Back to login page
+					<button class="backBtn mbthirtyTwo cursor" id="back-to-detail-btn" >
+						<img src="img/leftArrow.svg"> Back to measurement detail page
 					</button>
 				</div>
 			</div>
@@ -3265,7 +3265,7 @@
 									<i class="fa fa-check-square-o front_img_icon register-front-icon" aria-hidden="true"></i>
 								</img>
 								<br>
-								<a class="viewFrontSide view-side-sample-img" href="#" data-title="Front Sample Image" >View front image sample</a>
+								<a class="viewFrontSide viewFrontSide" href="#" data-title="Front Sample Image" >View front image sample</a>
 							</div>
 							<div class="flexOne mbthirtyTwo mlEight col-12">
 									<img src="img/sideImgH.jpg" class="frontSideImg cursor">
@@ -3273,7 +3273,7 @@
 										<i class="fa fa-check-square-o side_img_icon register-side-icon" aria-hidden="true"></i>
 									</img>
 									<br>
-									<a class="view-side-sample-img viewFrontSide" data-title="Side Sample Image" href="#">View Side image sample</a>
+									<a class="view-side-sample-img view-side-sample-img" data-title="Side Sample Image" href="#">View Side image sample</a>
 							</div>
 						</div>
 
@@ -3941,6 +3941,26 @@
 			var url = localStorage.getItem("current_url");
 			$('#current_url').val(url);
 		});
+		$(document).on('click', '#back-to-main-btn', function(event) {
+			$('#mesurment-details-div').css({"display": 'none'});
+			$('#mesurment-avatar').css({"display": 'block'});
+		})
+		$(document).on('click', '#back-to-detail-btn', function(event) {
+			var id = localStorage.getItem("id");
+			if (id) {
+				document.getElementById('mesurment-deatils').style.display = "block";
+				document.getElementById('body_data').style.display = "none";
+				getUserMeasurmentData();
+				$('#user-name').text(localStorage.getItem("name"));
+				$('#user-email').text(localStorage.getItem("email"));
+			} else {
+				document.getElementById('body_data').style.display = "none";
+				document.getElementById('login').style.display = "block";
+				$("#login-error-box").hide();
+				$("#login-error-box").find('li').remove();
+				$("#login-user-form").trigger("reset");
+			}
+		})
 		$(document).on('click', '#back-to-login-btn', function(event) {
 			event.preventDefault();
 			document.getElementById('register-image-upload').style.display = "none";
@@ -4068,10 +4088,14 @@
 			$(".number-spinner button").closest('.number-spinner').find('input').val($("#height_val").val());
 			$("#height").val($("#height_val").val())
 		});
-		$(document).on('change', '.input-number-range', function () {
+	/*	$(document).on('change', '.input-number-range', function () {
 			$(".number-spinner button").closest('.number-spinner').find('input').val($(".input-number-range").val());
 			$("#height").val($(".input-number-range").val())
 		});
+		$(document).on('change', '.input-weight-range', function () {
+			// $(".number-spinner button").closest('.number-spinner').find('input').val($(".input-number-range").val());
+			$(".weight").val($(".input-number-range").val())
+		});*/
 		$(document).on('click', '#reset-password-submit-btn', function(event) {
 			isLoaclStorageEnabled();
 			event.preventDefault();
@@ -5524,11 +5548,13 @@
 			}
 			$('#mesurment-details-div').css({"display": 'none'});
 			$('#mesurment-avatar').css({"display": 'block'});
+			$('.detail-comment-box').css({"display": 'none'});
 			if($('.product_sku').val()) {
 				console.log($("#mesurment-brand option:eq(1)").val());
 				$("#mesurment-brand").val($("#mesurment-brand option:eq(1)").val());
 				$("#itemType").val($("#itemType option:eq(1)").val());
 				$( "#mesurment-brand" ).trigger( "change" );
+				$('.detail-comment-box').css({"display": 'block'});
 			}
 
 			if(isThreedView) {

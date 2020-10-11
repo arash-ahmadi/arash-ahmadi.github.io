@@ -1,4 +1,4 @@
-let html = "<iframe id='receiver' class='chatbox' style='position: fixed; z-index: 1310; bottom: 0; right: 0; border: 0; height: 100vh; width: 392px; allowtransparency='true'; overflow-x: hidden; overflow-y: auto;' src='https://widget.viubox.com/index.html'></iframe>";
+let html = "<iframe id='receiver' class='chatbox' style='position: fixed; z-index: 1310; bottom: 0; right: 0; border: 0; height: 100vh; width: 360px; allowtransparency='true'; overflow-x: hidden; overflow-y: auto;' src='https://widget.viubox.com/index.html'></iframe>";
 document.body.innerHTML += html;
 $("#receiver").on("load",function(){
     $(this).width(65);
@@ -21,7 +21,7 @@ $("#receiver").on("load",function(){
     })
     window.onmessage = function(event){
         if (event.data == 'virtual-dress-view-open') {
-            $('#receiver').width(392);
+            $('#receiver').width(360);
         } else if (event.data == 'virtual-dress-view-close') {
             $('#receiver').width(65);
         } else if (event.data == 'virtual-dress-view-clear-box') {
