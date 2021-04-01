@@ -9,7 +9,8 @@ $("#receiver").on("load",function(){
         $(".measurments_btn").css('background-color', '#6f928a');
         var sku = $(this).data('sku');
         var currentURL = window.location.href;
-        console.log('currentURL--->',currentURL)
+        console.log('currentURL--->',currentURL);
+        console.log(window.location.href.substring(this.href.lastIndexOf('/') + 1));
         const myiframe = document.getElementById('receiver')
         var message = {message: 'open-measurement-box' , productSku: sku}
         receiver.postMessage(message, '*');
