@@ -10,9 +10,14 @@ $("#receiver").on("load",function(){
         var sku = $(this).data('sku');
         var currentURL = window.location.href;
         console.log('currentURL--->',currentURL);
-        console.log(window.location.href.substring(this.href.lastIndexOf('/') + 1));
+        console.log('currentURL--->3..', window.location.href.substring(this.href.lastIndexOf('/') + 1));
+        var sizepart = window.location.href.substring(this.href.lastIndexOf('/') + 1);
+        var parts = sizepart.split('-');
+        var size = parts[1];
+        console.log('final size--->',parts[1]);
+
         const myiframe = document.getElementById('receiver')
-        var message = {message: 'open-measurement-box' , productSku: sku}
+        var message = {message: 'open-measurement-box' , productSku: sku +'-' +size}
         receiver.postMessage(message, '*');
     })
     $(".three_d_viewer_btn").on("click",function(){
