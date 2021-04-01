@@ -14,8 +14,8 @@ $("#receiver").on("load",function(){
 
         var sizepart = currentURL.substring(currentURL.lastIndexOf('/') + 1);
         var parts = sizepart.split('-');
-        var size = parts[1];
-        console.log('final size--->',parts[1]);
+        var size = parts[2];
+        console.log('final size--->',parts[2]);
 
         const myiframe = document.getElementById('receiver')
         var message = {message: 'open-measurement-box' , productSku: sku +'-' +size}
