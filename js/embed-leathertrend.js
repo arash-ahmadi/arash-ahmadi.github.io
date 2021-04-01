@@ -8,7 +8,7 @@ $("#receiver").on("load",function(){
        // $(".measurments_btn").text('Viubox check measurments ');
         $(".measurments_btn").css('background-color', '#6f928a');
         var sku = $(this).data('sku');
-        var currentURL = $(location).attr('href');
+        var currentURL = window.location.href;
         console.log('currentURL--->',currentURL)
         const myiframe = document.getElementById('receiver')
         var message = {message: 'open-measurement-box' , productSku: sku}
