@@ -12,7 +12,7 @@ $("#receiver").on("load",function(){
         console.log('currentURL--->',currentURL);
         console.log('currentURL--->3..', currentURL.substring(currentURL.lastIndexOf('/') + 1));
 
-        var sizepart = currentURL.substring(currentURL.firstIndexOf('/') + 1);
+        var sizepart = currentURL.substring(currentURL.lastIndexOf('/') - 1);
         var parts = sizepart.split('-');
         var size = parts[2];
         console.log('final size--->',parts[2]);
