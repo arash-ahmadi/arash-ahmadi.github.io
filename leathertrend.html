@@ -2778,7 +2778,7 @@
 			</div>
 			<div class="flexOne mbthirtyTwo">
 				<div class="padThirtyTwoTwetyFour">
-					<div class="blueTitle">Edit</div>
+					<div class="blueTitle">Modifica</div>
 					<div class="switchContainer blueswitchContainer" id="switchContainerEdit" >
 						<div class="switch" id="switch"></div>
 						<div class="switchlabel switchleft">Misure</div>
@@ -2800,14 +2800,14 @@
 										<input type="file" id="edit_front_img"  name="front_img" class="btn btn-info front_img edit-front-input">
 										<i class="fa fa-check-square-o front_img_icon edit-front-icon" aria-hidden="true"></i>
 									</img>
-									<a class="viewFrontSide view-side-sample-img" data-title="Front Sample Image" href="#">Visualizza immagine frontale</a>
+									<a class="viewFrontSide view-side-sample-img" data-title="Visualizza immagine frontale" href="#">Visualizza immagine frontale</a>
 								</div>
 								<div class="flexOne mbthirtyTwo mlEight col-12">
 									<img src="img/sideimage.jpg" class="frontSideImg">
 									<input type="file" id="edit_side_img" name="side_img" class="btn btn-info side_img edit-side-input">
 									<i class="fa fa-check-square-o side_img_icon edit-side-icon" aria-hidden="true"></i>
 									</img>
-									<a class="viewFrontSide view-side-sample-img" href="#" data-title="Side Sample Image">Visualizza immagine laterale</a>
+									<a class="viewFrontSide view-side-sample-img" href="#" data-title="Visualizza immagine laterale">Visualizza immagine laterale</a>
 								</div>
 							</div>
 
@@ -3707,7 +3707,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
 			</div>
 		</div>
 	</div>
@@ -3754,7 +3754,7 @@
 			}
 		});
 		$(document).on('click', '.view-side-sample-img', function(event){
-			if ($(this).data('title') === 'Side Sample Image') {
+			if ($(this).data('title') === 'Visualizza immagine laterale') {
 				$('#sample-img-model').find('#sample-img-title').text($(this).data('title'));
 				$('#sample-img-model').find('.front_image_model').hide();
 				$('#sample-img-model').find('.side_image_model').show();
