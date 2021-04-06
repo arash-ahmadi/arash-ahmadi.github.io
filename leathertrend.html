@@ -5563,28 +5563,12 @@
 				$( "#mesurment-brand" ).trigger( "change" );
 				$('.detail-comment-box').css({"display": 'block'});
 			}
-			console.log('---isThreedView----', isThreedView);
 			if(isThreedView) {
-				console.log('---in 3d view----');
-				/*$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
-				$('#collapseOne').removeClass('show');
-				$('#collapseTwo').addClass('show');*/
-				$("#collapseTwo").collapse('toggle');
+				$("#collapseTwo").collapse('show');
 				$("#collapseOne").collapse('hide');
-				/*if ($('#receiver-data').attr('src') === '#') {
-					$('#receiver-data').attr('src',"https://widget.viubox.com/index-webgl.html");
-				}*/
 			} else {
-				console.log('---in measurment view----');
-				$("#collapseOne").collapse('toggle');
+				$("#collapseOne").collapse('show');
 				$("#collapseTwo").collapse('hide');
-				/*$('#collapseTwo').closest('.margin-bottom5').find('button').removeClass('collapsed')
-				$('#collapseOne').removeClass('show');
-				$('#collapseTwo').removeClass('show');
-				$('#collapseTwo').addClass('show');
-				if ($('#receiver-data').attr('src') !== '#') {
-					$('#receiver-data').attr('src',"#");
-				}*/
 			}
 
 			var id = localStorage.getItem("id");
@@ -5913,9 +5897,6 @@
 		}
 		return false;
 	}
-
-	/*$("#collapseOne").collapse('hide');
-	$("#collapseTwo").collapse('hide');*/
 
 	function  showUserImageUploadBox() {
 		var user_id = getUrlParameter('register_user');
