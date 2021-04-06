@@ -9,13 +9,7 @@ $("#receiver").on("load",function(){
         $(".measurments_btn").css('background-color', '#6f928a');
         var sku = $(this).data('sku');
         var currentURL = window.location.href;
-        console.log('currentURL--->',currentURL);
-        console.log('currentURL--->3..', currentURL.substring(currentURL.lastIndexOf('/') + 1));
-
         var urlArray = currentURL.split('/');
-        console.log('urlArray--->',urlArray);
-        var index = currentURL.lastIndexOf('/') - 1 ;
-        console.log('<---index size--->',index);
         var sizepart = urlArray[urlArray.length - 3];
         var parts = sizepart.split('-');
         var size = parts[2];
@@ -27,8 +21,14 @@ $("#receiver").on("load",function(){
     })
     $(".three_d_viewer_btn").on("click",function(){
         var sku = $('.measurments_btn').data('sku');
+        var currentURL = window.location.href;
+        var urlArray = currentURL.split('/');
+        var sizepart = urlArray[urlArray.length - 3];
+        var parts = sizepart.split('-');
+        var size = parts[2];
+        console.log('final size--->',parts[2]);
         const myiframe = document.getElementById('receiver')
-        var message = {message: 'open-three-d-viewer-box' , productSku: sku}
+        var message = {message: 'open-three-d-viewer-box' , productSku: sku +'-' +size}
         console.log('Open 3D  ---', message)
         receiver.postMessage(message, '*');
     })
