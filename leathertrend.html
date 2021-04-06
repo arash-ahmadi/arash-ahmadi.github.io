@@ -5569,15 +5569,15 @@
 				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
 				$('#collapseTwo').addClass('show');
-				$("#collapseTwo").collapse('toggle');
-				$("#collapseOne").collapse('hide');
+				$("#collapseTwo").collapse('hide');
+				$("#collapseOne").collapse('toggle');
 				if ($('#receiver-data').attr('src') === '#') {
 					$('#receiver-data').attr('src',"https://widget.viubox.com/index-webgl.html");
 				}
 			} else {
 				console.log('---in measurment view----');
-				$("#collapseOne").collapse('toggle');
-				$("#collapseTwo").collapse('hide');
+				$("#collapseOne").collapse('hide');
+				$("#collapseTwo").collapse('toggle');
 				$('#collapseTwo').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
 				$('#collapseTwo').addClass('show');
