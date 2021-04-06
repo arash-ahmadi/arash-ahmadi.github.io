@@ -5563,8 +5563,9 @@
 				$( "#mesurment-brand" ).trigger( "change" );
 				$('.detail-comment-box').css({"display": 'block'});
 			}
-
+			console.log('---isThreedView----', isThreedView);
 			if(isThreedView) {
+				console.log('---in 3d view----');
 				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
 				$('#collapseTwo').addClass('show');
@@ -5574,6 +5575,7 @@
 					$('#receiver-data').attr('src',"https://widget.viubox.com/index-webgl.html");
 				}
 			} else {
+				console.log('---in measurment view----');
 				$("#collapseOne").collapse('toggle');
 				$("#collapseTwo").collapse('hide');
 				$('#collapseTwo').closest('.margin-bottom5').find('button').removeClass('collapsed')
