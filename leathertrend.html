@@ -5571,6 +5571,13 @@
 				if ($('#receiver-data').attr('src') === '#') {
 					$('#receiver-data').attr('src',"https://widget.viubox.com/index-webgl.html");
 				}
+			} else {
+				$('#collapseTwo').closest('.margin-bottom5').find('button').removeClass('collapsed')
+				$('#collapseOne').removeClass('show');
+				$('#collapseTwo').addClass('show');
+				if ($('#receiver-data').attr('src') === '#') {
+					$('#receiver-data').attr('src',"https://widget.viubox.com/index-webgl.html");
+				}
 			}
 
 			var id = localStorage.getItem("id");
