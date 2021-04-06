@@ -11,8 +11,9 @@ $("#receiver").on("load",function(){
         var currentURL = window.location.href;
         console.log('currentURL--->',currentURL);
         console.log('currentURL--->3..', currentURL.substring(currentURL.lastIndexOf('/') + 1));
-
-        var sizepart = currentURL.substring(currentURL.lastIndexOf('/') - 1);
+        var index = currentURL.lastIndexOf('/') - 1 ;
+        console.log('<---index size--->',index);
+        var sizepart = currentURL.substring();
         var parts = sizepart.split('-');
         var size = parts[2];
         console.log('final size--->',parts[2]);
