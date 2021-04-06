@@ -16,7 +16,7 @@ $("#receiver").on("load",function(){
         console.log('urlArray--->',urlArray);
         var index = currentURL.lastIndexOf('/') - 1 ;
         console.log('<---index size--->',index);
-        var sizepart = urlArray[urlArray.length - 2];
+        var sizepart = urlArray[urlArray.length - 3];
         var parts = sizepart.split('-');
         var size = parts[2];
         console.log('final size--->',parts[2]);
