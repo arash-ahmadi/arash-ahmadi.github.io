@@ -5566,25 +5566,25 @@
 			console.log('---isThreedView----', isThreedView);
 			if(isThreedView) {
 				console.log('---in 3d view----');
-				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
+				/*$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
-				$('#collapseTwo').addClass('show');
-			//	$("#collapseTwo").collapse('hide');
-			//	$("#collapseOne").collapse('toggle');
-				if ($('#receiver-data').attr('src') === '#') {
+				$('#collapseTwo').addClass('show');*/
+				$("#collapseTwo").collapse('toggle');
+				$("#collapseOne").collapse('hide');
+				/*if ($('#receiver-data').attr('src') === '#') {
 					$('#receiver-data').attr('src',"https://widget.viubox.com/index-webgl.html");
-				}
+				}*/
 			} else {
 				console.log('---in measurment view----');
-			//	$("#collapseOne").collapse('hide');
-			//	$("#collapseTwo").collapse('toggle');
-				$('#collapseTwo').closest('.margin-bottom5').find('button').removeClass('collapsed')
+				$("#collapseOne").collapse('toggle');
+				$("#collapseTwo").collapse('hide');
+				/*$('#collapseTwo').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
 				$('#collapseTwo').removeClass('show');
 				$('#collapseTwo').addClass('show');
 				if ($('#receiver-data').attr('src') !== '#') {
 					$('#receiver-data').attr('src',"#");
-				}
+				}*/
 			}
 
 			var id = localStorage.getItem("id");
