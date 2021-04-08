@@ -709,7 +709,7 @@
 			animation: load8 1.1s infinite linear;
 		}
 		.loader_bg {
-			margin-top: 179%;
+			margin-top: 150%;
 			margin-left: 7%;
 		}
 		#bodyDataLoadingDiv {
@@ -753,7 +753,8 @@
 			margin-bottom: -1.5px;
 		}
 		.mainWrapper {
-			width: 360px
+			width: 360px;
+			padding-top: 50px;
 		}
 		.header-padding{
 			padding: 16px 24px;
@@ -3258,11 +3259,11 @@
 					<div class="success-box hide upload_image_success"></div>
 					<div id="register-image-error-box" class="row col-12 error-box hide"></div>
 					<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
-					<div class="signInTitle">Take Pictures</div>
-					<div class="signInSubTitle qr_code_div">Scan this barcode using you phone.</div>
-					<div id="qrcode" class="barcodeImg qr_code_div"></div>
+					<div class="signInTitle body-data-container">Scatta foto</div>
+					<div class="signInSubTitle qr_code_div body-data-container">Scansiona questo codice a barre usando il tuo telefono.</div>
+					<div id="qrcode" class="barcodeImg qr_code_div body-data-container"></div>
 					<!--<img src="img/barcode.jpg" class="barcodeImg">-->
-					<div class="flex flexVCenter mbthirtyTwo qr_code_div">
+					<div class="flex flexVCenter mbthirtyTwo qr_code_div body-data-container">
 						<div class="dottedBorder flexOne"></div>
 						<div class="or">or</div>
 						<div class="dottedBorder flexOne"></div>
@@ -3270,7 +3271,7 @@
 					<form name="register_user_image" class="form-horizontal" id="register-user-image-form" method="POST" enctype="multipart/form-data">
 						<input type="hidden" class="product_sku" name="productSku">
 						<input type="hidden" class="image_user_id" name="id">
-						<div class="flex">
+						<div class="flex body-data-container">
 							<div class="flexOne mbthirtyTwo mrEight col-12">
 								<img src="img/frontImgH.jpg" class="frontSideImg cursor">
 									<input type="file" id="front_register_img" name="front_img" class="btn btn-info front_img register-front-input" >
@@ -3289,21 +3290,23 @@
 							</div>
 						</div>
 
-						<div class="flex flexVCenter mtbt flexEnd">
+						<div class="flex flexVCenter mtbt flexEnd body-data-container">
 							<button type="button" class="blueBtn cursor" href="javascript:void(0)" id="register-user-image-submit-btn">Inviare le modifiche</button>
 						</div>
 					</form>
-					<div class="oranceBor mbthirtyTwo">
+					<div class="oranceBor mbthirtyTwo body-data-container">
 						<div class="orangeTitle">Watch</div>
 						<div class="videoGreyTitle">How to take picture</div>
 						<iframe width="100%" height="150" src="https://www.youtube.com/embed/LkID80bh0rI"></iframe>
 					</div>
-					<div class="flex flexVCenter">
+					<div class="flex flexVCenter body-data-container">
 						<div class="dottedBorder flexOne"></div>
 					</div>
-					<button id="back-to-login-btn" class="backBtn mbthirtyTwo cursor">
-						<img src="img/leftArrow.svg"> Back to login page
-					</button>
+					<div class="body-data-container">
+						<button id="back-to-login-btn" class="backBtn mbthirtyTwo cursor">
+							<img src="img/leftArrow.svg"> Back to login page
+						</button>
+					</div>
 				</div>
 			</div>
 			<div class="flex flexVCenter footer">
@@ -3316,80 +3319,53 @@
 				</div>
 			</div>
 		</div>
-		<!--<header class="bs-canvas-header p-3 overflow-auto">
-			<img src="img/viubox-logo.png" class="logo-img" />
-			<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
-		</header>
+	</div>
+	<!--Body data div start from here -->
+	<div id="body_data" class="main-container hide">
+		<div class="mainWrapper">
+			<div class="flex flexVCenter padThirtyTwoTwetyFour borderBotBlue header-padding">
+				<div class="flexOne">
+					<!--<img src="img/viuboxLogo.png" class="viuImg">-->
+					<div class="mainLogoTxt">Virtual Fitting Room</div>
+				</div>
+				<div>
+					<img src="img/cancel.svg" class="crossImg bs-canvas-close clos">
+				</div>
+			</div>
+			<div class="flexOne mbthirtyTwo">
+				<div class="padThirtyTwoTwetyFour">
+					<div class="success-box hide upload_image_success"></div>
+					<div id="body-signup-data-error-box" class="row col-12 error-box hide"></div>
+					<form name="register_user_image" class="form-horizontal" id="body-signup-data-form" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="id" id="body-signup-data-user-id">
+						<div class="flex flexVCenter mbthirtyTwo">
+							<div class="or">Aggiungi le tue misure</div>
+						</div>
+						<div class="flex flexVCenter mbthirtyTwo">
+							<div class="or">Tagli di capelli</div>
+						</div>
+						<div class="flex">
+							<input class="haircut-picker cp-lg cp-show" name="Haircut"  value="">
+						</div>
 
-		<div class="register-content">
-			<div class="header-line"></div>
-			<div class="success-box hide upload_image_success"></div>
-			<div class="container image_upload_container">
-				<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
-				<div class="row body-data-container">
-					<div class="col-12 ">
-						<div id="register-image-error-box" class="row col-12 error-box hide"></div>
-					</div>
-					<div class="col-12 text-center qr_code_div">
-						<p>Scan QR code. </p>
-					</div>
-					<div class="col-12 text-center qr_code_div">
-						<div id="qrcode" style="width:100px; height:100px; margin-top:15px;margin-left: 35%;"></div>
-					</div>
-					<div class="col-12 text-center qr_code_div">
-						<p> Or </p>
-					</div>
-					<form name="register_user_image" class="form-horizontal" id="register-user-image-form" method="POST" enctype="multipart/form-data">
-						<div class="row">
-							<input type="hidden" class="product_sku" name="productSku">
-							<input type="hidden" class="image_user_id" name="id">
-							<div class="col-12 text-center">
-								<img src="img/side.png" class="register-side-img">
-								<input type="file" id="side_register_img" name="side_img" class="btn btn-info side_img register-side-input">
-								<i class="fa fa-check-square-o side_img_icon register-side-icon" aria-hidden="true"></i>
-								</img>
-							</div>
-							<div class="col-12 text-center">
-								<a class="view-side-sample-img" href="#" data-title="Side Sample Image">View Sample Image</a>
-							</div>
-							<div class="col-12 text-center">
-								<img src="img/front.png" class="register-front-img">
-								<input type="file" id="front_register_img" name="front_img" class="btn btn-info front_img register-front-input" >
-								<i class="fa fa-check-square-o front_img_icon register-front-icon" aria-hidden="true"></i>
-								</img>
-							</div>
-							
-							<div class="col-12 text-center">
-								<a class="view-side-sample-img" data-title="Front Sample Image" href="#">View Sample Image</a>
-							</div>
-							
-							<div class="col-12 text-center">
-								<button class="submit-btn" href="javascript:void(0)" id="register-user-image-submit-btn">Proceed</button>
-							</div>
-					
-							<div class="video-line"></div>
-							<div class="col-12 text-center">
-								
-								 <a href="https://www.youtube.com/watch?v=LkID80bh0rI" target="_blank"><img src="img/picture-instruction-vid.png" alt="Picture Taking instructions video" class="register-instruction-img"></a>
-							
-							</div>
+						<div class="flex flexVCenter mtbt flexEnd">
+							<button type="button" class="blueBtn cursor" href="javascript:void(0)" id="body-signup-data-submit-btn">Submit</button>
 						</div>
 					</form>
 				</div>
 			</div>
-		</div>
-		<footer class="bs-canvas-header p-3 overflow-auto footer-content">
-			<p class="footer-header">Version 1.0 | Powered By :</p>
-			<div class="footer-logo">
-				<img src="img/viubox_online.png" class="footer-logo-img " />
-				&lt;!&ndash;<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />&ndash;&gt;
+			<div class="flex flexVCenter footer">
+				<div class="flexOne">
+					<div class="footerTxt">Version 3.10.1 </div>
+					<!--<img src="img/viuboxWhiteLogo.png" class="footerImg">-->
+				</div>
+				<div class="footerQuestion">
+					<span>?</span>
+				</div>
 			</div>
-		</footer>-->
-	</div>
-	<!--Body data div start from here -->
-	<div id="body_data" class="main-container hide">
-		<header class="bs-canvas-header p-3 overflow-auto">
+		</div>
+
+		<!--<header class="bs-canvas-header p-3 overflow-auto">
 			<img src="img/viubox-logo.png" class="logo-img" />
 			<button type="button" class="bs-canvas-close float-left close main-drawer-close-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<h6 class="d-inline-block brand-name">Virtual Fitting Room</h6>
@@ -3404,10 +3380,10 @@
 						<div class="col-12">
 							<p class="login-second-box-text">Add Body Data. </p>
 						</div>
-						<!--<div class="col-12 text-center">
+						&lt;!&ndash;<div class="col-12 text-center">
 							<p> Skin Colors</p>
 							<input class="color-picker cp-lg cp-show" name="Color"  value="#FAE7D0">
-						</div>-->
+						</div>&ndash;&gt;
 						<div class="col-12 text-center">
 							<p> Hair Cuts</p>
 							<input class="haircut-picker cp-lg cp-show" name="Haircut"  value="">
@@ -3423,9 +3399,9 @@
 			<p class="footer-header">Version 1.0 </p>
 			<div class="footer-logo">
 				<img src="img/viubox_online.png" class="footer-logo-img " />
-				<!--<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />-->
+				&lt;!&ndash;<img src="img/syz_footer.png" class="footer-logo-img left-padding-10" />&ndash;&gt;
 			</div>
-		</footer>
+		</footer>-->
 	</div>
 	<!--Login div start from here -->
 	<div id="login" class="main-container hide">
@@ -4019,7 +3995,8 @@
 		function addBodyDataLoader(divId) {
 			$('#register-image-upload').find('div.body-data-container').hide();
 			$('#register-image-upload').find('.body-data-loading-img').show();
-			$("#"+divId).append('<div class="loading_div" style="" id="bodyDataLoadingDiv"><p class="loader_bg" >Hang on... we are processing your body measurements</p><div class="loader_body_data">Loading...</div></div>');
+			/*<div class="loader_body_data">Loading...</div>*/
+			$("#"+divId).append('<div class="loading_div" style="" id="bodyDataLoadingDiv"><p class="loader_bg" >Hang on... we are processing your body measurements</p></div>');
 
 			myVar = setTimeout(function(){
 				$('#register-image-upload').find('.loader_bg').text('Detecting Your Skin Tone');
@@ -4421,7 +4398,7 @@
 			var data = new FormData(form);
 			$("#register-user-image-submit-btn").prop('disabled',true);
 			removeLoader();
-			addBodyDataLoader('register-image-upload')
+			addBodyDataLoader('register-image-upload');
 
 			$.ajax({
 				type: "POST",
@@ -4476,8 +4453,8 @@
 
 					}
 					console.log("SUCCESS : ", data);
-					$("#register-user-submit-btn").prop('disabled',false);
 					removeBodyDataLoader();
+					$("#register-user-submit-btn").prop('disabled',false);
 				},
 				error: function (e) {
 					try {
