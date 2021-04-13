@@ -5649,6 +5649,21 @@
 									$("#get-detils-error-box").append($("<li />").text(result.message));
 								});
 								$("#get-detils-error-box").show();
+
+								$.alert({
+									title: 'Alert ...!',
+									content: 'This item is not available for 3d view',
+									icon: 'fa fa-exclamation-triangle',
+									animation: 'scale',
+									closeAnimation: 'scale',
+									buttons: {
+										okay: {
+											text: 'Ok',
+											btnClass: 'btn-blue'
+										}
+									}
+								});
+
 							} else {
 								console.log('succ ', data.ItemId)
 
