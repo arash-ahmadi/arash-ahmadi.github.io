@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>TrySense</title>
+	<link rel="shortcut icon" href="TemplateData/favicon.ico">
+	<link rel="stylesheet" href="TemplateData/style.css">
+	<script src="TemplateData/UnityProgress.js"></script>
+	<script src="build-leathertrend/UnityLoader.js"></script>
+	<script>
+		window.addEventListener('message', receiveMessage);
+
+		var unityInstance = UnityLoader.instantiate("unityContainer", "build-leathertrend/WebGL.json", {
+			onProgress: UnityProgress
+		});
+
+		function downloadBundle(name) {
+			unityInstance.SendMessage("WebAPI", "DownloadBundle", name);
+		}
+
+		function login(id) {
+			unityInstance.SendMessage("WebAPI", "Login", id);
+		}
+
+		function receiveMessage(e) {
+			if (e.data.message == 'login')
+				login(e.data.id);
+			else
+				downloadBundle(e.data);
+		}
+	</script>
+</head>
+
+<body>
+	<div class="webgl-content">
+		<div id="unityContainer" style="width: 300px; height: 400px"></div>
+		<!-- <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">ViuBox</div>
+      </div> -->
+	</div>
+</body>
+
+</html>
