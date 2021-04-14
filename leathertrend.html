@@ -5674,22 +5674,20 @@
                                     getUserMeasurmentData();
                                     $('#user-name').text(localStorage.getItem("name"));
                                     $('#user-email').text(localStorage.getItem("email"));
-                                    if(window.alert){
-                                        $.alert({
-                                            title: 'Alert ...!',
-                                            content: 'This item does not support 3d view',
-                                            icon: 'fa fa-exclamation-triangle',
-                                            animation: 'scale',
-                                            closeAnimation: 'scale',
-                                            buttons: {
-                                                okay: {
-                                                    text: 'Ok',
-                                                    btnClass: 'btn-blue'
-                                                }
-                                            }
-                                        });
-                                    }
 
+                                    $.alert({
+                                        title: 'Alert ...!',
+                                        content: 'This item does not support 3d view',
+                                        icon: 'fa fa-exclamation-triangle',
+                                        animation: 'scale',
+                                        closeAnimation: 'scale',
+                                        buttons: {
+                                            okay: {
+                                                text: 'Ok',
+                                                btnClass: 'btn-blue'
+                                            }
+                                        }
+                                    });
                                 } else {
                                     document.getElementById('mesurment-deatils').style.display = "none";
                                     document.getElementById('login').style.display = "block";
