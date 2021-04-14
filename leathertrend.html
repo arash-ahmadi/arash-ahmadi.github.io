@@ -1726,7 +1726,7 @@
 						<div class="card three-d-view-box orance-bar mbEight">
 							<div class="card-header collapse-box-heading top-radius tab-header" id="headingTwo">
 								<h5 class="mb-0">
-									<button class="btn btn-link collapse-botton tab-button-font" id="virtual-3d-try-btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									<button class="btn btn-link collapse-botton tab-button-font" id="virtual-3d-try-btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" disabled>
 										Prova Online 3D
 									</button>
 								</h5>
@@ -2896,7 +2896,7 @@
 		</header>
 		<div class="login-content">
 			<div class="header-line"></div>
-			<div class="container">
+			<div class="container">Prova Online 3D
 				<div class="row">
 					<div class="col-12">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -5650,7 +5650,39 @@
 								});
 								$("#get-detils-error-box").show();
 
-								/*$.alert({
+                                isLoaclStorageEnabled();
+                                var productSku = event.data.productSku;
+                                $('.product_sku').val(productSku);
+                                window.top.postMessage('virtual-dress-view-open', '*');
+                                $('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+                                if($('#virtual-dress-view').hasClass('pull-bs-canvas-right')) {
+                                    $('.bs-canvas-right-1').addClass('mr-0');
+                                }
+                                else {
+                                    $('.bs-canvas-left').addClass('ml-0');
+                                }
+                                document.getElementById('login').style.display = "block";
+                                document.getElementById('mesurment').style.display = "none";
+                                document.getElementById('register').style.display = "none";
+                                document.getElementById('edit-user-mesurment').style.display = "none";
+                                document.getElementById('forgot-password').style.display = "none";
+                                document.getElementById('reset-password').style.display = "none";
+                                var id = localStorage.getItem("id");
+                                if (id) {
+                                    document.getElementById('mesurment-deatils').style.display = "block";
+                                    document.getElementById('login').style.display = "none";
+                                    getUserMeasurmentData();
+                                    $('#user-name').text(localStorage.getItem("name"));
+                                    $('#user-email').text(localStorage.getItem("email"));
+                                } else {
+                                    document.getElementById('mesurment-deatils').style.display = "none";
+                                    document.getElementById('login').style.display = "block";
+                                    $("#login-error-box").hide();
+                                    $("#login-error-box").find('li').remove();
+                                    $("#login-user-form").trigger("reset");
+                                }
+
+								$.alert({
 									title: 'Alert ...!',
 									content: 'This item is not support 3d view',
 									icon: 'fa fa-exclamation-triangle',
@@ -5662,7 +5694,7 @@
 											btnClass: 'btn-blue'
 										}
 									}
-								});*/
+								});
 
 							} else {
 								console.log('succ ', data.ItemId)
