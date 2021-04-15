@@ -13,11 +13,11 @@ $("#receiver").on("load",function(){
         var size = '';
         $.each(urlArray, function(index, value) {
             console.log('The value at arr[' + index + '] is: ' + value);
-            if (str.indexOf("size") >= 0) {
+            if (value.indexOf("size") >= 0) {
                 var sizepart = value;
                 var parts = sizepart.split('-');
                 size = parts[2];
-            } else if(str.indexOf("taglia") >= 0){
+            } else if(value.indexOf("taglia") >= 0){
                 var sizepart = value;
                 var parts = sizepart.split('-');
                 size = parts[2];
@@ -35,11 +35,11 @@ $("#receiver").on("load",function(){
         var size = '';
         $.each(urlArray, function(index, value) {
             console.log('The value at arr[' + index + '] is: ' + value);
-            if (str.indexOf("size") >= 0) {
+            if (value.indexOf("size") >= 0) {
                 var sizepart = value;
                 var parts = sizepart.split('-');
                 size = parts[2];
-            } else if(str.indexOf("taglia") >= 0){
+            } else if(value.indexOf("taglia") >= 0){
                 var sizepart = value;
                 var parts = sizepart.split('-');
                 size = parts[2];
