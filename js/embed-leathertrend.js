@@ -10,10 +10,19 @@ $("#receiver").on("load",function(){
         var sku = $(this).data('sku');
         var currentURL = window.location.href;
         var urlArray = currentURL.split('/');
-        var sizepart = urlArray[urlArray.length - 3];
-        var parts = sizepart.split('-');
-        var size = parts[2];
-        console.log('final size--->',parts[2]);
+        var size = '';
+        $.each(urlArray, function(index, value) {
+            console.log('The value at arr[' + index + '] is: ' + value);
+            if (str.indexOf("size") >= 0) {
+                var sizepart = value;
+                var parts = sizepart.split('-');
+                size = parts[2];
+            } else if(str.indexOf("taglia") >= 0){
+                var sizepart = value;
+                var parts = sizepart.split('-');
+                size = parts[2];
+            }
+        });
 
         const myiframe = document.getElementById('receiver')
         var message = {message: 'open-measurement-box' , productSku: sku +'-' +size}
@@ -23,13 +32,22 @@ $("#receiver").on("load",function(){
         var sku = $('.measurments_btn').data('sku');
         var currentURL = window.location.href;
         var urlArray = currentURL.split('/');
-        var sizepart = urlArray[urlArray.length - 3];
-        var parts = sizepart.split('-');
-        var size = parts[2];
-        console.log('final size--->',parts[2]);
+        var size = '';
+        $.each(urlArray, function(index, value) {
+            console.log('The value at arr[' + index + '] is: ' + value);
+            if (str.indexOf("size") >= 0) {
+                var sizepart = value;
+                var parts = sizepart.split('-');
+                size = parts[2];
+            } else if(str.indexOf("taglia") >= 0){
+                var sizepart = value;
+                var parts = sizepart.split('-');
+                size = parts[2];
+            }
+        });
         const myiframe = document.getElementById('receiver')
         var message = {message: 'open-three-d-viewer-box' , productSku: sku +'-' +size}
-        console.log('Open 3D  ---', message)
+        console.log('Open 3D  ---', message);
         receiver.postMessage(message, '*');
     })
     window.onmessage = function(event){
