@@ -4331,6 +4331,8 @@
 			var form = $('#register-user-form')[0];
 
 			var data = new FormData(form);
+			var url = localStorage.getItem("current_url");
+			data.append("Url", url);
 			$("#register-user-submit-btn").prop('disabled',true);
 			removeLoader();
 			addLoader('register')
