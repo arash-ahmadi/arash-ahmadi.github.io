@@ -1,4 +1,3 @@
-window.addEventListener('load', function () {
     let html = "<iframe id='receiver' class='chatbox' style='position: fixed; z-index: 1310; bottom: 0; right: 0; border: 0; height: 100vh; width: 360px; allowtransparency='true'; overflow-x: hidden; overflow-y: auto;' src='https://widget.viubox.com/index.html'></iframe>";
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
@@ -138,5 +137,3 @@ window.addEventListener('load', function () {
             receiver.postMessage(message, '*');
         }
     });
-
-});
