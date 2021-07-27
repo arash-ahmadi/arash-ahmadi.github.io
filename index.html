@@ -5541,22 +5541,25 @@
 			if (localStorage.getItem('gender') === 'Male'){
 				$('.women-avatar').css({"display": 'none'});
 				$('.men-avatar').css({"display": 'block'});
-				$(".avatar-height-box").text(Math.round(measure['measurements']['Height']));
-				$(".Bust_cir-box").text(Math.round(measure['measurements']['Bust_Circumference']));
-				$(".female_waist_cir-box").text(Math.round(measure['measurements']['Waist_Circumference']));
-				$(".hips_cir-box").text(Math.round(measure['measurements']['Hip_Circumference']));
-				$(".thigh_cir-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
-				$(".InsideLeg-box").text(Math.round(measure['seg_dst_f']['InsideLeg']));
+				if(measure['measurements']){
+					$(".avatar-height-box").text(Math.round(measure['measurements']['Height']));
+					$(".Bust_cir-box").text(Math.round(measure['measurements']['Bust_Circumference']));
+					$(".female_waist_cir-box").text(Math.round(measure['measurements']['Waist_Circumference']));
+					$(".hips_cir-box").text(Math.round(measure['measurements']['Hip_Circumference']));
+					$(".thigh_cir-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
+					$(".InsideLeg-box").text(Math.round(measure['seg_dst_f']['InsideLeg']));
+				}
 			} else {
 				$('.women-avatar').css({"display": 'block'});
 				$('.men-avatar').css({"display": 'none'});
-				$(".avatar-height-box").text(Math.round(measure['measurements']['Height']));
-				$(".Bust_cir-box").text(Math.round(measure['measurements']['Bust_Circumference']));
-				$(".female_waist_cir-box").text(Math.round(measure['measurements']['Female_Waist_Circumference']));
-				$(".hips_cir-box").text(Math.round(measure['measurements']['Hip_Circumference']));
-				$(".thigh_cir-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
-				$(".InsideLeg-box").text(Math.round(measure['seg_dst_f']['InsideLeg']));
-
+				if(measure['measurements']) {
+					$(".avatar-height-box").text(Math.round(measure['measurements']['Height']));
+					$(".Bust_cir-box").text(Math.round(measure['measurements']['Bust_Circumference']));
+					$(".female_waist_cir-box").text(Math.round(measure['measurements']['Female_Waist_Circumference']));
+					$(".hips_cir-box").text(Math.round(measure['measurements']['Hip_Circumference']));
+					$(".thigh_cir-box").text(Math.round(measure['measurements']['MidThigh_Circumference']));
+					$(".InsideLeg-box").text(Math.round(measure['seg_dst_f']['InsideLeg']));
+				}
 			}
 			$('#mesurment-details-div').css({"display": 'none'});
 			$('#mesurment-avatar').css({"display": 'block'});
