@@ -5541,7 +5541,7 @@
 			if (localStorage.getItem('gender') === 'Male'){
 				$('.women-avatar').css({"display": 'none'});
 				$('.men-avatar').css({"display": 'block'});
-				if(measure['measurements']){
+				if(measure){
 					$(".avatar-height-box").text(Math.round(measure['measurements']['Height']));
 					$(".Bust_cir-box").text(Math.round(measure['measurements']['Bust_Circumference']));
 					$(".female_waist_cir-box").text(Math.round(measure['measurements']['Waist_Circumference']));
@@ -5552,7 +5552,7 @@
 			} else {
 				$('.women-avatar').css({"display": 'block'});
 				$('.men-avatar').css({"display": 'none'});
-				if(measure['measurements']) {
+				if(measure) {
 					$(".avatar-height-box").text(Math.round(measure['measurements']['Height']));
 					$(".Bust_cir-box").text(Math.round(measure['measurements']['Bust_Circumference']));
 					$(".female_waist_cir-box").text(Math.round(measure['measurements']['Female_Waist_Circumference']));
