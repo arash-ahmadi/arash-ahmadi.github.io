@@ -3249,48 +3249,114 @@
 			</div>
 			<div class="flexOne mbthirtyTwo">
 				<div class="padThirtyTwoTwetyFour">
-					<div class="success-box hide upload_image_success"></div>
-					<div id="register-image-error-box" class="row col-12 error-box hide"></div>
-					<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
-					<div class="signInTitle">Take Pictures</div>
-					<div class="signInSubTitle qr_code_div">Scan this barcode using you phone.</div>
-					<div id="qrcode" class="barcodeImg qr_code_div"></div>
-					<!--<img src="img/barcode.jpg" class="barcodeImg">-->
-					<div class="flex flexVCenter mbthirtyTwo qr_code_div">
-						<div class="dottedBorder flexOne"></div>
-						<div class="or">or</div>
-						<div class="dottedBorder flexOne"></div>
+					<div class="switchContainer blueswitchContainer" id="switchContainerRegister" >
+						<div class="switch" id="switchRegister"></div>
+						<div class="switchlabel switchleft">Take Pictures</div>
+						<div class="switchlabel switchright">Body Measurement</div>
 					</div>
-					<form name="register_user_image" class="form-horizontal" id="register-user-image-form" method="POST" enctype="multipart/form-data">
-						<input type="hidden" class="product_sku" name="productSku">
-						<input type="hidden" class="image_user_id" name="id">
-						<div class="flex">
-							<div class="flexOne mbthirtyTwo mrEight col-12">
-								<img src="img/frontImgH.jpg" class="frontSideImg cursor">
-									<input type="file" id="front_register_img" name="front_img" class="btn btn-info front_img register-front-input" >
-									<i class="fa fa-check-square-o front_img_icon register-front-icon" aria-hidden="true"></i>
-								</img>
-								<br>
-								<a class="viewFrontSide viewFrontSide" href="#" data-title="Front Sample Image" >View front image sample</a>
+					<div class="manual-measurment-div">
+						<form name="get_measurment" class="form" id="manual-measurment-form" method="POST" enctype="multipart/form-data">
+
+							<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
+
+							<div class="col-12">
+								<div id="manual-measurment-error-box" class="error-box hide"></div>
+								<input type="hidden" class="" name="UserId" id="measurment-user-id" value="4495">
 							</div>
-							<div class="flexOne mbthirtyTwo mlEight col-12">
-									<img src="img/sideImgH.jpg" class="frontSideImg cursor">
-										<input type="file" id="side_register_img" name="side_img" class="btn btn-info side_img register-side-input">
-										<i class="fa fa-check-square-o side_img_icon register-side-icon" aria-hidden="true"></i>
+							<div class="input-group mb-4">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="BustCircumference-sizing-sm">Bust Circumference &nbsp;</span>
+								</div>
+								<input type="text" class="form-control" name="BustCircumference" aria-label="Bust Circumference" aria-describedby="BustCircumference-sizing-sm">
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="WaistCircumference-sizing-sm">Waist Circumference</span>
+								</div>
+								<input type="text" class="form-control" name="WaistCircumference" aria-label="Waist Circumference" aria-describedby="WaistCircumference-sizing-sm">
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="HipCircumference-sizing-sm">Hip Circumference &nbsp;&nbsp;&nbsp;</span>
+								</div>
+								<input type="text" class="form-control" name="HipCircumference" aria-label="Hip Circumference" aria-describedby="HipCircumference-sizing-sm">
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="MidThighCircumference-sizing-sm">Mid Thigh Circumference </span>
+								</div>
+								<input type="text" class="form-control" name="MidThighCircumference" aria-label="Mid Thigh Circumference" aria-describedby="MidThighCircumference-sizing-sm">
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="InsideLeg-sizing-sm">Inside Leg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</div>
+								<input type="text" class="form-control" name="InsideLeg" aria-label="Inside Leg" aria-describedby="InsideLeg-sizing-sm">
+							</div>
+							<div class="flex mtbtsixteen">
+								<div class="custLabel flexOne">Height:</div>
+								<div class="flex">
+									<div class="quantity-control number-spinner">
+										<button type="button" class="quantity-btn" href="javascript:void(0)" data-dir="dwn">
+											<img src="img/minus.svg">
+										</button>
+										<input type="number" class="quantity-input input-number-range" value="175" name="Height">
+										<button type="button" class="quantity-btn" href="javascript:void(0)" data-dir="up">
+											<img src="img/plus.svg">
+										</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="flex flexVCenter mtbt flexEnd">
+								<button type="button" class="blueBtn cursor" id="manual-measurement-submit-btn">Submit Changes</button>
+							</div>
+						</form>
+					</div>
+					<div class="upload-image-measurment-div">
+						<div class="success-box hide upload_image_success"></div>
+						<div id="register-image-error-box" class="row col-12 error-box hide"></div>
+						<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
+						<div class="signInTitle">Take Pictures</div>
+						<div class="signInSubTitle qr_code_div">Scan this barcode using you phone.</div>
+						<div id="qrcode" class="barcodeImg qr_code_div"></div>
+						<!--<img src="img/barcode.jpg" class="barcodeImg">-->
+						<div class="flex flexVCenter mbthirtyTwo qr_code_div">
+							<div class="dottedBorder flexOne"></div>
+							<div class="or">or</div>
+							<div class="dottedBorder flexOne"></div>
+						</div>
+						<form name="register_user_image" class="form-horizontal" id="register-user-image-form" method="POST" enctype="multipart/form-data">
+							<input type="hidden" class="product_sku" name="productSku">
+							<input type="hidden" class="image_user_id" name="id">
+							<div class="flex">
+								<div class="flexOne mbthirtyTwo mrEight col-12">
+									<img src="img/frontImgH.jpg" class="frontSideImg cursor">
+										<input type="file" id="front_register_img" name="front_img" class="btn btn-info front_img register-front-input" >
+										<i class="fa fa-check-square-o front_img_icon register-front-icon" aria-hidden="true"></i>
 									</img>
 									<br>
-									<a class="view-side-sample-img view-side-sample-img" data-title="Side Sample Image" href="#">View Side image sample</a>
+									<a class="viewFrontSide viewFrontSide" href="#" data-title="Front Sample Image" >View front image sample</a>
+								</div>
+								<div class="flexOne mbthirtyTwo mlEight col-12">
+										<img src="img/sideImgH.jpg" class="frontSideImg cursor">
+											<input type="file" id="side_register_img" name="side_img" class="btn btn-info side_img register-side-input">
+											<i class="fa fa-check-square-o side_img_icon register-side-icon" aria-hidden="true"></i>
+										</img>
+										<br>
+										<a class="view-side-sample-img view-side-sample-img" data-title="Side Sample Image" href="#">View Side image sample</a>
+								</div>
 							</div>
-						</div>
 
-						<div class="flex flexVCenter mtbt flexEnd">
-							<button type="button" class="blueBtn cursor" href="javascript:void(0)" id="register-user-image-submit-btn">Submit Changes</button>
+							<div class="flex flexVCenter mtbt flexEnd">
+								<button type="button" class="blueBtn cursor" href="javascript:void(0)" id="register-user-image-submit-btn">Submit Changes</button>
+							</div>
+						</form>
+						<div class="oranceBor mbthirtyTwo">
+							<div class="orangeTitle">Watch</div>
+							<div class="videoGreyTitle">How to take picture</div>
+							<iframe width="100%" height="150" src="https://www.youtube.com/embed/LkID80bh0rI"></iframe>
 						</div>
-					</form>
-					<div class="oranceBor mbthirtyTwo">
-						<div class="orangeTitle">Watch</div>
-						<div class="videoGreyTitle">How to take picture</div>
-						<iframe width="100%" height="150" src="https://www.youtube.com/embed/LkID80bh0rI"></iframe>
 					</div>
 					<div class="flex flexVCenter">
 						<div class="dottedBorder flexOne"></div>
@@ -3829,6 +3895,24 @@
 				$('.edit-measurment-div').hide();
 				$("#body-data-form").trigger("reset");
 				$('#body-data-error-box').hide();
+			}
+		})
+		$(document).on('click', '#switchContainerRegister', function(event) {
+			var element = document.getElementById("switchContainerRegister");
+			if (element.classList.contains("off")) {
+				element.classList.remove("off");
+				$('.manual-measurment-div').hide();
+				$('.upload-image-measurment-div').show();
+				$('.side_img_icon').hide();
+				$('.front_img_icon').hide();
+				$("#register-user-image-form").trigger("reset");
+				$('#register-image-error-box').hide();
+			} else {
+				element.classList.add("off");
+				$('.manual-measurment-div').show();
+				$('.upload-image-measurment-div').hide();
+				$("#manual-measurment-form").trigger("reset");
+				$('#manual-measurment-error-box').hide();
 			}
 		})
 		$(document).on('click', '#logout-btn', function(event) {
@@ -4372,12 +4456,22 @@
 						document.getElementById('edit-user-mesurment').style.display = "none";
 						document.getElementById('reset-password').style.display = "none";
 						document.getElementById('body_data').style.display = "none";
-						$("#register-user-image-form").trigger("reset");
 						$("#qrcode").html('');
 						var qrcode = new QRCode(document.getElementById("qrcode"), {
 							width : 100,
 							height : 100
 						});
+						//show tab
+						var element = document.getElementById("switchContainerRegister");
+						element.classList.remove("off");
+						$('.manual-measurment-div').hide();
+						$('.upload-image-measurment-div').show();
+						$('.side_img_icon').hide();
+						$('.front_img_icon').hide();
+						$("#register-user-image-form").trigger("reset");
+						$('#register-image-error-box').hide();
+
+
 						var url = localStorage.getItem("current_url");
 						console.log('current_url is ---> ', url)
 						var final_url = "https://arash-ahmadi.github.io/index.html?register_user=" + data.id;
@@ -4500,6 +4594,180 @@
 				}
 			});
 		});
+		$(document).on('click', '#manual-measurement-submit-btn', function(event) {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#manual-measurment-error-box").hide();
+			$("#manual-measurment-error-box").find('li').remove()
+			var form = $('#manual-measurment-form')[0];
+
+			var data = new FormData(form);
+			$("#manual-measurement-submit-btn").prop('disabled',true);
+			removeLoader();
+			addBodyDataLoader('manual-user-mesurment')
+
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/addmanualmeasurement",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					var dataMeasurement = JSON.stringify(data);
+					if(data.errors){
+						console.log('in error');
+						data.errors.forEach(function(result, i){
+							$("#manual-measurment-error-box").append($("<li />").text(result.message));
+						});
+						$("#manual-measurment-error-box").show();
+						$("#manual-measurement-submit-btn").prop('disabled',false);
+					} else {
+						removeBodyDataLoader();
+						var mobile_upload = localStorage.getItem("mobile_upload");
+						if (mobile_upload === "No") {
+							window.top.postMessage('clear-browser-query-params', '*');
+							localStorage.setItem('id', data.id);
+							localStorage.setItem('gender', data.gender);
+							getHaircuts('body-data-error-box','body_data', event);
+							$("#body-data-error-box").hide();
+							$("#body-data-error-box").find('li').remove();
+							document.getElementById('register-image-upload').style.display = "none";
+							document.getElementById('register').style.display = "none";
+							document.getElementById('login').style.display = "none";
+							document.getElementById('mesurment').style.display = "none";
+							document.getElementById('mesurment-deatils').style.display = "none";
+							document.getElementById('forgot-password').style.display = "none";
+							document.getElementById('edit-user-mesurment').style.display = "none";
+							document.getElementById('reset-password').style.display = "none";
+							document.getElementById('body_data').style.display = "block";
+							$("#body-data-form").trigger("reset");
+							$('#body-signup-data-user-id').val(localStorage.getItem('id'));
+						} else {
+							$("#register-image-error-box").hide();
+							$("#register-image-error-box").find('li').remove();
+							$('.image_upload_container').hide();
+
+							$('.upload_image_success').find('li').remove()
+							$('.upload_image_success').append($("<li />").text("Please process from laptop."));
+							$('.upload_image_success').show();
+
+							window.history.pushState({}, document.title,"" );
+						}
+
+					}
+					console.log("SUCCESS : ", data);
+					$("#register-user-submit-btn").prop('disabled',false);
+					removeBodyDataLoader();
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#manual-measurment-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#manual-measurment-error-box").show();
+							$("#manual-measurement-submit-btn").prop('disabled', false);
+							removeBodyDataLoader();
+						}else {
+							$("#manual-measurment-error-box").append($("<li />").text("Internal server error."));
+							$("#manual-measurment-error-box").show();
+							$("#manual-measurement-submit-btn").prop('disabled', false);
+							removeBodyDataLoader();
+						}
+					} catch(err) {
+						$("#manual-measurment-error-box").append($("<li />").text('Unknown Error'));
+						$("#manual-measurment-error-box").show();
+						$("#manual-measurement-submit-btn").prop('disabled', false);
+						removeBodyDataLoader();
+					}
+				}
+			});
+		});
+		/*$(document).on('click', '#manual-measurement-submit-btn', function(event) {
+			isLoaclStorageEnabled();
+			event.preventDefault();
+			$("#manual-measurment-error-box").hide();
+			$("#manual-measurment-error-box").find('li').remove()
+			var form = $('#manual-measurment-form')[0];
+			var data = new FormData(form);
+			$("#manual-measurement-submit-btn").prop('disabled',true);
+			removeLoader();
+			addLoader('manual-user-mesurment')
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: "https://portal.viubox.com/addmanualmeasurement",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function (data) {
+					if(data.errors){
+						data.errors.forEach(function(result, i){
+							$("#manual-measurment-error-box").append($("<li />").text(result.message));
+						});
+						$("#manual-measurment-error-box").show();
+					} else {
+						removeBodyDataLoader();
+						var mobile_upload = localStorage.getItem("mobile_upload");
+						if (mobile_upload === "No") {
+							window.top.postMessage('clear-browser-query-params', '*');
+							localStorage.setItem('id', data.id);
+							localStorage.setItem('gender', data.gender);
+							getHaircuts('body-data-error-box','body_data', event);
+							$("#body-data-error-box").hide();
+							$("#body-data-error-box").find('li').remove();
+							document.getElementById('register-image-upload').style.display = "none";
+							document.getElementById('register').style.display = "none";
+							document.getElementById('login').style.display = "none";
+							document.getElementById('mesurment').style.display = "none";
+							document.getElementById('mesurment-deatils').style.display = "none";
+							document.getElementById('forgot-password').style.display = "none";
+							document.getElementById('edit-user-mesurment').style.display = "none";
+							document.getElementById('reset-password').style.display = "none";
+							document.getElementById('body_data').style.display = "block";
+							$("#body-data-form").trigger("reset");
+							$('#body-signup-data-user-id').val(localStorage.getItem('id'));
+						} else {
+							$("#manual-measurment-error-box").hide();
+							$("#manual-measurment-error-box").find('li').remove();
+							$('.image_upload_container').hide();
+
+							$('.upload_image_success').find('li').remove()
+							$('.upload_image_success').append($("<li />").text("Please process from laptop."));
+							$('.upload_image_success').show();
+
+							window.history.pushState({}, document.title,"" );
+						}
+					}
+					console.log("SUCCESS : ", data);
+					$("#manual-measurement-submit-btn").prop('disabled',false);
+					removeLoader();
+				},
+				error: function (e) {
+					try {
+						if (typeof e.responseText != "undefined") {
+							$("#manual-measurment-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
+							$("#manual-measurment-error-box").show();
+							$("#manual-measurement-submit-btn").prop('disabled',false);
+							removeLoader();
+						}else {
+							$("#manual-measurment-error-box").append($("<li />").text("Internal server error."));
+							$("#manual-measurment-error-box").show();
+							$("#manual-measurement-submit-btn").prop('disabled',false);
+							removeLoader();
+						}
+					} catch(err) {
+						$("#manual-measurment-error-box").append($("<li />").text('Unknown Error'));
+						$("#manual-measurment-error-box").show();
+						$("#manual-measurement-submit-btn").prop('disabled',false);
+						removeLoader();
+					}
+				}
+			});
+		});*/
 		$(document).on('click', '#login-demo-submit-btn', function(event) {
 			isLoaclStorageEnabled();
 			event.preventDefault();
