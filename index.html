@@ -3251,8 +3251,8 @@
 				<div class="padThirtyTwoTwetyFour">
 					<div class="switchContainer blueswitchContainer" id="switchContainerRegister" >
 						<div class="switch" id="switchRegister"></div>
-						<div class="switchlabel switchleft">Take Pictures</div>
-						<div class="switchlabel switchright">Body Measurement</div>
+						<div class="switchlabel switchleft">Automatic measurement</div>
+						<div class="switchlabel switchright">Manual measurement</div>
 					</div>
 					<div class="manual-measurment-div">
 						<form name="get_measurment" class="form" id="manual-measurment-form" method="POST" enctype="multipart/form-data">
@@ -3277,7 +3277,7 @@
 							</div>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="HipCircumference-sizing-sm">Hip Circumference &nbsp;&nbsp;&nbsp;</span>
+									<span class="input-group-text" id="HipCircumference-sizing-sm">Hips Circumference &nbsp;&nbsp;&nbsp;</span>
 								</div>
 								<input type="text" class="form-control" name="HipCircumference" aria-label="Hip Circumference" aria-describedby="HipCircumference-sizing-sm">
 							</div>
@@ -3289,23 +3289,9 @@
 							</div>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="InsideLeg-sizing-sm">Inside Leg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span class="input-group-text" id="InsideLeg-sizing-sm">Leg length &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								</div>
 								<input type="text" class="form-control" name="InsideLeg" aria-label="Inside Leg" aria-describedby="InsideLeg-sizing-sm">
-							</div>
-							<div class="flex mtbtsixteen">
-								<div class="custLabel flexOne">Height:</div>
-								<div class="flex">
-									<div class="quantity-control number-spinner">
-										<button type="button" class="quantity-btn" href="javascript:void(0)" data-dir="dwn">
-											<img src="img/minus.svg">
-										</button>
-										<input type="number" class="quantity-input input-number-range" value="175" name="Height">
-										<button type="button" class="quantity-btn" href="javascript:void(0)" data-dir="up">
-											<img src="img/plus.svg">
-										</button>
-									</div>
-								</div>
 							</div>
 
 							<div class="flex flexVCenter mtbt flexEnd">
@@ -4626,6 +4612,26 @@
 						$("#manual-measurement-submit-btn").prop('disabled',false);
 					} else {
 						removeBodyDataLoader();
+                        var id = localStorage.getItem("id");
+                        if (id) {
+                            document.getElementById('mesurment-deatils').style.display = "block";
+                            document.getElementById('body_data').style.display = "none";
+                            document.getElementById('register-image-upload').style.display = "none";
+                            getUserMeasurmentData();
+                            $('#user-name').text(localStorage.getItem("name"));
+                            $('#user-email').text(localStorage.getItem("email"));
+                            localStorage.setItem("isManualMeasurement", true);
+
+                        } else {
+                            document.getElementById('body_data').style.display = "none";
+                            document.getElementById('login').style.display = "block";
+                            $("#login-error-box").hide();
+                            $("#login-error-box").find('li').remove();
+                            $("#login-user-form").trigger("reset");
+                        }
+                        removeLoader();
+
+						/*
 						var mobile_upload = localStorage.getItem("mobile_upload");
 						if (mobile_upload === "No") {
 							window.top.postMessage('clear-browser-query-params', '*');
@@ -4655,7 +4661,7 @@
 							$('.upload_image_success').show();
 
 							window.history.pushState({}, document.title,"" );
-						}
+						}*/
 
 					}
 					console.log("SUCCESS : ", data);
@@ -4804,6 +4810,7 @@
 						localStorage.setItem('email', data.email);
 						localStorage.setItem('id', data.id);
 						localStorage.setItem('gender', data.gender);
+                        localStorage.setItem("isManualMeasurement", data.isManualMeasurement);
 
 						showMeasurementDeatilPage(data, true);
 						removeLoader();
@@ -4868,6 +4875,7 @@
 						localStorage.setItem('email', data.email);
 						localStorage.setItem('id', data.id);
 						localStorage.setItem('gender', data.gender);
+                        localStorage.setItem("isManualMeasurement", data.isManualMeasurement);
 
 						showMeasurementDeatilPage(data, true);
 						removeLoader();
@@ -5839,8 +5847,9 @@
 				$( "#mesurment-brand" ).trigger( "change" );
 				$('.detail-comment-box').css({"display": 'block'});
 			}
+            var isShow3DButton = data.isManualMeasurement ? false : true;
 
-			if(isThreedView) {
+			if(isThreedView && isShow3DButton) {
 				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
 				$('#collapseTwo').addClass('show');
