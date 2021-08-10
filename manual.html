@@ -4409,7 +4409,7 @@
 			$.ajax({
 				type: "POST",
 				enctype: 'multipart/form-data',
-				url: "https://portal.viubox.com/registeruser",
+				url: "https://127.0.0.1:5001/registeruser",
 				data: data,
 				processData: false,
 				contentType: false,
@@ -4595,7 +4595,7 @@
 			$.ajax({
 				type: "POST",
 				enctype: 'multipart/form-data',
-				url: "https://portal.viubox.com/addmanualmeasurement",
+				url: "https://127.0.0.1:5001/addmanualmeasurement",
 				data: data,
 				processData: false,
 				contentType: false,
@@ -4690,90 +4690,6 @@
 				}
 			});
 		});
-		/*$(document).on('click', '#manual-measurement-submit-btn', function(event) {
-			isLoaclStorageEnabled();
-			event.preventDefault();
-			$("#manual-measurment-error-box").hide();
-			$("#manual-measurment-error-box").find('li').remove()
-			var form = $('#manual-measurment-form')[0];
-			var data = new FormData(form);
-			$("#manual-measurement-submit-btn").prop('disabled',true);
-			removeLoader();
-			addLoader('manual-user-mesurment')
-			$.ajax({
-				type: "POST",
-				enctype: 'multipart/form-data',
-				url: "https://portal.viubox.com/addmanualmeasurement",
-				data: data,
-				processData: false,
-				contentType: false,
-				cache: false,
-				timeout: 600000,
-				success: function (data) {
-					if(data.errors){
-						data.errors.forEach(function(result, i){
-							$("#manual-measurment-error-box").append($("<li />").text(result.message));
-						});
-						$("#manual-measurment-error-box").show();
-					} else {
-						removeBodyDataLoader();
-						var mobile_upload = localStorage.getItem("mobile_upload");
-						if (mobile_upload === "No") {
-							window.top.postMessage('clear-browser-query-params', '*');
-							localStorage.setItem('id', data.id);
-							localStorage.setItem('gender', data.gender);
-							getHaircuts('body-data-error-box','body_data', event);
-							$("#body-data-error-box").hide();
-							$("#body-data-error-box").find('li').remove();
-							document.getElementById('register-image-upload').style.display = "none";
-							document.getElementById('register').style.display = "none";
-							document.getElementById('login').style.display = "none";
-							document.getElementById('mesurment').style.display = "none";
-							document.getElementById('mesurment-deatils').style.display = "none";
-							document.getElementById('forgot-password').style.display = "none";
-							document.getElementById('edit-user-mesurment').style.display = "none";
-							document.getElementById('reset-password').style.display = "none";
-							document.getElementById('body_data').style.display = "block";
-							$("#body-data-form").trigger("reset");
-							$('#body-signup-data-user-id').val(localStorage.getItem('id'));
-						} else {
-							$("#manual-measurment-error-box").hide();
-							$("#manual-measurment-error-box").find('li').remove();
-							$('.image_upload_container').hide();
-
-							$('.upload_image_success').find('li').remove()
-							$('.upload_image_success').append($("<li />").text("Please process from laptop."));
-							$('.upload_image_success').show();
-
-							window.history.pushState({}, document.title,"" );
-						}
-					}
-					console.log("SUCCESS : ", data);
-					$("#manual-measurement-submit-btn").prop('disabled',false);
-					removeLoader();
-				},
-				error: function (e) {
-					try {
-						if (typeof e.responseText != "undefined") {
-							$("#manual-measurment-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
-							$("#manual-measurment-error-box").show();
-							$("#manual-measurement-submit-btn").prop('disabled',false);
-							removeLoader();
-						}else {
-							$("#manual-measurment-error-box").append($("<li />").text("Internal server error."));
-							$("#manual-measurment-error-box").show();
-							$("#manual-measurement-submit-btn").prop('disabled',false);
-							removeLoader();
-						}
-					} catch(err) {
-						$("#manual-measurment-error-box").append($("<li />").text('Unknown Error'));
-						$("#manual-measurment-error-box").show();
-						$("#manual-measurement-submit-btn").prop('disabled',false);
-						removeLoader();
-					}
-				}
-			});
-		});*/
 		$(document).on('click', '#login-demo-submit-btn', function(event) {
 			isLoaclStorageEnabled();
 			event.preventDefault();
@@ -5172,7 +5088,7 @@
 			$.ajax({
 				type: "POST",
 				enctype: 'multipart/form-data',
-				url: "https://portal.viubox.com/getusermeasurementdetails",
+				url: "https://127.0.0.1:5001/getusermeasurementdetails",
 				data: data,
 				processData: false,
 				contentType: false,
@@ -5847,7 +5763,7 @@
 				$( "#mesurment-brand" ).trigger( "change" );
 				$('.detail-comment-box').css({"display": 'block'});
 			}
-			var isShow3DButton = data.isManualMeasurement ? false : true;
+			var isShow3DButton = measure_data.isManualMeasurement ? false : true;
 
 			if(isThreedView && isShow3DButton) {
 				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')

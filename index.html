@@ -3261,7 +3261,7 @@
 
 							<div class="col-12">
 								<div id="manual-measurment-error-box" class="error-box hide"></div>
-								<input type="hidden" class="" name="UserId" id="measurment-user-id" value="4495">
+								<input type="hidden" class="image_user_id" name="UserId" id="measurment-user-id">
 							</div>
 							<div class="input-group mb-4">
 								<div class="input-group-prepend">
@@ -4690,90 +4690,6 @@
 				}
 			});
 		});
-		/*$(document).on('click', '#manual-measurement-submit-btn', function(event) {
-			isLoaclStorageEnabled();
-			event.preventDefault();
-			$("#manual-measurment-error-box").hide();
-			$("#manual-measurment-error-box").find('li').remove()
-			var form = $('#manual-measurment-form')[0];
-			var data = new FormData(form);
-			$("#manual-measurement-submit-btn").prop('disabled',true);
-			removeLoader();
-			addLoader('manual-user-mesurment')
-			$.ajax({
-				type: "POST",
-				enctype: 'multipart/form-data',
-				url: "https://portal.viubox.com/addmanualmeasurement",
-				data: data,
-				processData: false,
-				contentType: false,
-				cache: false,
-				timeout: 600000,
-				success: function (data) {
-					if(data.errors){
-						data.errors.forEach(function(result, i){
-							$("#manual-measurment-error-box").append($("<li />").text(result.message));
-						});
-						$("#manual-measurment-error-box").show();
-					} else {
-						removeBodyDataLoader();
-						var mobile_upload = localStorage.getItem("mobile_upload");
-						if (mobile_upload === "No") {
-							window.top.postMessage('clear-browser-query-params', '*');
-							localStorage.setItem('id', data.id);
-							localStorage.setItem('gender', data.gender);
-							getHaircuts('body-data-error-box','body_data', event);
-							$("#body-data-error-box").hide();
-							$("#body-data-error-box").find('li').remove();
-							document.getElementById('register-image-upload').style.display = "none";
-							document.getElementById('register').style.display = "none";
-							document.getElementById('login').style.display = "none";
-							document.getElementById('mesurment').style.display = "none";
-							document.getElementById('mesurment-deatils').style.display = "none";
-							document.getElementById('forgot-password').style.display = "none";
-							document.getElementById('edit-user-mesurment').style.display = "none";
-							document.getElementById('reset-password').style.display = "none";
-							document.getElementById('body_data').style.display = "block";
-							$("#body-data-form").trigger("reset");
-							$('#body-signup-data-user-id').val(localStorage.getItem('id'));
-						} else {
-							$("#manual-measurment-error-box").hide();
-							$("#manual-measurment-error-box").find('li').remove();
-							$('.image_upload_container').hide();
-
-							$('.upload_image_success').find('li').remove()
-							$('.upload_image_success').append($("<li />").text("Please process from laptop."));
-							$('.upload_image_success').show();
-
-							window.history.pushState({}, document.title,"" );
-						}
-					}
-					console.log("SUCCESS : ", data);
-					$("#manual-measurement-submit-btn").prop('disabled',false);
-					removeLoader();
-				},
-				error: function (e) {
-					try {
-						if (typeof e.responseText != "undefined") {
-							$("#manual-measurment-error-box").append($("<li />").text(JSON.stringify(e.responseText)));
-							$("#manual-measurment-error-box").show();
-							$("#manual-measurement-submit-btn").prop('disabled',false);
-							removeLoader();
-						}else {
-							$("#manual-measurment-error-box").append($("<li />").text("Internal server error."));
-							$("#manual-measurment-error-box").show();
-							$("#manual-measurement-submit-btn").prop('disabled',false);
-							removeLoader();
-						}
-					} catch(err) {
-						$("#manual-measurment-error-box").append($("<li />").text('Unknown Error'));
-						$("#manual-measurment-error-box").show();
-						$("#manual-measurement-submit-btn").prop('disabled',false);
-						removeLoader();
-					}
-				}
-			});
-		});*/
 		$(document).on('click', '#login-demo-submit-btn', function(event) {
 			isLoaclStorageEnabled();
 			event.preventDefault();
@@ -5847,9 +5763,8 @@
 				$( "#mesurment-brand" ).trigger( "change" );
 				$('.detail-comment-box').css({"display": 'block'});
 			}
-            var isShow3DButton = data.isManualMeasurement ? false : true;
 
-			if(isThreedView && isShow3DButton) {
+			if(isThreedView) {
 				$('#collapseOne').closest('.margin-bottom5').find('button').removeClass('collapsed')
 				$('#collapseOne').removeClass('show');
 				$('#collapseTwo').addClass('show');
@@ -5862,10 +5777,11 @@
 			var TryTheeD = localStorage.getItem("TryTheeD");
 			var TryTheeDHideMobile = localStorage.getItem("TryTheeDHideMobile");
 			var parentWidth = localStorage.getItem("parentWidth");
+			var isShow3DButton = measure_data.isManualMeasurement ? false : true;
 			if (id && TryTheeD === 'Yes' && TryTheeDHideMobile === 'Yes' && parentWidth < 721) {
 				console.log('First condition');
 				$('.three-d-view-box').css({"display": 'none'});
-			}else if (id && TryTheeD === 'Yes') {
+			}else if (id && TryTheeD === 'Yes' && isShow3DButton) {
 				console.log('sec condition');
 				$('.three-d-view-box').css({"display": 'block'});
 			} else {
