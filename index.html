@@ -3252,9 +3252,9 @@
 					<div class="switchContainer blueswitchContainer" id="switchContainerRegister" >
 						<div class="switch" id="switchRegister"></div>
 						<div class="switchlabel switchleft">Automatic measurement</div>
-						<div class="switchlabel switchright">Manual measurement</div>
+						<div class="switchlabel switchright hide-manual-measurement">Manual measurement</div>
 					</div>
-					<div class="manual-measurment-div">
+					<div class="manual-measurment-div hide-manual-measurement">
 						<form name="get_measurment" class="form" id="manual-measurment-form" method="POST" enctype="multipart/form-data">
 
 							<img class="body-data-loading-img"  style="display: none; height: 450px; width: 300px" src="img/body-shape.svg">
@@ -4433,6 +4433,12 @@
 						$("#register-image-error-box").hide();
 						$("#register-image-error-box").find('li').remove();
 						localStorage.setItem("mobile_upload",'No');
+                        var manualBodyMeasurment = localStorage.getItem("ManualBodyMeasurment");
+                        if(manualBodyMeasurment === 'Yes'){
+                            $('.hide-manual-measurement').hide()
+                        }else{
+                            $('.hide-manual-measurement').show();
+                        }
 						document.getElementById('register-image-upload').style.display = "block";
 						document.getElementById('register').style.display = "none";
 						document.getElementById('login').style.display = "none";
@@ -6038,6 +6044,12 @@
 					$("#register-image-error-box").hide();
 					$("#register-image-error-box").find('li').remove();
 					window.top.postMessage('virtual-dress-view-open', '*');
+                    var manualBodyMeasurment = localStorage.getItem("ManualBodyMeasurment");
+                    if(manualBodyMeasurment === 'Yes'){
+                        $('.hide-manual-measurement').hide()
+                    }else{
+                        $('.hide-manual-measurement').show();
+                    }
 					document.getElementById('register-image-upload').style.display = "block";
 					document.getElementById('register').style.display = "none";
 					document.getElementById('login').style.display = "none";
@@ -6113,6 +6125,12 @@
 			$('.image_user_id').val(user_id);
 			$("#register-image-error-box").hide();
 			$("#register-image-error-box").find('li').remove();
+            var manualBodyMeasurment = localStorage.getItem("ManualBodyMeasurment");
+            if(manualBodyMeasurment === 'Yes'){
+                $('.hide-manual-measurement').hide()
+            }else{
+                $('.hide-manual-measurement').show();
+            }
 			document.getElementById('register-image-upload').style.display = "block";
 			document.getElementById('register').style.display = "none";
 			document.getElementById('login').style.display = "none";
