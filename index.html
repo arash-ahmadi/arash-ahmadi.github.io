@@ -5182,6 +5182,7 @@
 							}
 							localStorage.setItem("BodyMeasurment",data.BodyMeasurment);
 							localStorage.setItem("TryTheeDHideMobile",data.TryTheeDHideMobile);
+                            localStorage.setItem("ManualBodyMeasurment",data.ManualBodyMeasurment);
 							localStorage.setItem("TryTheeD",data.TryTheeD);
 
 							if(data.TryTheeD === 'No') {
@@ -5777,7 +5778,7 @@
 			var TryTheeD = localStorage.getItem("TryTheeD");
 			var TryTheeDHideMobile = localStorage.getItem("TryTheeDHideMobile");
 			var parentWidth = localStorage.getItem("parentWidth");
-			var isShow3DButton = measure_data.isManualMeasurement ? false : true;
+			var isShow3DButton = measure_data.isManualMeasurement == 1 ? true : false;
 			if (id && TryTheeD === 'Yes' && TryTheeDHideMobile === 'Yes' && parentWidth < 721) {
 				console.log('First condition');
 				$('.three-d-view-box').css({"display": 'none'});
@@ -5998,6 +5999,7 @@
 								}
 								localStorage.setItem("BodyMeasurment",data.BodyMeasurment);
 								localStorage.setItem("TryTheeDHideMobile",data.TryTheeDHideMobile);
+                                localStorage.setItem("ManualBodyMeasurment",data.ManualBodyMeasurment);
 								localStorage.setItem("parentWidth",event.data.width);
 								localStorage.setItem("TryTheeD",data.TryTheeD);
 
