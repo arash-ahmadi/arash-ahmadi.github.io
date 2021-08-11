@@ -5778,7 +5778,8 @@
 			var TryTheeD = localStorage.getItem("TryTheeD");
 			var TryTheeDHideMobile = localStorage.getItem("TryTheeDHideMobile");
 			var parentWidth = localStorage.getItem("parentWidth");
-			var isShow3DButton = measure_data.isManualMeasurement == 1 ? true : false;
+			var isShow3DButton = measure_data.isManualMeasurement ? false : true;
+			console.log('---isShow3DButton---', isShow3DButton);
 			if (id && TryTheeD === 'Yes' && TryTheeDHideMobile === 'Yes' && parentWidth < 721) {
 				console.log('First condition');
 				$('.three-d-view-box').css({"display": 'none'});
