@@ -3772,6 +3772,7 @@
 <script>
 	var receiver = document.getElementById('receiver-data');
 	function receiveMessage(e) {
+		console.log('Msg recived at 3d box ===== ', e.data);
 		if ( e.data.message=== 'login') {
 			receiver.contentWindow.postMessage(e.data, '*')
 		} else if (e.data.message=== 'load-item') {
