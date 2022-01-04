@@ -21,9 +21,9 @@ let html = '<iframe id="receiver" style = "position: fixed; z-index: 1310; botto
         })
         window.onmessage = function(event){
             if (event.data == 'virtual-dress-view-open') {
-                $('#receiver').width(360);
+                $('#receiver').width(400);
             } else if (event.data == 'virtual-dress-view-close') {
-                $('#receiver').width(65);
+                $('#receiver').width(400);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                // $(".measurments_btn").text('Viubox check measurments ');
                 $(".measurments_btn").css('background-color', '#6f928a');
