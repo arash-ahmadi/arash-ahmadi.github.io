@@ -3,7 +3,7 @@ let html = '<iframe id="receiver" class="chatbox" style = "position: fixed; z-in
     $("#receiver").on("load",function(){
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
-        localStorage.setItem('receiver', receiver)
+        // localStorage.setItem('receiver', receiver)
         localStorage.setItem('clicked', false)
         console.log(localStorage.getItem('clicked'))
         $(".measurments_btn").on("click",function(){
