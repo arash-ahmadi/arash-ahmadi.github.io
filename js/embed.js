@@ -3,11 +3,14 @@ let html = '<iframe id="receiver" class="chatbox" style = "position: fixed; z-in
     $("#receiver").on("load",function(){
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
-        // localStorage.setItem('receiver', receiver)
+        localStorage.setItem('receiver', receiver)
+        localStorage.setItem('clicked', false)
         $(".measurments_btn").on("click",function(){
            // $(".measurments_btn").text('Viubox check measurments ');
-            $(".measurments_btn").css('background-color', '#6f928a');
+           $(".measurments_btn").css('background-color', '#6f928a');
+           localStorage.setItem('clicked', true)
             var sku = $(this).data('sku');
+            localStorage('sku', sku)
             const myiframe = document.getElementById('receiver')
             var message = {message: 'open-measurement-box' , productSku: sku}
             receiver.postMessage(message, '*');
