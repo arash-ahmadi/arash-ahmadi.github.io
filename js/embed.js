@@ -4,20 +4,20 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
         // localStorage.setItem('receiver', receiver)
-        localStorage.setItem('clicked', false)
+        // localStorage.setItem('clicked', false)
         console.log(localStorage.getItem('clicked'))
         $(".measurments_btn").on("click",function(){
            // $(".measurments_btn").text('Viubox check measurments ');
            $(".measurments_btn").css('background-color', '#6f928a');
-           localStorage.setItem('clicked', true)
+        //    localStorage.setItem('clicked', true)
             var sku = $(this).data('sku');
-            localStorage.setItem('sku', sku)
-            var message = { message: 'virtual-dress-view-open', productSku: sku }
+            // localStorage.setItem('sku', sku)
             const myiframe = document.getElementById('receiver')
-            if(localStorage.getItem('clicked')===true){
-                localStorage.setItem('clicked', false)
-                var message = { message: 'virtual-dress-view-close', productSku: sku }
-            }
+            var message = { message: 'virtual-dress-view-open', productSku: sku }
+            // if(localStorage.getItem('clicked')===true){
+            //     localStorage.setItem('clicked', false)
+            //     var message = { message: 'virtual-dress-view-close', productSku: sku }
+            // }
             receiver.postMessage(message, '*');
         })
         $(".three_d_viewer_btn").on("click",function(){
