@@ -1,4 +1,4 @@
-let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh;" src = "https://viubox.herokuapp.com"></iframe >';
+let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "https://viubox.herokuapp.com"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
         $(this).width(400);
@@ -12,8 +12,12 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
            localStorage.setItem('clicked', true)
             var sku = $(this).data('sku');
             localStorage.setItem('sku', sku)
+            var message = { message: 'virtual-dress-view-open', productSku: sku }
             const myiframe = document.getElementById('receiver')
-            var message = {message: 'open-measurement-box' , productSku: sku}
+            if(localStorage.getItem('clicked')===true){
+                localStorage.setItem('clicked', false)
+                var message = { message: 'virtual-dress-view-close', productSku: sku }
+            }
             receiver.postMessage(message, '*');
         })
         $(".three_d_viewer_btn").on("click",function(){
@@ -27,7 +31,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
             if (event.data == 'virtual-dress-view-open') {
                 $('#receiver').width(400);
             } else if (event.data == 'virtual-dress-view-close') {
-                $('#receiver').width(400);
+                $('#receiver').width(100);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                // $(".measurments_btn").text('Viubox check measurments ');
                 $(".measurments_btn").css('background-color', '#6f928a');
