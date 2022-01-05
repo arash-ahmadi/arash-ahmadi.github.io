@@ -1,4 +1,4 @@
-let html = '<iframe id="receiver" class="chatbox" style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; allowtransparency: true;" src = "https://viubox.herokuapp.com"></iframe >';
+let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh;" src = "https://viubox.herokuapp.com"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
         $(this).width(400);
