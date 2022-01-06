@@ -2,9 +2,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
     document.body.innerHTML += html;
 $(".three_d_viewer_btn").css('display', 'none');
     $("#receiver").on("load",function(){
-        console.log('display')
         $(".three_d_viewer_btn").css('display', 'none');
-        console.log('none')
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
         console.log(localStorage.getItem('clicked'))
