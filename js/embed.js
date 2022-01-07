@@ -2,7 +2,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
     document.body.innerHTML += html;
 $(".three_d_viewer_btn").css('display', 'none');
     $("#receiver").on("load",function(){
-        $(".three_d_viewer_btn").css('display', 'none');
+        // $(".three_d_viewer_btn").css('display', 'none');
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
         console.log(localStorage.getItem('clicked'))
@@ -21,6 +21,7 @@ $(".three_d_viewer_btn").css('display', 'none');
             receiver.postMessage(message, '*');
         })
         window.onmessage = function(event){
+            console.log(event.data)
             if (event.data == 'virtual-dress-view-open') {
                 $('#receiver').width(400);
             } else if (event.data == 'virtual-dress-view-close') {
