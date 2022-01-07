@@ -23,9 +23,12 @@ $(".three_d_viewer_btn").css('display', 'none');
         })
         window.onmessage = function(event){
             console.log(event.data)
-            if (event.data == 'Open App') {
+            console.log('onmsg')
+            if (event.data.message == 'Open App') {
+                console.log('open')
                 $('#receiver').width(400);
-            } else if (event.data == 'Close App') {
+            } else if (event.data.message == 'Close App') {
+                console.log('close')
                 $('#receiver').width(100);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                // $(".measurments_btn").text('Viubox check measurments ');
