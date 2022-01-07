@@ -1,6 +1,7 @@
 let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "https://viubox.herokuapp.com"></iframe >';
     document.body.innerHTML += html;
 $(".three_d_viewer_btn").css('display', 'none');
+
     $("#receiver").on("load",function(){
         // $(".three_d_viewer_btn").css('display', 'none');
         $(this).width(400);
@@ -139,3 +140,11 @@ $(".three_d_viewer_btn").css('display', 'none');
             receiver.postMessage(message, '*');
         }
     });
+window.onmessage = function (event) {
+    console.log(event.data)
+    if (event.data == 'Open App') {
+        $('#receiver').width(400);
+    } else if (event.data == 'Close App') {
+        $('#receiver').width(100);
+    }
+}
