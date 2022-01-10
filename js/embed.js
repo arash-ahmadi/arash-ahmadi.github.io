@@ -130,6 +130,27 @@ window.addEventListener('message', event => {
         // var receiver = document.getElementById('receiver').contentWindow;
         // women dress : 54c23d
         // men dress : 4541db
+        window.onmessage = function (event) {
+            localStorage.setItem('outfunc', 'outfunc')
+            console.log(event.data)
+            if (event.data == 'Open App') {
+                $('#receiver').width(400);
+            } else if (event.data == 'Close App') {
+                $('#receiver').width(100);
+            }
+        }
+
+        $('receiver').on('message', function (e) {
+            localStorage.setItem('outfunc', 'outfunc')
+            console.log(e.data)
+            console.log(e.data.message)
+            console.log(e.originalEvent.data)
+            if (e.data == 'Open App') {
+                $('#receiver').width(400);
+            } else if (e.data == 'Close App') {
+                $('#receiver').width(100);
+            }
+        })
         console.log('product---->', product)
         receiver.postMessage(product, 'https://plugins.viubox.com:8020');
 
