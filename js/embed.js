@@ -6,7 +6,7 @@ window.addEventListener('message', event => {
 });
     $("#receiver").on("load",function(){
         // $(".three_d_viewer_btn").css('display', 'none');
-        $(this).width(400);
+        $(this).width(100);
         var receiver = document.getElementById('receiver').contentWindow;
         console.log(localStorage.getItem('clicked'))
         $(".measurments_btn").on("click",function(){
@@ -24,6 +24,7 @@ window.addEventListener('message', event => {
             receiver.postMessage(message, '*');
         })
         window.onmessage = function(event){
+            localStorage.setItem('infunc', 'infunc')
             console.log(event.data)
             console.log('onmsg')
             if (event.data.message == 'Open App') {
@@ -146,6 +147,7 @@ window.addEventListener('message', event => {
         }
     });
 window.onmessage = function (event) {
+    localStorage.setItem('outfunc', 'outfunc')
     console.log(event.data)
     if (event.data == 'Open App') {
         $('#receiver').width(400);
