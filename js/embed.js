@@ -7,11 +7,14 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
         $(".measurments_btn").on("click",function(){
+            console.log('clicked started')
             if(localStorage.getItem('clicked')===false){
+                console.log('clicked false', localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#6f928a');
                 localStorage.setItem('clicked', true)
             }
             else if(localStorage.getItem('clicked')===true){
+                console.log('clicked true', localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#000000');
                 localStorage.setItem('clicked', false)
             }
