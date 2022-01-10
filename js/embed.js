@@ -1,14 +1,10 @@
 let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "https://viubox.herokuapp.com"></iframe >';
     document.body.innerHTML += html;
-$(".three_d_viewer_btn").css('display', 'none');
-window.addEventListener('message', event => {
-        console.log(event.data);
-});
+    console.log('started')
     $("#receiver").on("load",function(){
-        // $(".three_d_viewer_btn").css('display', 'none');
-        $(this).width(100);
+        console.log('receiver load')
+        $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
-        console.log(localStorage.getItem('clicked'))
         $(".measurments_btn").on("click",function(){
            $(".measurments_btn").css('background-color', '#6f928a');
             var sku = $(this).data('sku');
@@ -23,10 +19,9 @@ window.addEventListener('message', event => {
             console.log('Open 3D  ---', message)
             receiver.postMessage(message, '*');
         })
+        console.log('onmessage b4')
         window.onmessage = function(event){
-            localStorage.setItem('infunc', 'infunc')
-            console.log(event.data)
-            console.log('onmsg')
+            console.log('onmessage started')
             if (event.data.message == 'Open App') {
                 console.log('open')
                 $('#receiver').width(400);
@@ -97,7 +92,7 @@ window.addEventListener('message', event => {
                 console.log('unknown msg received --> ', event.data )
             }
         }
-
+        console.log('onmessage end')
         function getUrlParameter(sParam) {
             var sPageURL = window.location.search.substring(1),
                 sURLVariables = sPageURL.split('&'),
@@ -130,27 +125,6 @@ window.addEventListener('message', event => {
         // var receiver = document.getElementById('receiver').contentWindow;
         // women dress : 54c23d
         // men dress : 4541db
-        window.onmessage = function (event) {
-            localStorage.setItem('outfunc', 'outfunc')
-            console.log(event.data)
-            if (event.data == 'Open App') {
-                $('#receiver').width(400);
-            } else if (event.data == 'Close App') {
-                $('#receiver').width(100);
-            }
-        }
-
-        $('receiver').on('message', function (e) {
-            localStorage.setItem('outfunc', 'outfunc')
-            console.log(e.data)
-            console.log(e.data.message)
-            console.log(e.originalEvent.data)
-            if (e.data == 'Open App') {
-                $('#receiver').width(400);
-            } else if (e.data == 'Close App') {
-                $('#receiver').width(100);
-            }
-        })
         console.log('product---->', product)
         receiver.postMessage(product, 'https://plugins.viubox.com:8020');
 
@@ -166,25 +140,11 @@ window.addEventListener('message', event => {
             var message = {message: 'open-reset-password-box' , url: full_url, resetpasswordtoken: resetpasswordtoken}
             receiver.postMessage(message, '*');
         }
+        console.log('load ended')
     });
-window.onmessage = function (event) {
+console.log('before click')
+$('receiver').on('click', function(e){
+    console.log('click started')
     localStorage.setItem('outfunc', 'outfunc')
-    console.log(event.data)
-    if (event.data == 'Open App') {
-        $('#receiver').width(400);
-    } else if (event.data == 'Close App') {
-        $('#receiver').width(100);
-    }
-}
-
-$('receiver').on('message', function(e){
-    localStorage.setItem('outfunc', 'outfunc')
-    console.log(e.data)
-    console.log(e.data.message)
-    console.log(e.originalEvent.data)
-    if (e.data == 'Open App') {
-        $('#receiver').width(400);
-    } else if (e.data == 'Close App') {
-        $('#receiver').width(100);
-    }
 })
+console.log('click ended')
