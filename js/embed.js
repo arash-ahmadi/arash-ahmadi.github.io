@@ -155,3 +155,15 @@ window.onmessage = function (event) {
         $('#receiver').width(100);
     }
 }
+
+$('receiver').on('message', function(e){
+    localStorage.setItem('outfunc', 'outfunc')
+    console.log(e.data)
+    console.log(e.data.message)
+    console.log(e.originalEvent.data)
+    if (e.data == 'Open App') {
+        $('#receiver').width(400);
+    } else if (e.data == 'Close App') {
+        $('#receiver').width(100);
+    }
+})
