@@ -21,6 +21,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 console.log(localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#000000');
                 localStorage.setItem('clicked', 'false')
+                window.top.postMessage('Close App', '*')
             }
             else if(localStorage.getItem('clicked')==null){
                 console.log('clicked null')
@@ -41,10 +42,10 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
         window.onmessage = function(event){
             event.preventDefault()
             console.log('onmessage started')
-            if (event.data.message == 'Open App') {
+            if (event.data == 'Open App') {
                 console.log('open')
                 $('#receiver').width(400);
-            } else if (event.data.message == 'Close App') {
+            } else if (event.data == 'Close App') {
                 console.log('close')
                 $('#receiver').width(100);
             } else if (event.data == 'virtual-dress-view-clear-box') {
