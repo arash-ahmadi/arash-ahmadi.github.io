@@ -14,6 +14,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 console.log(localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#6f928a');
                 localStorage.setItem('clicked', 'true')
+                window.top.postMessage('Open App', '*')
             }
             else if(localStorage.getItem('clicked')=='true'){
                 console.log('clicked true')
