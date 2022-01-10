@@ -21,6 +21,9 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 $(".measurments_btn").css('background-color', '#000000');
                 localStorage.setItem('clicked', 'false')
             }
+            else if(localStorage.getItem('clicked')==null){
+                console.log('clicked null')
+            }
             var sku = $(this).data('sku');
             const myiframe = document.getElementById('receiver')
             var message = { message: 'virtual-dress-view-open', productSku: sku }
