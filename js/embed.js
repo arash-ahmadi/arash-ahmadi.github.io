@@ -1,24 +1,25 @@
 let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "https://viubox.herokuapp.com"></iframe >';
     document.body.innerHTML += html;
     console.log('started')
-    localStorage.setItem('clicked', false)
+    localStorage.setItem('clicked', 'false')
+    localStorage.setItem
     $("#receiver").on("load",function(){
         console.log('receiver load')
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
         $(".measurments_btn").on("click",function(){
             console.log('clicked started')
-            if(localStorage.getItem('clicked')==false){
+            if(localStorage.getItem('clicked')=='false'){
                 console.log('clicked false')
                 console.log(localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#6f928a');
                 localStorage.setItem('clicked', true)
             }
-            else if(localStorage.getItem('clicked')==true){
+            else if(localStorage.getItem('clicked')=='true'){
                 console.log('clicked true')
                 console.log(localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#000000');
-                localStorage.setItem('clicked', false)
+                localStorage.setItem('clicked', 'false')
             }
             var sku = $(this).data('sku');
             const myiframe = document.getElementById('receiver')
