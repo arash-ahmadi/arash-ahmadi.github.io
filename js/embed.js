@@ -13,7 +13,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 console.log('clicked false')
                 console.log(localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#6f928a');
-                localStorage.setItem('clicked', true)
+                localStorage.setItem('clicked', 'true')
             }
             else if(localStorage.getItem('clicked')=='true'){
                 console.log('clicked true')
@@ -38,6 +38,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
         })
         console.log('onmessage b4')
         window.onmessage = function(event){
+            event.preventDefault()
             console.log('onmessage started')
             if (event.data.message == 'Open App') {
                 console.log('open')
