@@ -1,31 +1,10 @@
 let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "https://viubox.herokuapp.com"></iframe >';
     document.body.innerHTML += html;
-    console.log('started')
-    localStorage.setItem('clicked', 'false')
-    localStorage.setItem
     $("#receiver").on("load",function(){
-        console.log('receiver load')
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
         $(".measurments_btn").on("click",function(){
-            console.log('clicked started')
-            if(localStorage.getItem('clicked')=='false'){
-                console.log('clicked false')
-                console.log(localStorage.getItem('clicked'))
-                $(".measurments_btn").css('background-color', '#6f928a');
-                localStorage.setItem('clicked', 'true')
-                window.top.postMessage('Open App', '*')
-            }
-            else if(localStorage.getItem('clicked')=='true'){
-                console.log('clicked true')
-                console.log(localStorage.getItem('clicked'))
-                $(".measurments_btn").css('background-color', '#000000');
-                localStorage.setItem('clicked', 'false')
-                window.top.postMessage('Close App', '*')
-            }
-            else if(localStorage.getItem('clicked')==null){
-                console.log('clicked null')
-            }
+            $(".measurments_btn").css('background-color', '#6f928a');
             var sku = $(this).data('sku');
             const myiframe = document.getElementById('receiver')
             var message = { message: 'virtual-dress-view-open', productSku: sku }
@@ -38,18 +17,13 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
             console.log('Open 3D  ---', message)
             receiver.postMessage(message, '*');
         })
-        console.log('onmessage b4')
         window.onmessage = function(event){
             event.preventDefault()
-            console.log('onmessage started')
             if (event.data == 'Open App') {
-                console.log('open')
                 $('#receiver').width(400);
             } else if (event.data == 'Close App') {
-                console.log('close')
                 $('#receiver').width(100);
             } else if (event.data == 'virtual-dress-view-clear-box') {
-               // $(".measurments_btn").text('Viubox check measurments ');
                 $(".measurments_btn").css('background-color', '#6f928a');
             } else if (event.data.message === 'viubox-recommended-size'){
                 $(".measurments_btn").text('Recommended Size : ' + event.data.size);
@@ -112,7 +86,6 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 console.log('unknown msg received --> ', event.data )
             }
         }
-        console.log('onmessage end')
         function getUrlParameter(sParam) {
             var sPageURL = window.location.search.substring(1),
                 sURLVariables = sPageURL.split('&'),
@@ -160,11 +133,4 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
             var message = {message: 'open-reset-password-box' , url: full_url, resetpasswordtoken: resetpasswordtoken}
             receiver.postMessage(message, '*');
         }
-        console.log('load ended')
     });
-console.log('before click')
-$('receiver').on('click', function(e){
-    console.log('click started')
-    localStorage.setItem('outfunc', 'outfunc')
-})
-console.log('click ended')
