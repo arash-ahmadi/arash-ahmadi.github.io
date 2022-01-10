@@ -9,12 +9,14 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
         $(".measurments_btn").on("click",function(){
             console.log('clicked started')
             if(localStorage.getItem('clicked')===false){
-                console.log('clicked false', localStorage.getItem('clicked'))
+                console.log('clicked false')
+                console.log(localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#6f928a');
                 localStorage.setItem('clicked', true)
             }
             else if(localStorage.getItem('clicked')===true){
-                console.log('clicked true', localStorage.getItem('clicked'))
+                console.log('clicked true')
+                console.log(localStorage.getItem('clicked'))
                 $(".measurments_btn").css('background-color', '#000000');
                 localStorage.setItem('clicked', false)
             }
