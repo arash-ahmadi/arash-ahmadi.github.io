@@ -1,12 +1,20 @@
 let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "https://viubox.herokuapp.com"></iframe >';
     document.body.innerHTML += html;
     console.log('started')
+    localStorage.setItem('clicked', false)
     $("#receiver").on("load",function(){
         console.log('receiver load')
         $(this).width(400);
         var receiver = document.getElementById('receiver').contentWindow;
         $(".measurments_btn").on("click",function(){
-           $(".measurments_btn").css('background-color', '#6f928a');
+            if(localStorage.getItem('clicked')===false){
+                $(".measurments_btn").css('background-color', '#6f928a');
+                localStorage.setItem('clicked', true)
+            }
+            else if(localStorage.getItem('clicked')===true){
+                $(".measurments_btn").css('background-color', '#000000');
+                localStorage.setItem('clicked', false)
+            }
             var sku = $(this).data('sku');
             const myiframe = document.getElementById('receiver')
             var message = { message: 'virtual-dress-view-open', productSku: sku }
