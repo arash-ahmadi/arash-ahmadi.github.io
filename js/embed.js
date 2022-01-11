@@ -1,7 +1,7 @@
 let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "http://localhost:3000/"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
-        $(this).width(400);
+        $(this).width(125);
         var receiver = document.getElementById('receiver').contentWindow;
         $(".measurments_btn").on("click",function(){
             $(".measurments_btn").css('background-color', '#6f928a');
@@ -22,10 +22,15 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
             event.preventDefault()
             if (event.data.message == 'Open App') {
                 console.log('open app')
-                $('#receiver').width(400);
+                setTimeout(() => {
+                    $('#receiver').width(400);
+                }, 750);
+                
             } else if (event.data.message == 'Close App') {
                 console.log('close app')
-                $('#receiver').width(100);
+                setTimeout(() => {
+                    $('#receiver').width(125);
+                }, 750);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                 $(".measurments_btn").css('background-color', '#6f928a');
             } else if (event.data.message === 'viubox-recommended-size'){
