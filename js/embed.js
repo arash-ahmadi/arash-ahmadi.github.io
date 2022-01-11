@@ -1,4 +1,4 @@
-let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style = "position: fixed; z-index: 1310; bottom: 46.5vh; right: 0px; border: 0px; width: 135px; height: 10vh; overflow: hidden" src = "http://localhost:3000/"></iframe >';
+let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style = "position: fixed; z-index: 1310; bottom: 46.5vh; right: 0px; border: 0px; width: 135px; height: 10vh;" src = "http://localhost:3000/"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
         $(this).width(145);
