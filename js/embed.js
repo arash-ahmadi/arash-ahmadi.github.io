@@ -1,4 +1,4 @@
-let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style = "position: fixed; z-index: 1310; bottom: 46.5vh; right: 0px; border: 0px; width: 145px; height: 10vh;" src = "https://viubox-syz3.herokuapp.com/"></iframe >';
+let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style = "position: fixed; z-index: 1310; bottom: 46.5vh; right: 0px; border: 0px; width: 145px; height: 70px;" src = "https://viubox-syz3.herokuapp.com/"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
         $(this).width(145);
@@ -31,7 +31,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style =
             } else if (event.data.message == 'Close App') {
                 setTimeout(() => {
                     $('#receiver').css('width', '145px')
-                    $('#receiver').css('height', '10vh')
+                    $('#receiver').css('height', '70px')
                     $('#receiver').css('bottom', '46.5vh')
                     // $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(145);
