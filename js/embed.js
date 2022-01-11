@@ -26,13 +26,13 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style 
                     $('#receiver').css('bottom', '0vh')
                     // $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(385);
-                }, 50);
+                }, 150);
                 
             } else if (event.data.message == 'Close App') {
                 setTimeout(() => {
                     $('#receiver').css('width', '145px')
                     $('#receiver').css('height', '10vh')
-                    $('#receiver').css('bottom', '50vh')
+                    $('#receiver').css('bottom', '46.5vh')
                     // $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(145);
                     // $('#receiver').height(85);
