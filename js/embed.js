@@ -18,10 +18,13 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
             receiver.postMessage(message, '*');
         })
         window.onmessage = function(event){
+            console.log('Got a message')
             event.preventDefault()
             if (event.data.message == 'Open App') {
+                console.log('open app')
                 $('#receiver').width(400);
             } else if (event.data.message == 'Close App') {
+                console.log('close app')
                 $('#receiver').width(100);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                 $(".measurments_btn").css('background-color', '#6f928a');
