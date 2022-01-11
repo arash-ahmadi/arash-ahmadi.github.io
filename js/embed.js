@@ -26,7 +26,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style =
                     $('#receiver').css('bottom', '0vh')
                     // $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(385);
-                }, 500);
+                }, 50);
                 
             } else if (event.data.message == 'Close App') {
                 setTimeout(() => {
