@@ -1,4 +1,4 @@
-let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style = "position: fixed; z-index: 1310; bottom: 50vh; right: 0px; border: 0px; width: 135px; height: 15vh; overflow-x: hidden; overflow-y: hidden;" src = "http://localhost:3000/"></iframe >';
+let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style = "position: fixed; z-index: 1310; bottom: 50vh; right: 0px; border: 0px; width: 135px; height: 10vh; overflow: hidden" src = "http://localhost:3000/"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
         $(this).width(145);
@@ -33,7 +33,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style 
                     $('#receiver').css('width', '145px')
                     $('#receiver').css('height', '10vh')
                     $('#receiver').css('bottom', '50vh')
-                    $('#receiver').css('overflow-y', 'hidden')
+                    $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(145);
                     // $('#receiver').height(85);
                     // $('#receiver').bottom(450);
