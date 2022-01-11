@@ -1,7 +1,7 @@
-let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "http://localhost:3000/"></iframe >';
+let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style = "position: fixed; z-index: 1310; bottom: 50vh; right: 0px; border: 0px; width: 135px; height: 15vh; overflow-x: hidden; overflow-y: hidden;" src = "http://localhost:3000/"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
-        $(this).width(135);
+        $(this).width(145);
         var receiver = document.getElementById('receiver').contentWindow;
         $(".measurments_btn").on("click",function(){
             $(".measurments_btn").css('background-color', '#6f928a');
@@ -18,18 +18,25 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
             receiver.postMessage(message, '*');
         })
         window.onmessage = function(event){
-            console.log('Got a message')
             event.preventDefault()
             if (event.data.message == 'Open App') {
-                console.log('open app')
                 setTimeout(() => {
-                    $('#receiver').width(385);
+                    $('#receiver').css('width', '385px')
+                    $('#receiver').css('height', '100vh')
+                    $('#receiver').css('bottom', '100vh')
+                    $('#receiver').css('overflow-y', 'auto')
+                    // $('#receiver').width(385);
                 }, 50);
                 
             } else if (event.data.message == 'Close App') {
-                console.log('close app')
                 setTimeout(() => {
-                    $('#receiver').width(135);
+                    $('#receiver').css('width', '145px')
+                    $('#receiver').css('height', '10vh')
+                    $('#receiver').css('bottom', '50vh')
+                    $('#receiver').css('overflow-y', 'hidden')
+                    // $('#receiver').width(145);
+                    // $('#receiver').height(85);
+                    // $('#receiver').bottom(450);
                 }, 600);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                 $(".measurments_btn").css('background-color', '#6f928a');
