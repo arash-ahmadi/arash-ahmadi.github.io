@@ -1,4 +1,4 @@
-let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style = "position: fixed; z-index: 1310; bottom: 46.5vh; right: 0px; border: 0px; width: 135px; height: 10vh;" src = "http://localhost:3000/"></iframe >';
+let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style = "position: fixed; z-index: 1310; bottom: 46.5vh; right: 0px; border: 0px; width: 145px; height: 10vh;" src = "http://localhost:3000/"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
         $(this).width(145);
@@ -21,7 +21,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style 
             event.preventDefault()
             if (event.data.message == 'Open App') {
                 setTimeout(() => {
-                    $('#receiver').css('width', '385px')
+                    $('#receiver').css('width', '400px')
                     $('#receiver').css('height', '100vh')
                     $('#receiver').css('bottom', '0vh')
                     // $('#receiver').css('overflow-y', 'auto')
@@ -32,7 +32,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style 
                 setTimeout(() => {
                     $('#receiver').css('width', '145px')
                     $('#receiver').css('height', '10vh')
-                    $('#receiver').css('bottom', '46.5vh')
+                    $('#receiver').css('bottom', '50vh')
                     // $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(145);
                     // $('#receiver').height(85);
