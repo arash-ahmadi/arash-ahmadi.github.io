@@ -1,7 +1,7 @@
 let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "http://localhost:3000/"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
-        $(this).width(125);
+        $(this).width(135);
         var receiver = document.getElementById('receiver').contentWindow;
         $(".measurments_btn").on("click",function(){
             $(".measurments_btn").css('background-color', '#6f928a');
@@ -23,13 +23,13 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
             if (event.data.message == 'Open App') {
                 console.log('open app')
                 setTimeout(() => {
-                    $('#receiver').width(400);
+                    $('#receiver').width(385);
                 }, 200);
                 
             } else if (event.data.message == 'Close App') {
                 console.log('close app')
                 setTimeout(() => {
-                    $('#receiver').width(125);
+                    $('#receiver').width(135);
                 }, 600);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                 $(".measurments_btn").css('background-color', '#6f928a');
