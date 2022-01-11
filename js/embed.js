@@ -24,13 +24,13 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 console.log('open app')
                 setTimeout(() => {
                     $('#receiver').width(400);
-                }, 750);
+                }, 200);
                 
             } else if (event.data.message == 'Close App') {
                 console.log('close app')
                 setTimeout(() => {
                     $('#receiver').width(125);
-                }, 750);
+                }, 600);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                 $(".measurments_btn").css('background-color', '#6f928a');
             } else if (event.data.message === 'viubox-recommended-size'){
