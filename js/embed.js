@@ -26,7 +26,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style =
                     $('#receiver').css('bottom', '0vh')
                     // $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(385);
-                }, 150);
+                }, 500);
                 
             } else if (event.data.message == 'Close App') {
                 setTimeout(() => {
@@ -37,7 +37,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style =
                     // $('#receiver').width(145);
                     // $('#receiver').height(85);
                     // $('#receiver').bottom(450);
-                }, 600);
+                }, 500);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                 $(".measurments_btn").css('background-color', '#6f928a');
             } else if (event.data.message === 'viubox-recommended-size'){
