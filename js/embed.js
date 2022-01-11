@@ -1,7 +1,15 @@
+// There is a lot of legacy code still in this file, only the code commented by me is the code being used for the new app
+
+// Raw html which gets added to client/demo site. The styles in this are the styles set when the website first loads (closed app)
 let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style = "position: fixed; z-index: 1310; bottom: 46.5vh; right: 0px; border: 0px; width: 145px; height: 100px;" src = "https://viubox-syz3.herokuapp.com/"></iframe >';
     document.body.innerHTML += html;
+    // Main event loop
     $("#receiver").on("load",function(){
+
+        // Redundant
         $(this).width(145);
+
+        // This piece of code sends the postMessage when 'Check your fit' button is clicked with the sku
         var receiver = document.getElementById('receiver').contentWindow;
         $(".measurments_btn").on("click",function(){
             $(".measurments_btn").css('background-color', '#6f928a');
@@ -10,6 +18,8 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style =
             var message = { message: 'virtual-dress-view-open', productSku: sku }
             receiver.postMessage(message, '*');
         })
+
+        // Same code for the second button which is currently hidden
         $(".three_d_viewer_btn").on("click",function(){
             var sku = $('.measurments_btn').data('sku');
             const myiframe = document.getElementById('receiver')
@@ -17,8 +27,12 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style =
             console.log('Open 3D  ---', message)
             receiver.postMessage(message, '*');
         })
+
+        // This loop runs when the client window receives a message
         window.onmessage = function(event){
             event.preventDefault()
+
+            // The first two if's are the important ones which change the width based on state of the app
             if (event.data.message == 'Open App') {
                 // setTimeout(() => {
                     $('#receiver').css('width', '400px')
@@ -38,6 +52,11 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style =
                     // $('#receiver').height(85);
                     // $('#receiver').bottom(450);
                 }, 500);
+
+            // 
+            // You can ignore code below this line
+            // 
+
             } else if (event.data == 'virtual-dress-view-clear-box') {
                 $(".measurments_btn").css('background-color', '#6f928a');
             } else if (event.data.message === 'viubox-recommended-size'){
