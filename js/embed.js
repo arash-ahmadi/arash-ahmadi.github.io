@@ -1,4 +1,4 @@
-let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "https://viubox.herokuapp.com"></iframe >';
+let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style = "position: fixed; z-index: 1310; bottom: 0px; right: 0px; border: 0px; width: 400px; height: 100vh; overflow-x: hidden; overflow-y: auto;" src = "https://viubox-syz3.herokuapp.com"></iframe >';
     document.body.innerHTML += html;
     $("#receiver").on("load",function(){
         $(this).width(400);
@@ -35,7 +35,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 if(loaded) {
                     var msg = {message: 'load-item', itemid : itemId};
                     var receiver = document.getElementById('receiver').contentWindow;
-                    receiver.postMessage(msg, 'https://viubox.herokuapp.com/');
+                    receiver.postMessage(msg, 'https://viubox-syz3.herokuapp.com/');
                 }
             } else if (event.data.message === 'viubox-login'){
                 console.log('viubox-login called ' )
@@ -43,13 +43,13 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 localStorage.setItem("id", id)
                 var msg = { message: 'login', id : id };
                 var receiver = document.getElementById('receiver').contentWindow;
-                receiver.postMessage(msg, 'https://viubox.herokuapp.com/');
+                receiver.postMessage(msg, 'https://viubox-syz3.herokuapp.com/');
             } else if (event.data == 'loaded-threed-viewer') {
                 var id = localStorage.getItem("id");
                 console.log('loaded-threed-viewer called ..')
                 var msg = { message: 'login', id : id };
                 var receiver = document.getElementById('receiver').contentWindow;
-                receiver.postMessage(msg, 'https://viubox.herokuapp.com/');
+                receiver.postMessage(msg, 'https://viubox-syz3.herokuapp.com/');
             }else if (event.data == 'loaded-avatar') {
                 var itemId = localStorage.getItem("itemId");
                 var loaded = localStorage.getItem("loaded");
@@ -59,7 +59,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                     console.log('Calling cloth change for item id -->', itemId);
                     var msg = {message: 'load-item', itemid : itemId};
                     var receiver = document.getElementById('receiver').contentWindow;
-                    receiver.postMessage(msg, 'https://viubox.herokuapp.com/');
+                    receiver.postMessage(msg, 'https://viubox-syz3.herokuapp.com/');
                 }
             } else if (event.data == 'loaded-app') {
                 var id = localStorage.getItem("id");
@@ -67,7 +67,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 if (id) {
                     var msg = { message: 'login', id : id };
                     var receiver = document.getElementById('receiver').contentWindow;
-                    receiver.postMessage(msg, 'https://viubox.herokuapp.com/');
+                    receiver.postMessage(msg, 'https://viubox-syz3.herokuapp.com/');
                 }
 
             }else if (event.data == 'virtual-three-d-hide') {
