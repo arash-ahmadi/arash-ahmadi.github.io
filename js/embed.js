@@ -24,7 +24,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
                 console.log('open app')
                 setTimeout(() => {
                     $('#receiver').width(385);
-                }, 200);
+                }, 50);
                 
             } else if (event.data.message == 'Close App') {
                 console.log('close app')
