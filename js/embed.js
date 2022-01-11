@@ -23,7 +23,7 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true; style 
                 setTimeout(() => {
                     $('#receiver').css('width', '385px')
                     $('#receiver').css('height', '100vh')
-                    $('#receiver').css('bottom', '100vh')
+                    $('#receiver').css('bottom', '0vh')
                     $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(385);
                 }, 50);
