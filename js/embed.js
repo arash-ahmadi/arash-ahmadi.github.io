@@ -19,9 +19,9 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency: true; style
         })
         window.onmessage = function(event){
             event.preventDefault()
-            if (event.data == 'Open App') {
+            if (event.data.message == 'Open App') {
                 $('#receiver').width(400);
-            } else if (event.data == 'Close App') {
+            } else if (event.data.message == 'Close App') {
                 $('#receiver').width(100);
             } else if (event.data == 'virtual-dress-view-clear-box') {
                 $(".measurments_btn").css('background-color', '#6f928a');
