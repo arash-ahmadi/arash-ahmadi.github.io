@@ -20,13 +20,13 @@ let html = '<iframe id="receiver" class="chatbox" allowtransparency=true style =
         window.onmessage = function(event){
             event.preventDefault()
             if (event.data.message == 'Open App') {
-                setTimeout(() => {
+                // setTimeout(() => {
                     $('#receiver').css('width', '400px')
                     $('#receiver').css('height', '100vh')
                     $('#receiver').css('bottom', '0vh')
                     // $('#receiver').css('overflow-y', 'auto')
                     // $('#receiver').width(385);
-                }, 50);
+                // }, 50);
                 
             } else if (event.data.message == 'Close App') {
                 setTimeout(() => {
