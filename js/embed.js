@@ -69,16 +69,13 @@ $('#receiver').on('load', function () {
       $('#receiver').css('right', '0px');
       $('#receiver').css('height', '100vh');
       $('#receiver').css('transition', 'all 0.5s');
-    }
 
     // $('#receiver').css('overflow-y', 'auto')
     // $('#receiver').width(145);
     // $('#receiver').height(85);
     // $('#receiver').bottom(450);
 
-    //
     // You can ignore code below this line
-    //
     } else if (event.data == 'virtual-dress-view-clear-box') {
       $('.measurments_btn').css('background-color', '#6f928a');
     } else if (event.data.message === 'viubox-recommended-size') {
