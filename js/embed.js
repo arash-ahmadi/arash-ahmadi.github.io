@@ -4,7 +4,7 @@
 // https://viubox-syz3.herokuapp.com
 // Uploaded IconImage = https://i.ibb.co/jhwWSSs/appicon.png
 let html =
-  '<iframe id="receiver" class="chatbox" allowtransparency=true style="height:100vh; position: fixed;z-index: 1310; right: -400px;overflow-x: hidden;top:0; border: 0px; width: 400px;" src = "https://viubox-syz3.herokuapp.com/"></iframe ><button id="iconbtn" style="cursor:pointer; border:none; background:none; position:fixed; right:10px; top:46vh ; z-index:200;display:flex;align-items:center" ><p class="texthover" style="opacity:0;margin-right:8px;line-height:20px;font-size:18px;font-weight:500;"><span style="padding-right:7px;font-Weight:500;opacity:0.5;">&lt;</span> Try <br/> Online</p><img src="https://widget.viubox.com/img/appicon.png" width="70px" draggable="false" alt="appicon" border="0"></button>';
+  '<iframe id="receiver" class="chatbox" allowtransparency=true style="height:100vh; position: fixed;z-index: 1310; right: -400px;overflow-x: hidden;top:0; border: 0px; width: 400px;" src = "https://viubox-syz3.herokuapp.com/"></iframe ><button id="iconbtn" style="cursor:pointer; border:none; background:none; position:fixed; right:10px; top:46vh ; z-index:200;display:flex;align-items:center" ><p class="texthover" style="opacity:0;margin:0px 8px 0px 0px;line-height:20px;font-size:18px;font-weight:500;"><span style="padding-right:7px;font-Weight:500;opacity:0.5;">&lt;</span> Try <br/> Online</p><img src="https://widget.viubox.com/img/appicon.png" width="70px" draggable="false" alt="appicon" border="0"></button>';
 document.body.innerHTML += html;
 // Main event loop
 
@@ -70,12 +70,12 @@ $('#receiver').on('load', function () {
       $('#receiver').css('height', '100vh');
       $('#receiver').css('transition', 'all 0.5s');
 
-    // $('#receiver').css('overflow-y', 'auto')
-    // $('#receiver').width(145);
-    // $('#receiver').height(85);
-    // $('#receiver').bottom(450);
+      // $('#receiver').css('overflow-y', 'auto')
+      // $('#receiver').width(145);
+      // $('#receiver').height(85);
+      // $('#receiver').bottom(450);
 
-    // You can ignore code below this line
+      // You can ignore code below this line
     } else if (event.data == 'virtual-dress-view-clear-box') {
       $('.measurments_btn').css('background-color', '#6f928a');
     } else if (event.data.message === 'viubox-recommended-size') {
