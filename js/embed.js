@@ -23,7 +23,12 @@ $('#receiver').on('load', function () {
     $('#receiver').css('right', '0px');
     $('#receiver').css('transition', 'all 0.5s');
     var sku = $(this).data('sku');
+    var sku2 = $(this).data('data-sku')
+    var sku3 = $(this).data('data-sku-id')
+    console.log('full data', $(this).data)
     console.log('sku is ', sku)
+    console.log('sku2 is ', sku2)
+    console.log('sku3 is ', sku3)
     // const myiframe = document.getElementById('receiver');
     var message = { message: 'virtual-dress-view-open', productSku: sku };
     receiver.postMessage(message, '*');
