@@ -22,7 +22,7 @@ $('#receiver').on('load', function () {
     $('.measurments_btn').css('background-color', '#6f928a');
     $('#receiver').css('right', '0px');
     $('#receiver').css('transition', 'all 0.5s');
-    var sku = $(this).data('sku');
+    var sku = $(this).data('skuid');
     console.log('sku is ', sku)
     // const myiframe = document.getElementById('receiver');
     var message = { message: 'virtual-dress-view-open', productSku: sku };
@@ -34,7 +34,7 @@ $('#receiver').on('load', function () {
     console.log(5)
     $('#receiver').css('right', '0px');
     $('#receiver').css('transition', 'all 0.5s');
-    var sku = $(this).data('sku');
+    var sku = $(this).data('skuid');
     // const myiframe = document.getElementById('receiver');
     var message = { message: 'virtual-dress-view-open', productSku: sku };
     receiver.postMessage(message, '*');
