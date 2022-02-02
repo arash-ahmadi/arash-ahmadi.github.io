@@ -24,6 +24,8 @@ $('#receiver').on('load', function () {
     $('#receiver').css('transition', 'all 0.5s');
     var sku = $(this).data('sku');
     console.log('sku is ', sku)
+    var randomvar = $(this).data('randomvar');
+    console.log('randomvar is ', randomvar)
     // const myiframe = document.getElementById('receiver');
     var message = { message: 'virtual-dress-view-open', productSku: sku };
     receiver.postMessage(message, '*');
