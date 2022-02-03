@@ -24,10 +24,10 @@ $('#receiver').on('load', function () {
     $('#receiver').css('transition', 'all 0.5s');
     var sku = $(this).data('sku');
     console.log('sku is ', sku)
-    var randomvar = $(this).data('randomvar');
-    console.log('randomvar is ', randomvar)
+    var syzsku = $(this).data('syzsku');
+    console.log('syzsku is ', syzsku)
     // const myiframe = document.getElementById('receiver');
-    var message = { message: 'virtual-dress-view-open', productSku: sku };
+    var message = { message: 'virtual-dress-view-open', productSku: syzsku };
     receiver.postMessage(message, '*');
   });
   console.log(4)
@@ -37,8 +37,10 @@ $('#receiver').on('load', function () {
     $('#receiver').css('right', '0px');
     $('#receiver').css('transition', 'all 0.5s');
     var sku = $(this).data('sku');
+    var syzsku = $(this).data('syzsku');
+    console.log('syzsku is ', syzsku)
     // const myiframe = document.getElementById('receiver');
-    var message = { message: 'virtual-dress-view-open', productSku: sku };
+    var message = { message: 'virtual-dress-view-open', productSku: syzsku };
     receiver.postMessage(message, '*');
   });
   console.log(6)
