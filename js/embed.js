@@ -3,47 +3,37 @@
 // Raw html which gets added to client/demo site. The styles in this are the styles set when the website first loads (closed app)
 // https://viubox-syz3.herokuapp.com
 // Uploaded IconImage = https://i.ibb.co/jhwWSSs/appicon.png
-console.log(1)
 let html =
   '<iframe id="receiver" class="chatbox" allowtransparency=true style="height:100vh; position: fixed;z-index: 1310; right: -400px;overflow-x: hidden;top:0; border: 0px; width: 400px;" src = "https://viubox-syz3.herokuapp.com/"></iframe ><button id="iconbtn" style="cursor:pointer; border:none; overflow-x:hidden; background:none; position:fixed; right:-400px; top:46vh ; z-index:200;display:flex;align-items:center" ><p class="texthover" style="opacity:0;margin:0px 8px 0px 0px;line-height:20px;font-size:18px;font-weight:500;"><span style="padding-right:7px;font-Weight:500;opacity:0.5;">&lt;</span> Try <br/> Online</p><img src="https://widget.viubox.com/img/appicon.png" width="70px" draggable="false" alt="appicon" border="0"></button>';
 document.body.innerHTML += html;
-console.log(2)
 // Main event loop
 
 $('#receiver').on('load', function () {
   // Redundant
-  console.log(2)
   $(this).width('400px');
   $('#iconbtn').css('right', '10px');
   // This piece of code sends the postMessage when 'Check your fit' button is clicked with the sku
   var receiver = document.getElementById('receiver').contentWindow;
   $('.measurments_btn').on('click', function () {
-    console.log(3)
-    $('.measurments_btn').css('background-color', '#6f928a');
+    // $('.measurments_btn').css('background-color', '#6f928a');
     $('#receiver').css('right', '0px');
     $('#receiver').css('transition', 'all 0.5s');
     var sku = $(this).data('sku');
-    console.log('sku is ', sku)
     var syzsku = $(this).data('syzsku');
-    console.log('syzsku is ', syzsku)
     // const myiframe = document.getElementById('receiver');
     var message = { message: 'virtual-dress-view-open', productSku: syzsku };
     receiver.postMessage(message, '*');
   });
-  console.log(4)
   // Opening button
   $('#iconbtn').on('click', function () {
-    console.log(5)
     $('#receiver').css('right', '0px');
     $('#receiver').css('transition', 'all 0.5s');
     var sku = $(this).data('sku');
     var syzsku = $(this).data('syzsku');
-    console.log('syzsku is ', syzsku)
     // const myiframe = document.getElementById('receiver');
     var message = { message: 'virtual-dress-view-open', productSku: syzsku };
     receiver.postMessage(message, '*');
   });
-  console.log(6)
 
   // Same code for the second button which is currently hidden
   // $('.three_d_viewer_btn').on('click', function () {
@@ -57,7 +47,6 @@ $('#receiver').on('load', function () {
   //hover effect
   $('#iconbtn').hover(
     function () {
-      console.log(7)
       $('.texthover').css('opacity', '1');
       $('.texthover').css('transition', '0.4s ease');
     },
@@ -69,19 +58,16 @@ $('#receiver').on('load', function () {
 
   // This loop runs when the client window receives a message
   window.onmessage = function (event) {
-    console.log(8)
     event.preventDefault();
 
     // change the width based on state of the app
     if (event.data.message == 'Close App') {
-      console.log(9)
       // $('#receiver').css('width', '0px');
       $('#receiver').css('right', '-400px');
       $('#receiver').css('height', '100vh');
       $('#receiver').css('transition', 'all 0.5s');
       $('.measurments_btn').css('background-color', '#000000');
     } else if (event.data.message == 'virtual-dress-view-open') {
-      console.log(10)
       // $('#receiver').css('width', '400px');
       $('#receiver').css('right', '0px');
       $('#receiver').css('height', '100vh');
