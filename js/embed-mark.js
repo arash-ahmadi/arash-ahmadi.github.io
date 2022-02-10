@@ -66,7 +66,7 @@ $('#receiver').on('load', function () {
       $('#receiver').css('right', '-400px');
       $('#receiver').css('height', '100vh');
       $('#receiver').css('transition', 'all 0.5s');
-      $('.measurments_btn').css('background-color', '#000000');
+      // $('.measurments_btn').css('background-color', '#000000');
     } else if (event.data.message == 'virtual-dress-view-open') {
       // $('#receiver').css('width', '400px');
       $('#receiver').css('right', '0px');
