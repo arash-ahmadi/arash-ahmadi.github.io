@@ -35,6 +35,16 @@ $('#receiver').on('load', function () {
     receiver.postMessage(message, '*');
   });
 
+  $('.measurments_btn').hover(
+    function () {
+      if ($('#hanger').attr('src') === 'https://widget.viubox.com/img/hanger_black.png') {
+        $('#hanger').attr('src', 'https://widget.viubox.com/img/hanger_white.png');
+      }
+      else {
+        $('#hanger').attr('src', 'https://widget.viubox.com/img/hanger_black.png');
+      }
+    }
+  );
   // Same code for the second button which is currently hidden
   // $('.three_d_viewer_btn').on('click', function () {
   //   var sku = $('.measurments_btn').data('sku');
