@@ -35,6 +35,14 @@ $('#receiver').on('load', function () {
     receiver.postMessage(message, '*');
   });
 
+  // Marks Instruction btn
+  $('#instructions_btn').on('click', function () {
+    $('#receiver').css('right', '0px');
+    $('#receiver').css('transition', 'all 0.5s');
+    var message = { message: 'virtual-dress-view-instruction' };
+    receiver.postMessage(message, '*');
+  });
+
   // Same code for the second button which is currently hidden
   // $('.three_d_viewer_btn').on('click', function () {
   //   var sku = $('.measurments_btn').data('sku');
