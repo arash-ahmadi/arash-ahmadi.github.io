@@ -14,6 +14,15 @@ $('#receiver').on('load', function () {
   $('#iconbtn').css('right', '10px');
   // This piece of code sends the postMessage when 'Check your fit' button is clicked with the sku
   var receiver = document.getElementById('receiver').contentWindow;
+  if (localStorage.getItem('authToken')) {
+    receiver.postMessage(
+      {
+        message: 'authFromParent',
+        authToken: localStorage.getItem('authToken'),
+      },
+      '*'
+    );
+  }
   $('.measurments_btn').on('click', function () {
     // $('.measurments_btn').css('background-color', '#6f928a');
     $('#receiver').css('right', '0px');
@@ -80,6 +89,11 @@ $('#receiver').on('load', function () {
       $('#receiver').css('right', '0px');
       $('#receiver').css('height', '100vh');
       $('#receiver').css('transition', 'all 0.5s');
+    } else if (event.data.message == 'virtual-dress-view-instruction') {
+        // $('#receiver').css('width', '400px');
+        $('#receiver').css('right', '0px');
+        $('#receiver').css('height', '100vh');
+        $('#receiver').css('transition', 'all 0.5s');
 
       // $('#receiver').css('overflow-y', 'auto')
       // $('#receiver').width(145);
