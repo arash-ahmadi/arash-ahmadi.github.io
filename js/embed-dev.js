@@ -78,7 +78,7 @@ const embedFunc = async () => {
     });
   }
   else {
-    console.log('ViuBox-SYZ has not been enabled for this website')
+    console.log('ViuBox-SYZ has not been enabled for this website. Please contact ViuBox-SYZ support team.')
   }
 }
 embedFunc()
