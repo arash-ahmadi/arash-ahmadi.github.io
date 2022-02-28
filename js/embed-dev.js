@@ -6,7 +6,7 @@ const checkUrl = async (origin) => {
   const config = {
     'Content-Type': 'application/json',
   }
-  const { data } = await axios.post('http://localhost:8001/portal/checkurl', { url: origin }, config);
+  const { data } = await axios.post('https://api.viubox.com:8000/portal/checkurl', { url: origin }, config);
   return data.urlExists
 };
 
