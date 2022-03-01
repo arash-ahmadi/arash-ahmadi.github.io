@@ -24,6 +24,16 @@ const embedFunc = async () => {
       $('#iconbtn').css('right', '10px');
       // This piece of code sends the postMessage when 'Check your fit' button is clicked with the sku
       var receiver = document.getElementById('receiver').contentWindow;
+      var receiver = document.getElementById('receiver').contentWindow;
+      if (localStorage.getItem('authToken')) {
+        receiver.postMessage(
+          {
+            message: 'authFromParent',
+            authToken: localStorage.getItem('authToken'),
+          },
+          '*'
+        );
+      }
       $('.measurments_btn').on('click', function () {
         // $('.measurments_btn').css('background-color', '#6f928a');
         $('#receiver').css('right', '0px');
