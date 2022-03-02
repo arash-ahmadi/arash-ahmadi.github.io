@@ -24,6 +24,13 @@ axios.post('https://api.viubox.com:8000/portal/checkurl', { url: origin }).then(
           '*'
         );
       }
+      receiver.postMessage(
+        {
+          message: 'origin',
+          origin: origin,
+        },
+        '*'
+      );
       $('.measurments_btn').on('click', function () {
         // $('.measurments_btn').css('background-color', '#6f928a');
         $('#receiver').css('right', '0px');
