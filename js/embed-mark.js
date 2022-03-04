@@ -1,4 +1,5 @@
 // Code to validate URL
+jQuery(document).ready(function ($) {
 var origin = window.location.origin;
 // $(window).bind('load', function () {
 axios.post('https://api.viubox.com:8000/portal/checkurl', { url: origin }).then((res) => {
@@ -102,4 +103,4 @@ axios.post('https://api.viubox.com:8000/portal/checkurl', { url: origin }).then(
 }).then(() => {
   console.log('ViuBox SYZ successfully initialised')
 });
-// });
+});
