@@ -1,9 +1,9 @@
 // Code to validate URL
 jQuery(document).ready(function ($) {
-var origin = window.location.origin;
+// var origin = window.location.origin;
 // $(window).bind('load', function () {
-axios.post('https://api.viubox.com:8000/portal/checkurl', { url: origin }).then((res) => {
-  if (res.data.urlExists === true) {
+// axios.post('https://api.viubox.com:8000/portal/checkurl', { url: origin }).then((res) => {
+//   if (res.data.urlExists === true) {
 
 
     let html =
@@ -91,16 +91,16 @@ axios.post('https://api.viubox.com:8000/portal/checkurl', { url: origin }).then(
         }
       });
     });
-  }
-  else if (res.data.urlExists === false) {
-    console.log('Viubox is not enabled for this domain. Please contact an administrator.')
-  }
-  else {
-    console.log('ViuBox is having issues. Please try again later')
-  }
-}).catch(err => {
-  console.log(err)
-}).then(() => {
-  console.log('ViuBox SYZ successfully initialised')
-});
-});
+  });
+  // else if (res.data.urlExists === false) {
+  //   console.log('Viubox is not enabled for this domain. Please contact an administrator.')
+  // }
+  // else {
+  //   console.log('ViuBox is having issues. Please try again later')
+  // }
+// }).catch(err => {
+//   console.log(err)
+// }).then(() => {
+//   console.log('ViuBox SYZ successfully initialised')
+// });
+// });
