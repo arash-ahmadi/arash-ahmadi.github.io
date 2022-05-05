@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-
+    
     $color_list = [
 
         {color:'#FAE7D0',value:'FAE7D0',title:''},
