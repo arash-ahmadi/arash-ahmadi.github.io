@@ -24,6 +24,16 @@ jQuery(document).ready(function ($) {
       },
       '*'
     );
+    // checking lang
+    if (localStorage.getItem('lang')) {
+      receiver.postMessage(
+        {
+          message: 'langFromLocalStorage',
+          lang: localStorage.getItem('lang'),
+        },
+        '*'
+      );
+    }
     // Windows Parameters
     const screenRatio = (
       window.screen.availWidth / window.screen.availHeight
@@ -125,6 +135,8 @@ jQuery(document).ready(function ($) {
         localStorage.removeItem('authToken');
       } else if (event.data && event.data.message === 'authFromParent') {
         localStorage.setItem('authToken', event.data.authFromParent);
+      } else if (event.data && event.data.message === 'changeLang') {
+        localStorage.setItem('lang', event.data.flag);
       }
       // else if (event.data && event.data.message === 'ipTokenExists') {
       //   if (localStorage.getItem('authToken')) {
