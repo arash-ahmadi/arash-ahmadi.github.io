@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
             const screenRatio = (
               window.screen.availWidth / window.screen.availHeight
             ).toFixed(2);
-            const memory = navigator.deviceMemory ? navigator.deviceMemory : 32; //RAM Check
+            // const memory = navigator.deviceMemory ? navigator.deviceMemory : 32; //RAM Check
             const cookie = navigator.cookieEnabled ? 1 : 0;
             // Pixel depth
             // const pixel = window.screen.pixelDepth ? window.screen.pixelDepth : 0;
@@ -55,7 +55,8 @@ jQuery(document).ready(function ($) {
             // Getting IP address of the user
             $.getJSON('https://api.ipify.org?format=json')
               .done(function (data) {
-                const IPAdr = `${data.ip}.${screenRatio}.${memory}.${browserLength}.${touchSupport}.${cookie}.${processors}`;
+                // const IPAdr = `${data.ip}.${screenRatio}.${memory}.${browserLength}.${touchSupport}.${cookie}.${processors}`;
+                const IPAdr = `${data.ip}.${screenRatio}.${browserLength}.${touchSupport}.${cookie}.${processors}`;
                 console.log(`Unlimited Requests:${IPAdr}`);
                 receiver.postMessage(
                   { message: 'userIp', publicIp: IPAdr },
@@ -67,7 +68,8 @@ jQuery(document).ready(function ($) {
                 const url = `https://api.ipgeolocation.io/ipgeo?apiKey=${APIKey}`;
                 $.getJSON(url)
                   .done(function (data) {
-                    const IPAdr = `${data.ip}.${screenRatio}.${memory}.${browserLength}.${touchSupport}.${cookie}.${processors}`;
+                    // const IPAdr = `${data.ip}.${screenRatio}.${memory}.${browserLength}.${touchSupport}.${cookie}.${processors}`;
+                    const IPAdr = `${data.ip}.${screenRatio}.${browserLength}.${touchSupport}.${cookie}.${processors}`;
                     console.log(`Limited Requests:${IPAdr}`);
                     receiver.postMessage(
                       { message: 'userIp', publicIp: IPAdr },
