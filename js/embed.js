@@ -28,6 +28,12 @@ jQuery(document).ready(function ($) {
             // Redundant
             $(this).width('400px');
             $('#iconbtn').css('right', '10px');
+
+            // Removing Transparent background for mobile screens
+            if (window.innerWidth < 500) {
+              $('#receiver').css('background-color', '#ffffff');
+            }
+
             // This piece of code sends the postMessage when 'Check your fit' button is clicked with the sku
             var receiver = document.getElementById('receiver').contentWindow;
             receiver.postMessage(
