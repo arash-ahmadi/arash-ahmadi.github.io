@@ -13,6 +13,18 @@ jQuery(document).ready(function ($) {
           // Main event loop
 
           $('#receiver').on('load', function () {
+            const enableScroll = () => {
+              document.querySelector('body').style.overflow = 'auto';
+              document.querySelector('body').style.backgroundColor = '#ffffff';
+              document.querySelector('body').style.transition =
+                'all 0.5s ease-in-out';
+            };
+            const disableScroll = () => {
+              document.querySelector('body').style.overflow = 'hidden';
+              document.querySelector('body').style.backgroundColor = '#d3d3d3';
+              document.querySelector('body').style.transition =
+                'all 0.5s ease-in-out';
+            };
             // Redundant
             $(this).width('400px');
             $('#iconbtn').css('right', '10px');
@@ -93,6 +105,8 @@ jQuery(document).ready(function ($) {
               // $('.measurments_btn').css('background-color', '#6f928a');
               $('#receiver').css('right', '0px');
               $('#receiver').css('transition', 'all 0.5s');
+              disableScroll();
+              // $('body').css('overflow-y', 'hidden');
               var sku = $(this).data('sku');
               var syzsku = $(this).data('syzsku');
               // const myiframe = document.getElementById('receiver');
@@ -106,6 +120,9 @@ jQuery(document).ready(function ($) {
             $('#iconbtn').on('click', function () {
               $('#receiver').css('right', '0px');
               $('#receiver').css('transition', 'all 0.5s');
+              disableScroll();
+              // $('body').css('overflow-y', 'hidden');
+
               var sku = $(this).data('sku');
               var syzsku = $(this).data('syzsku');
               // const myiframe = document.getElementById('receiver');
@@ -138,6 +155,8 @@ jQuery(document).ready(function ($) {
                 $('#receiver').css('right', '-400px');
                 $('#receiver').css('height', '100vh');
                 $('#receiver').css('transition', 'all 0.5s');
+                enableScroll();
+                // $('body').css('overflow-y', 'auto');
                 // $('.measurments_btn').css('background-color', '#000000');
               } else if (
                 event.data &&
@@ -147,6 +166,8 @@ jQuery(document).ready(function ($) {
                 $('#receiver').css('right', '0px');
                 $('#receiver').css('height', '100vh');
                 $('#receiver').css('transition', 'all 0.5s');
+                disableScroll();
+                // $('body').css('overflow-y', 'hidden');
               } else if (event.data && event.data.message === 'addToken') {
                 localStorage.setItem('authToken', event.data.authToken);
               } else if (event.data && event.data.message === 'removeToken') {
