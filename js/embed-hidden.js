@@ -7,23 +7,31 @@ jQuery(document).ready(function ($) {
       .then((res) => {
         if (res.data.urlExists === true) {
           let html =
-            '<iframe id="receiver" class="chatbox" allowtransparency=true style="height:100vh; position: fixed;z-index: 1310; right: -400px;overflow-x: hidden;top:0; border: 0px; width: 400px;" src = "https://syz.viubox.com/"></iframe ><button id="iconbtn" style="display:none; cursor:pointer; border:none; overflow-x:hidden; background:none; position:fixed; right:-400px; top:46vh ; z-index:200;display:flex;align-items:center" ><p class="texthover" style="display:none; opacity:0;margin:0px 8px 0px 0px;line-height:20px;font-size:18px;font-weight:500;color:#3d3d3d;"><span style="display:none; padding-right:7px;font-Weight:500;opacity:0.5;">&lt;</span> Try <br/> Online</p><img src="https://widget.viubox.com/img/appicon.png" width="70px" draggable="false" alt="appicon" border="0" style="display:none;"></button>';
+            '<iframe id="receiver" class="chatbox" allowtransparency=true style="height:100vh; position: fixed;z-index: 1310; right: -400px;overflow-x: hidden;top:0; border: 0px; width: 400px;" src = "https://syz.viubox.com"></iframe ><button id="iconbtn" style="display:none; cursor:pointer; border:none; overflow-x:hidden; background:none; position:fixed; right:-400px; top:46vh ; z-index:200;display:flex;align-items:center" ><p class="texthover" style="display:none; opacity:0;margin:0px 8px 0px 0px;line-height:20px;font-size:18px;font-weight:500;color:#3d3d3d;"><span style="display:none; padding-right:7px;font-Weight:500;opacity:0.5;">&lt;</span> Try <br/> Online</p><img src="https://widget.viubox.com/img/appicon.png" width="70px" draggable="false" alt="appicon" border="0" style="display:none;"></button>';
           // document.body.innerHTML += html;
           $('body').append(html);
+
+          let overlay = "<div id='modaloverlay' class='overlay'></div>"
+          $('body').append(overlay);
+          document.querySelector('#modaloverlay').style.transition =
+            'all 0.5s ease-in-out';
           // Main event loop
 
           $('#receiver').on('load', function () {
             const enableScroll = () => {
               document.querySelector('body').style.overflow = 'auto';
-              document.querySelector('body').style.backgroundColor = '#ffffff';
-              document.querySelector('body').style.transition =
-                'all 0.5s ease-in-out';
+              // document.querySelector('body').style.backgroundColor = '#ffffff';
+              // document.querySelector('#modaloverlay').style.transition =
+              //   'all 0.5s ease-in-out';
+              $("#modaloverlay").css("visibility", "hidden")
+              $("#modaloverlay").css("opacity", 0)
             };
             const disableScroll = () => {
               document.querySelector('body').style.overflow = 'hidden';
-              document.querySelector('body').style.backgroundColor = '#d3d3d3';
-              document.querySelector('body').style.transition =
-                'all 0.5s ease-in-out';
+
+              console.log(true)
+              $("#modaloverlay").css("visibility", "visible")
+              $("#modaloverlay").css("opacity", 1)
             };
             // Redundant
             $(this).width('400px');
