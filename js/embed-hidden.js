@@ -38,7 +38,7 @@ jQuery(document).ready(function ($) {
             $('#iconbtn').css('right', '10px');
 
             // Removing Transparent background for mobile screens
-            if (window.innerWidth < 480) {
+            if (window.innerWidth < 400) {
               $('#receiver').css('background-color', '#ffffff');
             }
 
