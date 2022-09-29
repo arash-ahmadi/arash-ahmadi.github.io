@@ -15,6 +15,8 @@ jQuery(document).ready(function ($) {
           $('body').append(overlay);
           document.querySelector('#modaloverlay').style.transition =
             'all 0.5s ease-in-out';
+          document.querySelector('#modaloverlay').style.cursor =
+            "url('https://widget.viubox.com/img/delete-cursor.png'), auto";
           // Main event loop
 
           $('#receiver').on('load', function () {
@@ -158,6 +160,18 @@ jQuery(document).ready(function ($) {
                 $('.texthover').css('transition', '0.4s ease');
               }
             );
+
+            // if overlay is clicked
+            $('#modaloverlay').on('click', function () {
+              $('#receiver').css('right', '-400px');
+              $('#receiver').css('transition', 'all 0.5s');
+              enableScroll();
+              // $('body').css('overflow-y', 'auto');
+              var message = {
+                message: 'virtual-dress-view-close',
+              };
+              receiver.postMessage(message, '*');
+            });
 
             // This loop runs when the client window receives a message
             window.addEventListener('message', function (event) {
