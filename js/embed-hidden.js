@@ -11,29 +11,25 @@ jQuery(document).ready(function ($) {
           // document.body.innerHTML += html;
           $('body').append(html);
 
-          let overlay = "<div id='modaloverlay' class='overlay'></div>"
+          let overlay = "<div class='viubox-syz-overlay'></div>"
           $('body').append(overlay);
-          document.querySelector('#modaloverlay').style.transition =
+          document.querySelector('.viubox-syz-overlay').style.transition =
             'all 0.5s ease-in-out';
-          document.querySelector('#modaloverlay').style.cursor =
-            "url('https://widget.viubox.com/img/delete-cursor.png'), auto";
+          document.querySelector('.viubox-syz-overlay').style.cursor =
+            "url('https://widget.viubox.com/img/delete-cursor-32x32.png'), auto";
           // Main event loop
 
           $('#receiver').on('load', function () {
             const enableScroll = () => {
               document.querySelector('body').style.overflow = 'auto';
-              // document.querySelector('body').style.backgroundColor = '#ffffff';
-              // document.querySelector('#modaloverlay').style.transition =
-              //   'all 0.5s ease-in-out';
-              $("#modaloverlay").css("visibility", "hidden")
-              $("#modaloverlay").css("opacity", 0)
+              $(".viubox-syz-overlay").css("visibility", "hidden")
+              $(".viubox-syz-overlay").css("opacity", 0)
             };
             const disableScroll = () => {
               document.querySelector('body').style.overflow = 'hidden';
+              $(".viubox-syz-overlay").css("visibility", "visible")
+              $(".viubox-syz-overlay").css("opacity", 1)
 
-              console.log(true)
-              $("#modaloverlay").css("visibility", "visible")
-              $("#modaloverlay").css("opacity", 1)
             };
             // Redundant
             $(this).width('400px');
@@ -117,8 +113,8 @@ jQuery(document).ready(function ($) {
                   });
               });
 
-            $('.measurments_btn').on('click', function () {
-              // $('.measurments_btn').css('background-color', '#6f928a');
+            $('.viubox-syz-measurments-button').on('click', function () {
+              // $('.viubox-syz-measurments-button').css('background-color', '#6f928a');
               $('#receiver').css('right', '0px');
               $('#receiver').css('transition', 'all 0.5s');
               disableScroll();
@@ -162,7 +158,7 @@ jQuery(document).ready(function ($) {
             );
 
             // if overlay is clicked
-            $('#modaloverlay').on('click', function () {
+            $('.viubox-syz-overlay').on('click', function () {
               $('#receiver').css('right', '-400px');
               $('#receiver').css('transition', 'all 0.5s');
               enableScroll();
@@ -185,7 +181,7 @@ jQuery(document).ready(function ($) {
                 $('#receiver').css('transition', 'all 0.5s');
                 enableScroll();
                 // $('body').css('overflow-y', 'auto');
-                // $('.measurments_btn').css('background-color', '#000000');
+                // $('.viubox-syz-measurments-button').css('background-color', '#000000');
               } else if (
                 event.data &&
                 event.data.message == 'virtual-dress-view-open'
